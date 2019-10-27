@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*  
+        * 量词：设置一个内容出现的次数 
+        * {n} 只对前面一个起作用; n+ 至少一个
+        * n* 0个或多个; ? 0或1个; ^n 开头;  n$ 结尾 
+        * . 任意字符  \. 转义. 
+        * \w 任意数字，字母，_  [A-z0-9_] \W 相反
+        * \d 任意数字 \s 空格 \b 单词边界
+        */
+        var reg = /(ba){1,3}/;
+        console.log(reg.test("babaaa"));    
+
+        var reg2 = /^a|a$/;  // a开头或者a结束
+
+        // 电话正则
+        var phone = "15272975799";
+        var rule = /^1[3-9][0-9]{9}$/;
+        console.log(rule.test(phone));
+
+        var reg3 = /\\/;
+        console.log(reg3.test("b.a\\de")) // 字符串中 \\ 代表 \
+        console.log("b.\\ac");  // b.\ac
+
+        var reg4 = /\bchild\b/;
+        console.log(reg4.test("hello,child ren"))
+
+        // 去空格
+        var name = " dfi dfei      ";
+        console.log("name =>", name.replace(/\s/g, ""));
+        console.log("name =>", name.replace(/^\s*|\s*$/g, ""));
+
+        // 电子邮件 234325 .lu @ 163 .com.cn
+        // \w{3,} (\.\w+)* @ [A-z0-9]+ (\.[A-z]{2,5}){1,2}
+        var email = "2735146966@qq.com";
+        var emailReg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+        console.log("email =>", emailReg.test(email));
+    </script>
+</body>
+</html>

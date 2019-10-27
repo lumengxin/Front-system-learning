@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // this：解析器在调用函数时每次都会向函数内部传递一个隐含参数
+        // this指向一个对象，函数执行的上下文对象，依据函数的调用方式
+        function fun(a, b) {
+            console.log(a, b);
+            console.log(this);
+        }
+        fun(34, 87);
+
+        // 以函数形式调用，this永远指向window
+        // 以方法是形式调用，this就是调用方法的对象
+        var obj = {
+            name: "xinj",
+            sayName: fun
+        }
+        obj.sayName();  // Object
+        fun();          // Window
+
+        var name = "全局";
+        function fun2() {
+            // console.log(name);
+            console.log(this.name);
+        }
+        var ob = {
+            name: "sun",
+            sayName: fun
+        };
+        var ob2 = {
+            name: "zhu",
+            sayName: fun
+        };
+        ob.sayName();
+
+
+    </script>
+</body>
+</html>

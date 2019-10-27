@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        var items = document.getElementsByName("items")
+        var checkedAllBox = document.getElementById("checkedAllBox")
+
+        var checkedAllBtn = document.getElementById("checkedAllBtn")
+        checkedAllBtn.onclick = function() {
+            for(var i=0; i<items.length; i++) {
+                items[i].checked = true
+            }
+
+            checkedAllBox.checked = true
+        }
+        var checkedNoBtn = document.getElementById("checkedNoBtn")
+        checkedNoBtn.onclick = function() {
+            for(var i=0; i<items.length; i++) {
+                items[i].checked = false
+            }
+
+            checkedAllBox.checked = false
+        }
+        var checkedRevBtn = document.getElementById("checkedRevBtn")
+        checkedRevBtn.onclick = function() {
+            for(var i=0; i<items.length; i++) {
+               /*  if(items[i].checked) items[i].checked = false
+                else items[i].checked = true */
+                items[i].checked = !items[i].checked
+            }
+
+            
+        }
+        var sendBtn = document.getElementById("sendBtn")
+        sendBtn.onclick = function() {
+            for(var i=0; i<items.length; i++) {
+               if(items[i].checked) {
+                   alert(items[i].value)
+               }
+            }
+        }
+        checkedAllBox.onclick = function() {
+            console.log(this);
+            for(var i=0; i<items.length; i++) {
+               items[i].checked = checkedAllBox.checked
+            }
+        }
+
+        for(var i=0; i<items.length; i++) {
+            items[i].onclick = function() {
+                // 默认checkedAllBox设置为选中状态  (质数练习)
+                checkedAllBox.checked = true
+                for(var j=0; j<items.length; j++) {
+                    // 判断四个是否全选，反面只有有一个没选中就是不是全选
+                    if(!items[j].checked) {
+                        // 进入判断，说明不是全选
+                        checkedAllBox.checked = false
+
+                        // 优化：一旦进入判断，说明已经得到结果，后面不用判断
+                        break
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <form method="post" action="">
+        你喜欢的运动是？
+        <input type="checkbox" id="checkedAllBox" />
+        全选/全不选
+        <br />
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />篮球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+        <br />
+        <input type="button" id="checkedAllBtn" value="全 选" />
+        <input type="button" id="checkedNoBtn" value="全不选" />
+        <input type="button" id="checkedRevBtn" value="反 选" />
+        <input type="button" id="sendBtn" value="提 交" />
+    </form>
+    <style>
+    
+    </style>
+</body>
+</html>

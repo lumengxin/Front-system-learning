@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 内建对象，宿主对象，自定义对象
+        // 数组：也是一个对象，用来存储一些值，使用数字作为索引操作元素
+        // 存储性能比普通对象好，经常使用
+        var arr = new Array();
+        console.log(typeof(arr));
+        arr[0] = 19;
+        arr[1] = 2;
+        arr[5] = 9;
+        console.log(arr, arr[3]);  // undefined
+        console.log(arr.length);
+        // length:改变这个属性的值将截断或扩展数组。
+        arr.length = 10;
+        // 向数组中最后一个位置添加元素
+        arr[arr.length] = 90;
+        arr[arr.length] = 91;
+
+        // 使用字面量创建数组
+        var arr3 = new Array(1,2,4);
+        var arr2 = [1,3,9,true,null,undefined];
+        var obj = {name:"sun"};
+        arr2[arr2.length] = obj;
+        console.log("arr2 =>", arr2);
+    </script>
+</body>
+</html>

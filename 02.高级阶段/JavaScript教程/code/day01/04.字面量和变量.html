@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * 字面量：不可改变的值
+       * 可以直接使用，但一般不会直接使用字面量
+       * 变量：可以用来保存字面量，而且可以任意改变
+       * 更加方便使用，一般通过变量去保存一个字面量
+       */
+
+      // 声明变量
+      // console.log(b)  // not defined
+      var a;
+      console.log(a); // undefined
+
+      var c = 123;
+      c = 111;
+      console.log(c)
+
+      // console中操作
+      // 等价 this.document.write
+      document.write(c)
+    </script>
+  </body>
+</html>

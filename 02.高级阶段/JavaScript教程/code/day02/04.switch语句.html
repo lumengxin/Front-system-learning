@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 2.条件分支(switch)语句
+        // 依次将case表达式值与switch条件表达式的值进行全等比较,
+        // 满足时，case后代码都会执行，使用break跳出当前case
+        var num = +prompt("请输入一个数字：")
+        switch (num) {
+            case 1:
+                console.log(++num)
+                break;
+            case 2: 
+                console.log(--num)
+                break;
+            default: 
+                console.log(typeof num, num);
+                break;
+        }
+
+        // 练习：成绩大于60，输出‘及格’; 低于60，输出‘不及格’
+        var score = +prompt("请输入成绩：")
+        switch (parseInt(score / 10)) {
+            case 10:
+            case 9: 
+            case 8:
+            case 7: 
+            case 6: 
+                console.log("及格")
+                break
+            default: 
+                console.log("不及格")
+                break
+        }
+        /* switch (true) {
+            case score >= 60:
+                console.log("及格")
+                break
+            default: 
+                console.log("不及格")
+                break
+        } */
+    </script>
+</body>
+</html>

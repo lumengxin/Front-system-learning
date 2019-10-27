@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        * 循环语句：
+        * while循环：
+        * - 语法：while (条件表达式) {
+        *           语句...
+        *         }
+        * do..while循环：
+        * - 语法：do {
+        *           语句...
+        *         } while (条件表达式)
+        */
+        var n = 1;
+        while (true) {
+            // 死循环，不会停止，除非关闭浏览器，开发中慎用，break退出
+            alert(n++);
+            break;
+        }
+
+        // 创建循环
+        // 1.初始化一个变量
+        var i = 1, j = 10;
+        // 2.在循环中设置一个条件表达式
+        while (i <= 10) {
+            // 3.定义一个更新表达式，每次更新初始化变量
+            document.write(i + "<br/>");
+            i++;
+        }
+        do {
+            document.write(j + " ");
+            j--;
+        } while (j > 0)
+
+        // 练习：假如投资的年利率是5%，试求从1000到5000，需要多少年？
+        var money = 1000;
+        var years = 0;
+        while (money < 5000) {
+            money *= 1.05;
+            years++;
+        }
+        console.log("共需要" + years + "年");
+    </script>
+</body>
+</html>

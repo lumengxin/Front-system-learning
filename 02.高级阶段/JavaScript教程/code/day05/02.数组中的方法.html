@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ["zhao", "qian", "sun", "li"];    
+        // push():向数组末尾添加一个或多个元素，并返回新的长度
+        arr.push("wang");
+        var result = arr.push("zhou", "liu");
+        console.log("result =>", result);
+        // pop():删除数组最后一个元素，并将删除的元素作为返回值返回
+        var pop = arr.pop();
+        console.log(pop, arr);
+        // unshift():向数组开头添加一个或多个元素，并返回新的长度
+        arr.unshift("lu");
+        // shift():删除数组第一个元素，并将被删除的作为返回值返回
+
+        // 遍历数组
+        for (var i = 0; i < arr.length; i++) {
+            document.write(arr[i]) + ",";
+        }
+
+        // 练习
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var per1 = new Person("张三", 23);
+        var per2 = new Person("王五", 3);
+        var per3 = new Person("赵王", 18);
+        var per4 = new Person("李四", 45);
+        var per5 = new Person("刘老", 32);
+        var pers = [per1, per2, per3, per4, per5];
+        function getAdult(arrs) {
+            // debugger
+            var newPers = [];
+            /* for (let i=0; i<arrs.length; i++) {
+                let item = arr[i];
+                if (item.age >= 18) {
+                    newPers.push(item);
+                }
+            } */
+            for (let item of pers) {
+                if (item.age >= 18) {
+                    newPers.push(item);
+                }
+            }
+            return newPers;
+        }
+        var adult = getAdult(pers);
+        console.log("adult =>", adult);
+
+        // forEach():需要一个函数作为参数,回调函数
+        // 数组中有几个元素函数就执行几次，浏览器遍历元素以实参形式传递
+        // 浏览器会在回调函数中传递三个参数：当前元素，索引，数组对象
+        var names = ["孙悟空","猪八戒","沙和尚","唐僧"];
+        names.forEach(function(value, index, obj) {
+            console.log(value, index, obj);
+        })
+
+        // slice():返回一个数组的子数组。不改变原数组
+        // 类比数轴，前闭后开区间。- 代表倒数 + 代表索引
+        var slice = names.slice(-2,3);
+        console.log("slice =>", slice);
+        // splice():插入、删除或替换一个数组元素。
+        // 参数：开始位置的索引，删除的数量，...传递的新元素
+        names.splice(1, 0, "白龙马");
+
+        // 数组去重
+        var numbers = [1,2,4,2,3,3,4,6,5,6,9];
+        // 获取数组中的每个元素
+        for (let i=0; i<numbers.length; i++) {
+            // 获取当前元素后面的所有元素
+            for (let j=i+1; j<numbers.length; j++) {
+                // 判断
+                if (numbers[i] == numbers[j]) {
+                    numbers.splice(j, 1);
+                    // 解决连续两个数，不比较
+                    j--;
+                }
+            }
+        }
+        console.log(numbers);
+
+        // concat():连接数组，并将新数组返回。会改变原数组
+        var news = numbers.concat(names);
+        console.log(news);
+
+        // join():将数组转化为字符串
+        var jo = names.join("");
+        console.log(jo);
+
+        // reverse():反转数组，修改原数组
+        var rev = [1,2,3,4];
+        rev.reverse();
+        console.log("rev =>", rev);
+
+        // sort():排序,默认Unicode编码排
+        // 添加回调函数，制定规则。
+        // 浏览器根据回调返回值决定元素顺序，大于0才交换
+        var sor = ["d","e","a","c"];
+        sor.sort();
+        console.log("sor =>", sor);
+        var sor2 = [2,5,3,9];
+        sor2.sort(function(a, b) {
+            /* if (a > b) {
+                return 1;  // 交换
+            } else if(a < b) {
+                return -1;
+            } else {      
+                return 0;  // 相等，不换
+            } */
+            // 升序排列
+            return a - b;
+        })
+        console.log("sor2 =>", sor2);
+    </script>
+</body>
+</html>

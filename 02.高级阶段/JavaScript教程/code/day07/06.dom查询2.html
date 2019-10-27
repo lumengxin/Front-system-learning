@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       window.onload = function() {
+            // var body = document.getElementsByTagName("body")[0]
+            // console.log(body)
+            // document中body属性，保存的是对body引用
+            var body = document.body
+            var html = document.documentElement
+            console.log("html =>", html)
+            // 页面中所有的元素
+            console.log("doc =>", document.all)
+            all = document.getElementsByTagName("*")
+
+            var box1 = document.getElementsByClassName("box1")
+            console.log("box1 =>", box1)
+            var divs = document.getElementsByTagName("div")
+
+            // 需要一个选择器字符串作为参数，根据css选择器来查询一个元素节点对象
+            var div = document.querySelector(".box1 div")
+            console.log(div.innerText)
+            var boxs = document.querySelectorAll("box1")
+       }
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div>box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>box1中的div</div>
+    </div>
+    <div></div>
+</body>
+</html>

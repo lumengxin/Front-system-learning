@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Math:不是一个构造函数，属于工具类，不需要创建对象
+        console.log(Math.PI);
+        Math.abs(-98);
+        // Math.random()：生成0-1之间的随机数
+        // 0-x: Math.round(Math.random()*x)
+        // x-y: Math.round(Math.random()*(y-x)+x)
+        for (let i=0; i<10; i++) {
+            console.log(Math.round(Math.random()*10));
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       /* 
+       * for语句：for (1.初始化表达式; 2.条件表达式; 4.更新表达式) {
+       *            3.语句...    
+       *          }
+       * for循环中，有专门位置存放三个表达式,可以省略，也可以写在外部
+       */
+       /* var i = 0;
+       while (i < 10) {
+           console.log(i);
+           i++;
+       } */
+       // debugger
+       for (let i=0; i<10; i++) {
+           console.log(i);
+       }
+       /* for (;;) {
+           alert("死循环");
+       } */
+
+       // 练习：打印1-100之间的奇数之和
+       var sum = 0;
+       for (let i=1; i<=100; i++) {
+           if (i % 2 != 0) {
+               sum = sum + i;
+           }
+       }
+       console.log("TCL: sum", sum)
+
+       // 练习：打印1-100之间所有的7的倍数的个数及和
+       var s = 0;
+       var count = 0;
+       for (let i=1; i<=100; i++) {
+           if (i % 7 == 0) {
+               s = s + i;
+               count++;
+           }
+       }
+       console.log("个数为：" + count, "和为：" + s);
+
+       // 练习：打印所有的水仙花数。
+       // 水仙花数是一个三维数，每个位上的数字的3次幂之和等于它本身
+       for (let i=100; i<1000; i++) {
+           var ba = parseInt(i / 100);
+           var sh = parseInt((i - ba*100) / 10);
+           var ge = i % 10;
+           if (ba*ba*ba + sh*sh*sh + ge*ge*ge == i) {
+               console.log("水仙花数：", i);
+           }
+       }
+
+       // 练习：判断质数
+       var zh = prompt("请输入一个大于1的整数：");
+       // 添加标识，默认zh是质数
+       var flag = true;
+       if (zh <= 1) {
+           alert("该数不适合");
+       } else {
+           // 获取2-zh之间的数
+           for (let i=2; i<zh; i++) {
+               // 判断zh是否能被i整除
+               if (zh % i == 0) {
+                   // 如果zh能被i整除，说明zh一定不是质数
+                   flag = false;
+               }
+           }
+
+           if (flag) {
+               alert(zh + "是质数");
+           } else {
+               alert(zh + "不是质数");
+           }
+       }
+
+   </script>
+</body>
+</html>

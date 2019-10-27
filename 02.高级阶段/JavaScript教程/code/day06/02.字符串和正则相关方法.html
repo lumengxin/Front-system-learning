@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "1vaeAFEr3s2fe4efer5";
+        // split():将字符串拆分成数组
+        var res = str.split(/[A-z]/);
+        console.log(res);
+        // search():搜索字符串中是否含有指定内容。有返回第一次索引，无返回-1
+        var str2 = "fie fdao dfiaodf aas ais";
+        console.log(str2.search(/a[a|i]s/))
+        // match():提取内容,默认只找到第一个。返回数组
+        console.log(str.match(/[A-z]/gi));
+        // replace():替换。1.被替换内容 2.新内容
+        console.log(str.replace(/e/ig, "@"));
+        console.log(str.replace(/[A-z]/g, "")); // 剔除字母
+    </script>
+</body>
+</html>

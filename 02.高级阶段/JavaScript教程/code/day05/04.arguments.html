@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在调用函数时，浏览器每次都会传递两个隐含的参数
+        // this:函数上下文对象 arguments:封装实参的类数组对象
+        function fun() {
+            console.log(arguments.length);
+            // callee属性：代表当前执行函数对象
+            console.log(arguments.callee);
+        }
+        // 即使不定义形参，也可以通过arguments使用
+        fun("hello", 23);
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }    
+        var per = new Person("xing", 13);
+        // 直接在页面打印一个对象时，输出的是对象的toString()返回值
+        console.log(per);
+        console.log(per.__proto__.__proto__.hasOwnProperty("toString"));
+    </script>
+</body>
+</html>

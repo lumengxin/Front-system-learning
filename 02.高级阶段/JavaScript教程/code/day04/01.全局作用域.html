@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 作用域：一个变量作用的范围
+        function fun() {
+            var a = 123;
+        }    
+        // console.log(a); 报错下面代码不执行
+
+        // 1.全局作用域：直接编写在js代码中，页面打开是创建，关闭销毁
+        // 在全局作用域中有一个全局对象window,代表一个浏览器窗口，由浏览器创建
+        // 在全局作用域中，创建的变量都会作为window对象的属性保存
+        // 全局作用域中的变量都是全局变量，在页面中任意部分都能访问到
+        var b = "hello";
+        console.log(window.b);
+
+        // 2.函数(局部)作用域：调用函数时创建函数作用域，函数执行完毕后销毁
+        // 每调用一次就创建一个新的函数作用域，之间相互独立
+        var n = 10;
+        function fun4() {
+            var m = 15;
+            var n = "fun4函数中局部变量n";
+            console.log("n =>", n);
+            function fun5() {
+                console.log("n =>", n);  // 就近的n
+                console.log("n => ", window.n); // 全局n
+            }
+            fun5();
+        }
+        fun4();
+
+        var f = 33;
+        function fun6() {
+            console.log("f =>", f);
+            f = 10; // 无var 全局f，相当于上面f = 33 重新赋值为10
+        }
+        fun6();  // 
+        console.log("f =>", f);
+        
+
+        // 变量的声明提前：使用var关键字声明的变量，会在所有的代码执行之前被声明
+        /* c = 123; // 无 var， 相当于 window.c = 123
+        console.log("c =>", c); */
+        console.log("d =>", d); // 无var，表示没有d，报错
+        var d = 23;  // 等价 var d ; .... ; d = 23;
+
+        // 函数的声明提前：使用函数声明形式创建的函数，会在所有代码执行之前被创建
+        fun2();
+        // fun3();
+        function fun2() {
+            console.log("函数声明创建的函数fun2")
+        }
+        var fun3 = function() {
+            console.log("函数表达式创建的函数fun3")
+        }
+    </script>
+</body>
+</html>

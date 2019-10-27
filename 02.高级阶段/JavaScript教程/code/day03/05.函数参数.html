@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 多个形参用，隔开 相当于在函数内部声明了相应的变量
+        function sum(a, b) {
+            console.log(a + b);
+        }
+        sum(2, 5);
+
+        // 调用函数时解析器不会检查实参的类型
+        // 应该注意是否收到非法的参数，进行类型检查
+        sum(123, "ha");
+        // 实参的数量也不会检查，多余的不会被赋值
+        // 如果实参数量少于形参，没有对应的形参将是undefined
+        sum(12, 34, "hello");
+    </script>
+</body>
+</html>

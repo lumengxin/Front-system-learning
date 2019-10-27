@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta chartset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+          /* 
+          * 基本数据类型：String, Boolean, Number, Null, Undefined
+          * 引用数据类型：Object
+          */
+          // js变量都是保存到栈内存
+          // 基本数据类型值存在栈内存中，变量的值是独立存在的
+          // 对象值保存到堆内存，每次创建一个对象就会在堆内存中开辟一个新空间，
+          // 变量中保存的是对象内存地址，如果两个对象保存同一个引用，同时相互影响
+          var a = 5;
+          var b = a;
+          a++;
+          console.log(a, b);
+
+          var obj = new Object();
+          obj.name = "xiao";
+          var obj2 = obj;
+          obj.name = "xin";
+          console.log(obj.name, obj2.name);
+          obj2.name = "zhangsan";
+          console.log(obj.name, obj2.name);
+
+          obj2 = null;  // 断开与堆内存引用的连接 obj不受影响
+          console.log(obj, obj2);
+
+          // 对象开辟新内存地址，基本比较值，引用比较内存地址
+          var obj3 = new Object();
+          var obj4 = new Object();
+          obj3.name = "li";
+          obj4.name = "li";
+          console.log(obj3 == obj4);
+
+        </script>
+    </body>
+</html>

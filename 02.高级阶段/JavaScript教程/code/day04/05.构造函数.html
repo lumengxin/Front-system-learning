@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数，专门创造需要的对象
+        // 和普通函数没区别，习惯首自母大写，调用使用new
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // 构造函数每执行一个就会创建一个新的sayName方法
+            /* this.sayName = function() {
+                console.log(this.name);
+            } */
+            this.sayName = fun;
+        }
+        // 将函数定义在全局作用域，污染了全局作用域的命名空间，也不安全
+        function fun() {
+            console.log(this.name);
+        }
+        // 构造函数执行流程：
+        // 立即创建一个新对象；将新建的对象设置为函数中this；
+        // 逐行执行函数中代码；将新建对象作为返回值
+        var person1 = new Person("lu", 21);
+        var person2 = new Person("wang", 22);
+        console.log(person1.sayName == person2.sayName);
+        person1.sayName();
+        console.log(person1);
+
+        function Dog() {
+
+        }
+        var dog = new Dog();
+        console.log(dog);
+        // instanceof 检查一个对象是否是一个类的实例
+        // 所有对象都是Object后代
+        console.log(person1 instanceof Object);
+    </script>
+    
+</body>
+</html>

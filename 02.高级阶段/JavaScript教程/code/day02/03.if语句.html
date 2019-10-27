@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+         * 流程控制语句
+         * 条件判断语句，条件分支语句，循环语句
+         */
+        // 1.条件判断语句：if语句; if...else; if...else if...else（只有一个代码块执行）
+        var a = 10
+        if (a > 10) {
+            alert("a大于10")
+        }
+        var age = 50
+        if (age >= 60) {
+            alert("已到退休年龄")
+        } else {
+            alert("未到退休年龄")
+        }
+
+        // 练习
+        var score = prompt("请输入小明的成绩：")
+        if (score > 100 || score < 0 || isNaN(score)) {
+            alert("成绩不对")
+        } else {
+            if (score == 100) {
+                alert("厉害")
+            } else if (score >= 80) {
+                alert("优秀")
+            } else if (score >= 60) {
+                alert("及格")
+            } else {
+                alert("不及格")
+            }
+        }
+
+        // prompt()函数返回值为string
+        var num1 = +prompt("请输入第一个数：")
+        var num2 = +prompt("请输入第二个数：")
+        var num3 = +prompt("请输入第三个数：")
+        var res = num1 > num2 ? (num1 > num3 ? num1 : num3) : (num2 > num3 ? num2 : num3)
+        alert("max is " + res)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // js中提供三个包装类，可以将基本数据类型转化为对象
+        // String(), Number(), Boolean()
+        // 实际应用不会使用，做比较时会有不可预料的结果
+        var a = 9;
+        console.log(typeof a);
+        var num = new Number(9);
+        console.log(a === num);
+
+        var b = new Boolean(false);
+        if (b) {
+            alert("是否执行");
+        }
+
+        // 方法和属性只能添加给对象，不能给基本数据类型
+        // 浏览器临时使用包装类将其转化为对象
+        var s = 123;
+        s.toString();
+        s.hello = "89";      // 临时转为对象 s=123
+        console.log(s.hello);
+
+        
+    </script>
+</body>
+
+</html>

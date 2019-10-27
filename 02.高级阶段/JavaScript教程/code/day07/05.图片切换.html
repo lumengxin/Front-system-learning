@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            var img = document.getElementsByTagName("img")[0];
+            var imgArr = ["images/01.jpg","images/02.jpg","images/03.jpg","images/04.jpg"]
+            var index = 0;
+
+            var info = document.getElementById("info");
+            info.innerHTML = `总共${imgArr.length}张图片，当前第${index+1}张`;
+
+            prev.onclick = function() {
+                index--;
+                // if(index < 0) index = 0;
+                if(index < 0) index = imgArr.length - 1;
+                img.src = imgArr[index];
+                info.innerHTML = `总共${imgArr.length}张图片，当前第${index+1}张`;
+            }
+            next.onclick = function() {
+                index++;
+                if(index > imgArr.length-1) index = 0
+                img.src = imgArr[index];
+                info.innerHTML = `总共${imgArr.length}张图片，当前第${index+1}张`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <p id="info"></p>
+        <img src="images/01.jpg" alt="壁纸" />
+
+        <div class="change">
+            <button id="prev"><上一张</button>
+            <button id="next">下一张></button>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 750px;
+            background: greenyellow;
+            margin: 40px auto;
+            padding: 10px
+        }
+        img {
+            width: 750px;
+            height: 500px;
+        }
+        .change {
+            /* margin: 5px auto; */
+            text-align: center;
+        }
+        button {
+            border-radius: 5px;
+        }
+        #next {
+            margin-left: 50px;
+        }
+        #info {
+            text-align: center;
+        }
+    </style>
+</body>
+</html>

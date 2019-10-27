@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       /*  var btn = document.getElementById("btn");
+        console.log("TCL: btn", btn)
+        btn.onclick = function() {
+            alert("hello");
+        } */
+        // onload事件: 页面加载完后触发
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            console.log("TCL: btn", btn)
+            btn.onclick = function() {
+                alert("hello");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">点我</button>
+
+    <script>
+        /* 
+        * 浏览器加载页面时，从上到下
+        * js代码写到头部，代码执行时，页面还没有加载完
+        */
+    </script>
+</body>
+</html>

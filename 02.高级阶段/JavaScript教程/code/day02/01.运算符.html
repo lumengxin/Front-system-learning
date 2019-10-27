@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>$#9760;</h2>
+    </div>
+    <script>
+        /* 
+         * 运算符：也叫操作符
+         * 通过运算符可以对一个或多个值进行运算，并获取结果
+         */
+        var a = 123;
+        var result = typeof a;
+        console.log(result);
+
+        // 1.算数运算符：+ - * / %
+        var b = "123" + "533";
+        // 拼串
+        console.log(b);
+        // 任何值和字符串相加都会转化为字符串
+        // 隐式类型转化，等价String()
+        b = '' + 12;
+        console.log(typeof (b), b)
+
+        // 除了+， 其他运算基本都转化为Number
+        var c = 100 - '1';
+        console.log(c);
+        c = 3 * null;
+        console.log(c);
+
+        let d = 1 / 3;
+        console.log(d)
+
+        // 2.一元运算符：++ -- + -(正负号) 
+        var e = true;
+        e = -e;
+        console.log(b, d, e);
+        // + 转化为数值类型
+        var s = "122";
+        s = +s;
+        console.log(typeof (s), s)
+        var result = 1 + '2' + 3; // string 123
+        console.log(typeof (result), result);
+        result = +result + +'1';
+        console.log(typeof (result), result) // number 124
+
+        // 3.自增，自减
+        let i = 1;
+        // i++, ++i 都是表达式
+        // i++ 等于原变量的值； ++i 等于原变量新值
+        console.log(i++);
+        i++;
+        console.log(i);
+        let j = 1;
+        ++j;
+        console.log(++j);
+        let h = 20;
+        // let hh = h++ + ++h + h; // 21 + 22 + 22
+        h = h++; // h:21 h++:20 20赋值给h 20
+
+        // 4.逻辑运算符 &&与 ||或 !非
+        // !! 两次取反，转化为boolear类型
+        let z = 0;   // 非0都为 true
+        z = !!z;
+        console.log(typeof(z), z);
+        true && alert("会检查");
+        false && alert("不会执行");
+        // 非布尔值的或 与运算
+        // 先转化为boolean，再运算，并且返回原值
+        var res = 1 && 2;
+        // 与运算：都为true，返回后一个值；有false,返回靠前的false(短路)
+        console.log("TCL: res", res);  
+        var res2 = NaN || 0;
+        // 或运算：第一个值true,返回第一个值；第一个为false,返回第二个值
+        console.log("TCL: res2", res2);
+
+        // 5.赋值运算符 = += -= *= /= %=
+        var fa = 10;
+        fa += 5; // fa = fa + 5
+        console.log("TCL: fa", fa)
+
+        // 6.关系运算符 > < == >= <= === != !==
+        // 非数值进行比较：先转化为数值，再比较。true->1
+        console.log(1 >= true); // true
+        console.log(1 > null);  // true
+        // 比较两个字符串时，比较的是unicode编码大小,一位一位进行比较
+        console.log('abc' < 'b'); // 61<62，
+        console.log("11" < "5"); // ture; +"5": 11<5,false
+        // == 值相等; === 值，类型都相同
+        console.log("1" == true); // true,大多转化为数值
+        console.log(null == 0);   // false
+        console.log(undefined == null);  // true, undefined衍生自null
+        console.log(NaN == NaN);  // false,NaN不和任何值相等，包括自己 isNaN()
+
+
+        /* 
+        * 字符串中使用转义字符输入Unicode编码
+        * \u 四位编码
+        */
+        let ba = '\u1C00';
+        console.log("TCL: ba", ba);
+        console.log('\u0054');
+        let bb = ['\u2620', '\u2660','\u26A1']   
+        console.table(bb);
+        // 网页中使用Unicode编码,十六进制四位数转化为十进制四位数
+        var div = document.createElement("div");
+        div.innerHTML = `<h1>$#9760;</h1>`;
+        document.body.insertBefore(div, document.body.firstElementChild);
+        var str = `<div style="color:red;">
+                    <h4 style="color:green;background-color:blue;">wirte向页面写入内容</h4>
+                   </div>`;
+        document.write(str);
+
+        // 7.条件(三元)运算符
+        // 语法： 条件表达式 ? 语句1:语句2;
+        let a = 12, b = 123, c = 43;
+        var max = a > b ? (a > c ? a : c) : (b > c ? b : c);
+
+        // 运算符优先级：js优先级表。()改变优先级
+        let ya = 1 || 2 && 3;
+        console.log("TCL: ya", ya); // 1, &&优先级高
+
+    </script>
+</body>
+
+</html>

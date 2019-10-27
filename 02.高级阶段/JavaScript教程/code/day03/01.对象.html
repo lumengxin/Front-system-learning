@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title></title>
+    </head>
+    <body>
+        <script>
+          /* 
+          * js数据类型：
+          * 基本数据类型：string number boolean null undefined
+          * 复合数据类型：object array
+          * 1.内建对象：es标准中定义的对象。Math, String, Function...
+          * 2.宿主对象：js运行环境提供的对象(主要指浏览器)。BOM, DOM...
+          * 3.自定义对象：开发人员创建。
+          */
+
+          // 创建对象
+          // 使用new关键字调用的函数，是构造函数construction，专门用来创建对象
+          var obj = new Object();
+          obj.name = 'xin';  // 添加属性
+          console.log(obj);
+          obj.age = 19;
+          console.log(obj.num);  // undefined
+          obj.age = 20;  // 修改属性值
+          delete obj.name;  // 删除属性
+
+          // 属性名：不强制要求遵循标志符规范
+          // 特殊属性名，不能采用.访问，使用 对象["属性名"] = 属性值
+          var obj2 = new Object();
+          obj2.var = "hello";
+          obj2["123"] = 23;
+          console.log(obj2["123"]);
+          obj2["nihao"] = "你好";  
+          var n = "nihao";        // 变量更灵活 n = "123"
+          console.log(obj2[n]); 
+          // 属性值：可以是任何数据类型
+          var obj3 = new Object();
+          obj3.test = null;
+          obj3.test2 = obj2;
+          console.log(obj3);
+          // in 运算符：检查对象中是否含有指定的属性
+          console.log(name in obj);  // true
+        </script>
+    </body>
+</html>

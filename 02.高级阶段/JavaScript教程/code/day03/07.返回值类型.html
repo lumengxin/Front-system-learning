@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun() {
+            alert("函数开始执行");
+            for (var i = 0; i < 5; i++) {
+                if (i == 3 ) {
+                    // 退出当前的循环
+                    // break;
+
+                    // 跳过当次循环
+                    // continue;
+
+                    // 结束整个函数
+                    return;
+                }
+                console.log(i);
+            }
+            alert("函数执行完了");
+        }    
+
+        // 返回值可以是任何的数据类型，也可以是一个对象
+        function fun2() {
+            return {name: "zhang"};
+        }
+        var a = fun2();
+        console.log("a =>", a);
+
+        function fun3() {
+            function fun4() {
+                alert("fun4");
+                // return "hello";
+            }
+            // fun4();
+            // 将函数对象作为返回值返回
+            // return fun4;
+            // 返回函数值，fun4()无返回值 undefined
+            return fun4(); 
+        }
+        // fun3();
+        var b = fun3();
+        console.log("b =>", b);
+        b();
+        fun3()();
+    </script>
+</body>
+</html>

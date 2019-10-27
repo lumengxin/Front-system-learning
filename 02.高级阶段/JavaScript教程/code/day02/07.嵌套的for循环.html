@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+            backgroud-color: rgb(30, 145, 199);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 练习：输出*号图形
+        for (let i=0; i<10; i++) {
+            for (let j=0; j<i+1; j++) {
+                document.write("*&nbsp;&nbsp;");
+            }
+            document.write("<br />");
+        }
+
+        // 练习：打印99乘法表
+        for (let i=1; i<=9; i++) {
+            for (let j=1; j<=i; j++) {
+                document.write("<span>" + j + "*" + i + "=" + j*i + "</span>");
+            }
+            document.write("<br />")
+        }
+
+        // 练习：打印1-100之间的质数
+        // 测试程序的性能
+        console.time("test");
+        for (var i=2; i<=1000; i++) {
+            var flag = true;
+            // 优化：缩小i范围 0.16ms
+            for (var j=2; j<=Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    flag = false;
+                }
+                // 一旦进入判断，则证明i不可能是质数
+                // 7.53ms -> 0.33ms break提升性能
+                break;
+            }
+            if (flag) {
+                // document.write(i + "&nbsp;&nbsp;");
+            }
+        }
+        console.timeEnd("test");
+    </script>
+</body>
+</html>

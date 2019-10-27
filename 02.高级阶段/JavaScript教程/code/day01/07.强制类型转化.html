@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        * 强制类型转换：将一个数据类型转换为其他类型
+        * 1. 其他转换为字符串
+        * - toString(),不会影响到原变量，会将转换的结构返回
+        * - String()函数，将被转换的变量作为参数
+        *    -- Number,Boolean实际上是调用的toString()方法
+        *    -- Null,Undefined直接转换为相应字符串
+        * 2. 其他转换为数值
+        * - Number()函数
+        *   -- 纯数字字符串，转换为数字
+        *   -- 有非数字或者undefined，转为NaN
+        *   -- 空格或者空字符串或者null，转为0
+        * 3. 针对字符串
+        * - parseInt()函数：将字符串中有效的整数内容取出
+        * - parseFloat()函数
+        */
+       var num = 123
+       // num.toString()
+       num = num.toString()
+       console.log(typeof num, "=>" + num)
+
+       var num2 = 324
+       num2 = String(num2)
+
+       var str = "12q78"
+       str = Number(str)
+       console.log(str)
+
+       var str2 = "120px"
+       str2 = parseInt(str2)
+       console.log(str2)
+
+    </script>
+</body>
+</html>

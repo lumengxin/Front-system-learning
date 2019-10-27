@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call(),apply():函数对象方法，需要通过函数来调用
+        // 在调用时可以将一个对象指定为第一个参数，此时这个对象成为this
+        function fun(a, b) {
+            console.log(a, b);
+            alert(this.name);
+        }    
+        var obj = {name: 'obj'}
+        var obj2 = {name: 'obj2'}
+        fun.apply(obj, [2,3]);
+        fun.call(obj2, 2, 3);
+        // fun();  // this只能指向window
+    </script>
+</body>
+</html>

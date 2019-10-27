@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = new Object();
+        obj.name = "zhangsan";
+        obj.age = 23;
+        obj.sayName = function() {
+            console.log(obj.name);
+        }    
+        console.log("obj =>", obj);
+        // 调方法，和调函数无本质区别
+        obj.sayName();
+
+        // 枚举对象中的属性
+        var obj2 = {
+            name: "悟空",
+            age: 2000,
+            gender: "male",
+            address: "sky" 
+        };
+        for (var n in obj2) {
+            // 属性
+            console.log(`obj2.${n} =>`, n);
+            // 属性值
+            console.log(obj2[n])
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // return设置函数的返回值
+        // return后的值会作为函数的执行结果返回
+        function sum(a, b, c) {
+            // alert(a + b + c);
+            return a + b + c;
+            alert("haha");   // return 后不执行
+            return;          // return无内容，或者无return，函数返回undefined
+            return "hehe";
+        }
+        var res = sum(3,6,2);
+
+        // 实参为一个对象
+        function say(o) {
+            console.log("我的名字是" + o.name + "," + "今年" + o.age + "岁");
+        }
+        var people = {
+            name: "xiaoxin",
+            age: 20
+        }
+        say(people);
+
+        // 实参为一个函数
+        function fun(a) {
+            console.log("a", a);
+            a(people);
+        }
+        fun(say);
+        fun(function() {alert("hello")});
+
+        // fun()   调用函数，相当于使用函数的返回值
+        // fun     函数对象，直接使用函数对象
+    </script>
+</body>
+</html>

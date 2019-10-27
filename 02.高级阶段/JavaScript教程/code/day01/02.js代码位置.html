@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 3.js代码放到外部js文件中，里面代码无效 -->
+    <script src="js/02.js">
+        // document.write("heha")
+    </script>
+
+    <!-- 2.js 代码写到script标签 type...可省 -->
+    <script type="text/javascript">
+        alert("js标签中的代码")
+    </script>
+</head>
+<body>
+    <!-- 1.js代码编写到标签中 -->
+    <!-- 结构和行为耦合，不方便维护，不推荐使用 -->
+    <button onclick="alert('不要点击我')">按钮</button>
+
+    <a href="javascript:alert('再点我试试')">点击一下</a>
+
+    <!-- 希望超链接点击不跳转，执行一段js代码 -->
+    <a href="javascript:;">在点击一下</a>
+</body>
+</html>

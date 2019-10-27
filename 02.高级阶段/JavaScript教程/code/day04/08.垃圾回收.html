@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 垃圾回收：GC 程序运行过程产生垃圾
+        // 当一个对象没有任何的变量引用，无法操作该对象，称为垃圾，占用内存空间
+        // js中拥有自动的垃圾回收机制，会自动将这些垃圾对象从内存中销毁
+        // 程序员不能进行垃圾回收的操作，但可以将不再使用的对象设置为null
+        var obj = new Object();    
+        // 断开对对象的引用
+        obj = null;
+    </script>
+</body>
+</html>

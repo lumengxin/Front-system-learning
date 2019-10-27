@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * 数据类型：指的就是字面量的类型
+       * 1.String    字符串
+       * 2.Number    数值
+       * 3.Boolean   布尔值
+       * 4.Null      空值
+       * 5.Undefined 未定义
+       * 6.Object    对象
+       * 基本数据类型：String Number Boolean Null Undefined
+       * 引用数据类型：Object
+       */
+
+      // 1.String
+      // \" ", \n 换行, \t 制表符, \\ \
+      var str = "我说，'今天天气正好'";
+      // 输出字面量 字符串str
+      console.log("str");
+      console.log("str =>", str);
+      str = '我也觉得\n，"天气真心不错"';
+      // 输出变量str
+      console.log(str);
+
+      // 2.Number:js中数值都是，包括整数和浮点数（小数)
+      // NaN: not a number
+      // Infinity: 正无穷
+      var a = 123;
+      var b = "123";
+      typeof a;
+      console.log(typeof b);
+      console.log(a);
+      console.log(b);
+
+      console.log(Number.MAX_VALUE); // JS中能保存最大值
+      // var max = Number.MAX_VALUE + 1
+      var max = Number.MAX_VALUE * Number.MAX_VALUE;
+      // max = Infinity    // 字面量，正无穷
+      console.log(max); // Infinity 正无穷
+      var s = "abc" * "bd";
+      console.log(s); // NaN
+
+      // js中整数运算基本可以保证精确
+      var c = 12 + 9;
+      console.log("c=>", c);
+      var d = 0.1 + 0.2;
+      console.log("d=>", d);
+
+      // 3.Boolean: false , true 逻辑判断
+      var bool = false;
+      console.log(typeof bool);
+
+      // 4.Null: 专门用来表示为空的对象
+      // 5.Undefined: 声明一个变量，没有赋值时。未定义
+    </script>
+  </body>
+</html>

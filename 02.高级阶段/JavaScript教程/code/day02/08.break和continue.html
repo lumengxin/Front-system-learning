@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // break关键字可以用来退出switch或循环语句
+        // 不能单独在if语句中使用break或continue
+        for (var i=0; i<5; i++) {
+            console.log(i);
+            if (i == 3) {
+                // bread控制的是for循环
+                break;
+            }
+        }
+
+        // break控制最近的循环语句
+        // 为循环语句创建一个label，可以标识当前循环
+        // label: 循环语句(label名字任意)
+        outer: 
+        for (var i=0; i<5; i++) {
+            console.log('外层循环' + i);
+            for (var j=0; j<5; j++) {
+                // break;
+                break outer;
+                console.log("内层循环" + j);
+            }
+        }
+
+        // continue关键字用来跳过当次循环
+        for (var i=0; i<5; i++) {
+            if (i == 3) {
+                continue;
+            }
+            console.log(i);
+        }
+    </script>
+</body>
+</html>
