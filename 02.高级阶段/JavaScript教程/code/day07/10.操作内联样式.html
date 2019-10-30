@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            border: bisque solid 1px;
+            background-color: red !important;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function() {
+                // js修改样式：元素.style.样式名 = 样式值
+                // 通过style属性设置的样式都是内联样式，级别比较高. !important级别最高
+                box1.style.height = "400px";
+                box1.style.backgroundColor = "green";
+            }
+
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function() {
+                // style读取时只能读取内联样式
+                // alert(box1.style.width);
+                // currentStyle获取当时正在显示的样式,没设置就是默认值（仅IE支持）
+                // alert(box1.currentStyle.backgroundColor);
+                // getComputedStyle(获取的元素, 伪元素null)获取元素当前的样式，是window方法，可以直接使用
+                console.log(getComputedStyle(box1, null).backgroundColor);
+            }
+			
+			function getStyle(obj. name) {
+				if (widnow.getComputedStyle) {
+					return getComputedStyle(obj, null)[name];
+				} else {
+					return obj.currentStyle[name];
+				}
+			}
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">按钮</button>
+    <button id="btn02">按钮</button>
+    <div id="box1"></div>
+</body>
+</html>

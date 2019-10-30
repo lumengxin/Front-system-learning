@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var areaDiv = document.getElementById("areaDiv");
+            var showMsg = document.getElementById("showMsg");
+            areaDiv.onmousemove = function(event) {
+                // 事件对象：当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+                // 在事件对象中封装了当前事件的一切信息。没有event形参，实参也会传递进来
+                // IE8中，浏览器不会传递事件对象，作为window对象属性保存(火狐不支持window.event)
+                console.log(event);
+                /* if (!event) {
+                    event = window.event;
+                } */
+                // 解决事件对象兼容性
+                event = event || window.event;
+                var x = event.clientX;
+                var y = event.clientY;
+                showMsg.innerHTML = "x :" + x + "," + "y :" + y;
+            }
+
+            // 练习：div跟随鼠标移动
+            var box1 = document.getElementById("box1");
+            document.onmousemove = function(e) {
+                e = e || window.e;
+                // clientX: 当前可见窗口的坐标 pageX: 相对于当前页面的坐标
+                // div 的偏移量，是相对于整个页面的
+                var left = e.pageX;
+                var top = e.pageY;
+                box1.style.left = left + "px";
+                box1.style.top = top + "px";
+            }
+        }
+    </script>
+</head>
+<body style="height: 1000px;">
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+
+    <div id="box1"></div>
+    <style>
+        #areaDiv {
+            width: 300px;
+            height: 200px;
+            border: solid 1px forestgreen;
+        }
+        #showMsg {
+            width: 300px;
+            height: 100px;
+            border: solid 1px forestgreen;
+            margin: 50px 0px;
+        }
+        #box1 {
+            width: 100px;
+            height: 100px;
+            border: solid 1px darkblue;
+            background-color: darkgreen;
+            /* 开启定位（绝对），style属性设置起作用 */
+            position: absolute;
+        }
+    </style>
+</body>
+</html>

@@ -5,8 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        function myClick(idStr, fun) {
+            var btn = document.getElementById(idStr);
+            btn.onclick = fun
+        }
+        window.onload = function() {
+            var btn01 = document.getElementById("btn01")
+            myClick("btn01", function() {
+                var li = document.createElement("li");
+                var gzText = document.createTextNode("广州");
+                li.appendChild(gzText);
+                var city = document.getElementById("city");
+                city.appendChild(li);
+            })
+
+            
+            myClick("btn02", function() {
+                var li = document.createElement("li");
+                var gzText = document.createTextNode("广州");
+                li.appendChild(gzText);
+                var bj = document.getElementById("bj");
+                var city = document.getElementById("city")
+                city.insertBefore(li, bj);
+            })
+
+            myClick("btn03", function() {
+                var li = document.createElement("li");
+                var gzText = document.createTextNode("广州");
+                li.appendChild(gzText);
+                var bj = document.getElementById("bj");
+                var city = document.getElementById("city")
+                city.replaceChild(li, bj);
+            })
+
+            myClick("btn04", function() {
+                var bj = document.getElementById("bj");
+                // var city = document.getElementById("city")
+                // city.removeChild(bj);
+                bj.parentNode.removeChild(bj);
+            })
+
+            myClick("btn05", function() {
+                var bj = document.getElementById("bj");
+                bj.innerHTML = "昌平"
+
+                // var city = document.getElementById("city");
+                // city.innerHTML += "<li>天津</li>"
+                var li = document.createElement("li")
+                li.innerHTML = "广州"
+                city.appendChild(li)
+            })
+        }
+
+        
+    </script>
 </head>
 <body>
-    
+    <div class="content">
+        <div id="list">
+            <p>你喜欢哪个城市？</p>
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>东京</li>
+                <li>首尔</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+            <button id="btn01">创建广州节点到#city下</button>
+            <button id="btn02">将广州节点插入到#bj前面</button>
+            <button id="btn03">广州节点替换北京节点</button>
+            <button id="btn04">删除北京节点</button>
+            <button id="btn05">设置bj内的html代码</button>
+        </div>
+    </div>
+
+    <style>
+        .content {
+            display: inline-flex;
+        }
+        #list {
+            margin: 0 auto;
+        }
+        p {
+            text-align: center;
+        }
+        ul > li {
+            list-style: none;
+            border: solid 1px black;
+            float: left;
+            margin: 2px 5px;
+            padding: 5px;
+            background: rgb(46, 78, 184, 0.6);
+        }
+        .buttons {
+            margin-left: 50px;
+            width: 500px;
+            height: 600px;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
 </body>
 </html>

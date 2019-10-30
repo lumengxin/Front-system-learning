@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            // 事件的冒泡（Bubble）: 事件的向上传导，当后代的元素上的事件被触发时，其祖先元素的相同事件也会被触发
+            var s1 = document.getElementById("s1");
+            s1.onclick = function() {
+                alert("sapn的单击响应函数");
+            }
+            var box1 = document.getElementById("box1");
+            box1.onclick = function() {
+                alert("div的单击响应函数");
+            }
+            document.body.onclick = function() {
+                alert("body的单击响应函数");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        box1
+        <span id="s1">span1</span>
+    </div>
+    <style>
+        body {
+            background-color:darkgrey;
+        }
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: darkmagenta;
+        }
+        #s1 {
+            background-color: seagreen;
+        }
+    </style>
+</body>
+</html>

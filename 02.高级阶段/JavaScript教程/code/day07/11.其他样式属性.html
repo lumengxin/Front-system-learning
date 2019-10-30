@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box1 {
+				width: 200px;
+				height: 300px;
+				background-color: #ADFF2F;
+				border: solid 10px #4169E1;
+				margin: 10px;
+			}
+			#box4 {
+				width: 200px;
+				height: 400px;
+				background-color: #ADFF2F;
+				overflow: auto;
+			}
+			#box5 {
+				width: 400px;
+				height: 600px;
+				background-color: #FFE4C4;
+			}
+			#pager {
+				width: 400px;
+				height: 500px;
+				border: solid 1px black;
+			}
+			#info {
+				width: 400px;
+				height: 400px;
+				background-color: #ADFF2F;
+				overflow-y: auto;
+			}
+			p {
+				width: 400px;
+				height: 600px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var box1 = document.getElementById("box1");
+				var box3 = document.getElementById("box3");
+				var btn = document.getElementById("btn");
+				btn.onclick = function() {
+					// clientWidth,clientHeight: 获取元素可见高宽, 不带px,返回数字,可计算,只读
+					console.log(box1.clientHeight, box1.clientWidth);
+					
+					// offsetWidth: 整个的宽高
+					console.log(box1.offsetHeight, box1.offsetWidth);
+					
+					// offsetParent: 获取当前元素的定位父元素
+					console.log(box3.offsetParent);
+					// offsetLeft: 相对定位父元素的水平偏移量 offsetTop: 垂直
+					console.log(box3.offsetLeft, box3.offsetTop);
+					
+					console.log(box4.clientHeight, box4.scrollHeight);
+					// 垂直滚动条到底时, true
+					console.log(box4.scrollHeight - box4.scrollTop == box4.clientHeight);
+				}
+				
+				var info = document.getElementById("info");
+				var inputs = document.getElementsByTagName("input");
+				info.onscroll = function() {
+					if (info.scrollHeight - info.scrollTop == info.clientHeight) {
+						inputs[0].disabled = false;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button type="button" id="btn">按钮</button>
+		<div id="box1" style="position: relative">
+			<div id="box2">
+				<div id="box3">
+					
+				</div>
+			</div>
+		</div>
+		<div id="box4">
+			<div id="box5"></div>
+		</div>
+		
+		<div id="pager">
+			<h3>欢迎注册！</h3>
+			<div id="info">
+				<p>获取当前元素的定位父元素。相对定位父元素的水平偏移量 offsetTop: 垂直。获取当前元素的定位父元素。相对定位父元素的水平偏移量 offsetTop: 垂直。获取当前元素的定位父元素。相对定位父元素的水平偏移量 offsetTop: 垂直。获取当前元素的定位父元素。相对定位父元素的水平偏移量 offsetTop: 垂直。</p>
+			</div>
+			<input type="checkbox" disabled="disabled"/>同意
+			<input type="submit" value="注册" />
+		</div>
+	</body>
+</html>
