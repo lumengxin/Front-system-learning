@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+        /* css语法：选择器，声明块 */
+        html {
+            border: solid 1px black;
+            background: rgba(69, 128, 69, 0.5);
+            padding-bottom: 50%;
+            font-size: 10px;
+        }
+        body {
+            border: solid 1px green;
+        }
+        p {
+            color: royalblue;
+            background-color: gray;
+            font-size: 2rem;
+        }
+        .content > span {
+            color:brown !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 级别：!important > 内联样式 > 外联样式 > 外部样式(利用缓存) -->
+    <p style="color:red;font-size:20px;">锄禾日当午，汗滴禾下土</p> 
+    <p>谁知盘中餐，粒粒皆辛苦</p>
+    <hr />
+
+    <div class="content">
+        <p>白日依山尽，黄河入海流</p>
+        <span style="color: gray">我自横刀向天笑，去留肝胆两昆仑</span>
+    </div>
+</body>
+</html>
