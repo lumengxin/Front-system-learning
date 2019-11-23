@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1")
+            box1.onmousedown = function (e) {
+                // div偏移量
+                var ol = e.clientX - box1.offsetLeft;
+                var ot = e.clientY - box1.offsetTop;
+
+                document.onmousemove = function (e) {
+                    // 兼容ie8,chrome中会报错
+                    /*  if (box1.setCapture) {
+                         box1.setCapture();
+                     } */
+                    box1.setCapture && box1.setCapture();
+
+                    var left = e.clientX - ol;
+                    var top = e.clientY - ot;
+                    box1.style.left = left + "px";
+                    box1.style.top = top + "px";
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    // alert("aaaa");
+                    document.onmouseup = null;
+
+                    box1.releaseCapture && box1.releaseCapture();
+                }
+
+                // 当拖拽网页中内容时，浏览器会默认搜索，影响正常拖拽功能
+                return false;
+            }
+
+            // 封装拖拽函数
+            function drag(obj) {
+                obj.onmousedown = function (e) {
+                    e = e || window.e;
+                    var ol = e.clientX - obj.offsetLeft;
+                    var ot = e.clientY - obj.offsetTop;
+
+                    document.onmousemove = function (e) {
+                        obj.setCapture && obj.setCapture();
+                        var left = e.clientX - ol;
+                        var top = e.clientY - ot;
+                        obj.style.left = left + "px";
+                        obj.style.top = top + "px";
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                        obj.releaseCapture && obj.releaseCapture();
+                    }
+                    return false;
+                }
+            }
+            var box2 = document.getElementById("box2");
+            drag(box2);
+            var img1 = document.getElementById("img1");
+            drag(img1);
+
+            var box3 = document.getElementById("test")
+            drag(box3);
+        }
+    </script>
+</head>
+
+<body>
+    <p>一点文字</p>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <img src="01.png" id="img1" style="position:absolute;" />
+
+    <test id="test"></test>
+    <style>
+        #box1 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            /* z-index: 1; */
+        }
+
+        #box2 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            left: 400px;
+            top: 400px;
+        }
+
+        #test {
+            position: fixed;
+            top: 200px;
+            right: 300px;
+            width: 300px;
+            height: 400px;
+            z-index: 1;
+            border: 1px solid red;
+            background-color: rgba(2, 121, 112, 0.8)
+        }
+    </style>
+</body>
+
+</html>

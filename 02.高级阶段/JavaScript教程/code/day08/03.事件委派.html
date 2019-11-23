@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var ul = document.getElementById("u1");
+            var btn01 = document.getElementById("btn1");
+            btn01.onclick = function() {
+                var li = document.createElement("li");
+                li.innerHTML = "<a href='javascript:;' class='link'>新的超链接</a>";
+                ul.appendChild(li);
+            }
+
+            var allA = document.getElementsByTagName("a");
+            /* for (var i=0; i<allA.length; i++) {
+                allA[i].onclick = function() {
+                    console.log(i);
+                }    
+            } */
+            // 事件委派：将事件统一绑定给元素的共同祖先元素，事件被触发时，统一冒泡到祖先元素
+            // 只绑定一次事件，即可应用到多个元素上，即使是后来添加的
+            ul.onclick = function(e) {
+                // 空白等处也会触发
+                console.log("uuuu");
+                // 触发事件是期望的元素，才执行。添加class='link'
+                e = e || window.e;
+                console.log(e.target)
+                // class等于多个值时，存在bug
+                if (e.target.className == "link") {
+                    alert("ul单击响应函数")
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">按钮</button>
+    <ul id="u1">
+        <li><p>一个p元素</p></li>
+        <li><a href="javascript:;" class='link li'>超链接1</a></li>
+        <li><a href="javascript:;" class='link'>超链接2</a></li>
+        <li><a href="javascript:;" class='link'>超链接3</a></li>
+    </ul>
+</body>
+</html>

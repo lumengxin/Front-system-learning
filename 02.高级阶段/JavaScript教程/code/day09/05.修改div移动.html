@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var speed = 10;
+            // 表示方向
+            var move = 0;
+            setInterval(function () {
+                switch (move) {
+                    case 37:
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+
+                }
+            }, 30)
+
+            document.onkeydown = function (e) {
+                if (e.ctrlKey) {
+                    speed = 50;
+                } else {
+                    speed = 10;
+                }
+                move = e.keyCode;
+            }
+            document.onkeyup = function() {
+                move = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+
+    <style>
+        #box1 {
+            /* position: relative; */
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+        }
+    </style>
+</body>
+
+</html>

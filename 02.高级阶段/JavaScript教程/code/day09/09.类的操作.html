@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var box1 = document.getElementById("box1")
+            var btn1 = document.getElementById("btn1")
+            btn1.onclick = function() {
+                // style属性每修改一次，浏览器重新渲染一次页面，性能差
+                // box1.style.width = "300px"
+                // box1.style.height = "300px"
+
+                // 通过修改class属性简介修改样式
+                // box1.className = "b2"
+                // 保留原来b1属性
+                // box1.className += " b2"   // "b1 b2"
+                toggleClass(box1, "b2")
+            }
+
+            function addClass(obj, cN) {
+                if (!hasClass(obj, cN))
+                    obj.className += " " + cN
+            }
+            function hasClass(obj, cN) {
+                // var reg = /\bb2\b/
+                var reg = new RegExp("\\b"+cN+"\\b")
+                return  reg.test(obj.className)
+            }
+            function removeClass(obj, cN) {
+                var reg = new RegExp("\\b"+cN+"\\b") 
+                obj.className = obj.className.replace(reg, "")
+            }
+            // 切换类，有就删除，没有则添加
+            function toggleClass(obj, cN) {
+                if (hasClass(obj, cN)) {
+                    removeClass(obj, cN)
+                } else {
+                    addClass(obj, cN)
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">按钮</button>
+    <div id="box1" class="b1"></div>
+
+    <style>
+        .b1 {
+            position: absolute;
+            margin-top: 30px;
+            width: 200px;
+            height: 200px;
+            background-color:khaki;
+        }
+        .b2 {
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</body>
+</html>

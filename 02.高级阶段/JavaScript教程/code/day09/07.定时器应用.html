@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+      var btn1 = document.getElementById("btn1")
+      var box1 = document.getElementById("box1")
+      btn1.onclick = function() {
+        move(box1, 'left', 800, 10)
+      }
+      /* var timer
+      btn1.onclick = function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          // 最好给个初始值 left：0px  (ie)
+          var oldValue = parseInt(getStyle(box1, "left"))
+          var newValue = oldValue + 11
+          if (newValue > 800) {
+            newValue = 800
+          }
+          box1.style.left = newValue + "px"
+          if (newValue == 800) {
+            clearInterval(timer)
+          }
+        }, 30)
+      } */
+      var btn2 = document.getElementById("btn2")
+      btn2.onclick = function() {
+        // move(box1, 0, -10)
+        move(box1, 'left', 0, 10)
+      }
+
+      var btn3 = document.getElementById("btn3")
+      var box2 = document.getElementById("box2")
+      btn3.onclick = function() {
+        move(box2, 'left', 800, 20)
+      }
+
+      var btn4 = document.getElementById("btn4")
+      btn4.onclick = function() {
+        // move(box2, 'left', 600, 20, function() {
+        //   alert("移动到了终点")
+        // })
+        move(box2, "width", 800, 10, function() {
+          move(box2, "height", 400, 10, function() { 
+            move(box2, "top", 0, 10, function() {
+
+            })
+          })
+        })
+      }
+
+      // 移动函数：（1.要执行动画的对象，2.目标位置，3.速度）4.样式（left,top...)
+      // 5.callback() 回调函数，动画执行完毕后，执行一次
+      function move(obj, attr, target, speed, callback) {
+        clearInterval(obj.timer)
+        // 获取元素的位置
+        var current = parseInt(getStyle(obj, attr))
+        if (current > target) {
+          // 内部判断正负
+          speed = -speed
+        }
+        // 向执行动画中添加一个timer属性，保存自己timer(避免使用全局变量)
+        obj.timer = setInterval(function () {
+          var oldValue = parseInt(getStyle(obj, attr))
+          var newValue = oldValue + speed   // 传值需要判断speed正负
+          // 向左移动时，需要判断newValue是否小于target
+          if (speed < 0 && newValue < target || speed > 0 && newValue > target) {
+            newValue = target
+          }
+          // obj.style.left = newValue + "px"
+          obj.style[attr] = newValue + "px"
+          if (newValue == target) {
+            clearInterval(obj.timer)
+            // 动画执行完毕，调用回调函数
+            callback && callback()
+          }
+        }, 30) 
+      }
+
+      // 获取样式函数
+      function getStyle(obj, name) {
+        if (window.getComputedStyle) {
+          return getComputedStyle(obj, null)[name];
+        } else {
+          return obj.currentStyle[name];
+        }
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+  <div>
+    <button id="btn1">向右</button>
+    <button id="btn2">向左</button>
+    <button id="btn3">box2向右</button>
+    <button id="btn4">测试</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div style="width:0;height:1000px;border-left:solid 1px black;position:absolute;left:800px;"></div>
+
+  </div>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    button {
+      margin-left: 10px;
+      margin-right: 30px;
+    }
+    #box1 {
+      position: absolute;
+      margin-top: 30px;
+      width: 200px;
+      height: 200px;
+      background: red;
+      left: 0px;
+    }
+    #box2 {
+      position: absolute;
+      margin-top: 300px;
+      width: 200px;
+      height: 200px;
+      background: greenyellow;
+      left: 0px;
+    } 
+  </style>
+</body>
+
+</html>

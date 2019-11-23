@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function() {
+                alert("第一个绑定事件")
+            }
+            // 使用 对象.事件 = 函数 绑定的响应函数，只有最后一个生效
+            btn1.onclick = function() {
+                alert("第二个绑定事件")
+            }
+            // addEventListener()
+            // 参数：1.事件的字符串，不用on; 2.回调函数，事件触发时调用
+            //      3.是否在捕获阶段触发事件，一般传false
+            btn1.addEventListener("click", function() {
+                alert("第三个事件")
+            }, false);
+            btn1.addEventListener("click", function(event) {
+                alert("第四个事件", event)
+            }, false);
+
+            // 兼容
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    // obj.attachEvent("on" + eventStr, callback);
+                    // this由调用方式决定,在匿名函数中调用回调函数
+                    obj.attachEvent("on" + eventStr, function() {
+                        callback.call(obj);
+                    })
+                }
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <button id="btn1">按钮</button>
+</body>
+</html>

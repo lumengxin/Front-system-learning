@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn")
+            btn.onclick = function() {
+                // location = "http://www.baidu.com"
+                location = "02.History.html"
+                // assign(): 跳转，和修改location一样
+                location.assign("http://www.baidu.com")
+                // reload(): 重新加载当前页面，刷新页面（有缓存）,true 强制清空
+                location.reload(true) 
+                // replace(): 使用新页面替换当前页面，不会生成历史记录
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div>Location</div>
+    <a href="02.History.html">02.history</a>
+</body>
+</html>

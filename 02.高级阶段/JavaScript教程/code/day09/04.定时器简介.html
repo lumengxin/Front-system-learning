@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // js执行速度非常快，希望一段程序间隔一段时间执行一次，可以使用定时器
+            // setInterval(): 参数 1.回调函数，每隔一段时间被调用一次
+            //                  2.每次调用的事件，毫秒
+            // 返回值：返回一个Number, 这个数字用来作为定时器唯一标识
+            // clearInterval(): 关闭定时器
+            /* var count = document.getElementById("count")
+            var num = 1
+            var timer = setInterval(function () {
+                count.innerHTML = num++
+                if (num == 11) {
+                    clearInterval(timer)
+                }
+            }, 500) */
+
+            // 图片轮播
+            var img1 = document.getElementById("img1")
+            var currentIndex = 0
+            var imgArr = ["../day07/images/01.jpg", "../day07/images/02.jpg", "../day07/images/03.jpg", "../day07/images/04.jpg"]
+            
+            var timer
+            var btn01 = document.getElementById("btn01")
+            var btn02 = document.getElementById("btn02")
+            btn01.onclick = function () {
+                // 每次点击开始都会开一个定时器，停止只能关闭最新的一个
+                // 开启之前关掉上一个
+                clearInterval(timer)
+                timer = setInterval(function () {
+                    currentIndex++
+                    /* if (currentIndex >= imgArr.length) {
+                        currentIndex = 0
+                    } */
+                    currentIndex %= imgArr.length
+                    img1.src = imgArr[currentIndex]
+                }, 1000)
+            }
+            btn02.onclick = function() {
+                // timer:undefined. 可以接受任意参数，参数不是有效标识时什么也不做
+                clearInterval(timer)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="count">1</div>
+
+    <div id="swiper">
+        <img src="../day07/images/01.jpg" alt="img" id="img1" />
+        <button id="btn01">开始</button>
+        <button id="btn02">停止</button>
+    </div>
+
+    <style>
+        #swiper {
+            margin-left: 150px;
+            margin-top: 30px;
+            width: 500px;
+            height: 350px;
+        }
+        img {
+            width:500px;
+            height: 300px;
+        }
+    </style>
+</body>
+
+</html>

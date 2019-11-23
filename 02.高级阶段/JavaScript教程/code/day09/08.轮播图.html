@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="func.js"></script>
+    <script>
+        window.onload = function() {
+            // 动态设置imgList宽度
+            var imgList = document.getElementById("imgList")
+            var imgArr = document.getElementsByTagName("img")
+            imgList.style.width = 670 * imgArr.length + "px"
+            // 设置按钮水平居中
+            var nav = document.getElementById("nav")
+            var content = document.getElementById("content")
+            nav.style.left = (content.offsetWidth - nav.offsetWidth) / 2 + "px"
+            console.log(nav.style.left)
+
+            var allA = document.getElementsByTagName("a")
+            var index = 0
+            allA[index].style.backgroundColor = "ivory" 
+            // for循环执行完，在执行单击函数
+            for (var i=0; i<allA.length; i++) {
+                // 为每个超链接添加一个属性，索引作为对象属性保存
+                allA[i].num = i
+                allA[i].onclick = function() {
+                    // 点击优先
+                    clearInterval(timer)
+                    // alert(i)  // 5
+                    index = this.num
+                    // imgList.style.left = -content.offsetWidth * index + "px"
+                    // 使用move()函数移动
+                    move(imgList, "left", -670*index, 20, function() {
+                        // 点击执行完动画后，在开启启动切换
+                        autoChange()
+                    })
+                    setA()
+                }
+            }
+            autoChange()
+
+            function setA() {
+                for (var i=0; i<allA.length; i++) {
+                    // 判断当前索引是否是最后一张
+                    if (index >= imgArr.length - 1) {
+                        index = 0
+                        // 最后一张和第一张一样，将其替换
+                        imgList.style.left = 0 + "px"
+                    }
+                    // allA[i].style.backgroundColor = "red" // 级别较高，覆盖 a:hover样式
+                    allA[i].style.backgroundColor = ""
+                }
+                allA[index].style.backgroundColor = "ivory"
+            }
+
+            var timer
+            function autoChange() {
+                timer = setInterval(function(){
+                    index++
+                    index %= imgArr.length
+                    move(imgList, "left", -670*index, 20, function() {
+                        setA()
+                    })
+                }, 3000)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+        <ul id="imgList">
+            <li><img src="../day07/images/01.jpg" alt="img"></li>
+            <li><img src="../day07/images/02.jpg" alt="img"></li>
+            <li><img src="../day07/images/03.jpg" alt="img"></li>
+            <li><img src="../day07/images/04.jpg" alt="img"></li>
+            <li><img src="../day07/images/01.jpg" alt="img"></li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #content {
+            width: 670px;
+            height: 400px;
+            margin: 50px auto;
+            background-color: indigo;
+            padding: 20px 0px;
+            position: relative;
+            overflow: hidden;
+        }
+        #imgList {
+            position: absolute;
+            list-style: none;
+            /* display: flex; */
+            /* width: 2700px; */
+        }
+        img {
+            width: 650px;
+            height: 400px;
+            float: left;
+            padding: 0px 10px;
+        }
+        #nav {
+            position: absolute;
+            bottom: 30px;
+            /* margin-left: 275px; */
+        }
+        #nav a {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(118, 14, 216);
+            opacity: 0.6;
+            filter: alpha(opacity=50);
+            margin: 0 5px;
+        }
+        #nav a:hover {
+            background-color: ivory;
+        }
+    </style>
+</body>
+</html>

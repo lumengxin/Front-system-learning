@@ -9,8 +9,11 @@
         window.onload = function() {
             // 事件的冒泡（Bubble）: 事件的向上传导，当后代的元素上的事件被触发时，其祖先元素的相同事件也会被触发
             var s1 = document.getElementById("s1");
-            s1.onclick = function() {
+            s1.onclick = function(e) {
                 alert("sapn的单击响应函数");
+                // 取消冒泡：将事件对象的cancelBubble设置为true
+                e = e || window.e;
+                e.cancelBubble = true;
             }
             var box1 = document.getElementById("box1");
             box1.onclick = function() {

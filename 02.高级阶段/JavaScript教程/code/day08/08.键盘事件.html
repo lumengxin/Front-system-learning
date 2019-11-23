@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // 键盘事件：onkeydown, onkeyup
+            // 一般都是绑定到可以获取到焦点的对象或者document
+            // 按着不动，onkeydown会连续触发，第一次和第二次间隔较长，防止误操作
+            /* document.onkeydown = function (e) {
+                console.log(e.keyCode)
+                if (e.keyCode === 65 && e.ctrlKey) {
+                    console.log("ctrl和a同时按了")
+                }
+
+            }
+            document.onkeyup = function() {
+                console.log("按键松开")
+            }
+            var input = document.getElementsByTagName("input")[0]
+            input.onkeydown = function (e) {
+                if (e.keyCode >= 48 && e.keyCode <= 57) {
+                    return false
+                }
+            } */
+
+            var box1 = document.getElementById("box1");
+            document.onkeydown = function (e) {
+                var speed = 10;
+                if (e.ctrlKey) {
+                    speed = 50;
+                }
+                switch(e.keyCode) {
+                    case 37:
+                        // 通过style设置一定要给定位
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <!-- <input type="text" /> -->
+
+    <style>
+        #box1 {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="func.js"></script>
+    <script>
+        window.onload = function() {
+            var menuSpan = document.querySelectorAll(".menuSpan")
+            for (var i=0; i<menuSpan.length; i++) {
+                menuSpan[i].onclick = function() {
+                    var parentDiv = this.parentNode
+                    
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="menu">
+        <div>
+            <span class="menuSpan">在线工具</span>
+            <a href="#">图像优化</a>
+            <a href="#">收藏图片</a>
+            <a href="#">梯度生成</a>
+            <a href="#">按钮制作</a>
+            <a href="#">保存图片</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">关于我们</span>
+            <a href="#">公司地址</a>
+            <a href="#">联系方式</a>
+            <a href="#">官方网址</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">合作伙伴</span>
+            <a href="#">网易</a>
+            <a href="#">百度</a>
+            <a href="#">腾讯</a>
+            <a href="#">谷歌</a>
+        </div>
+    </div>
+</body>
+
+</html>

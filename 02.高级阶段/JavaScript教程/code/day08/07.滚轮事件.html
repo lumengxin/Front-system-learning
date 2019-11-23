@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var box1 = document.getElementById("box1");
+            // 兼容火狐
+            bind(box1, "DOMMouseScroll", box1.onmousewheel);
+
+            box1.onmousewheel = function(e) {
+                // alert("aaa")
+                e = e || window.e;
+                // 兼容火狐，e.detail
+                if (e.wheelDelta > 0 || e.detail < 0) {
+                    box1.style.height = box1.clientHeight - 10 + "px";
+                } else {
+                    box1.style.height = box1.clientHeight + 10 + "px";
+                }
+
+                // 取消浏览器滚动条默认行为
+                return false;
+                // 使用addEventListener()绑定的，取消默认行为(ie8不支持)
+                e.preventDefault && e.preventDefault();
+            }
+
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    // obj.attachEvent("on" + eventStr, callback);
+                    // this由调用方式决定,在匿名函数中调用回调函数
+                    obj.attachEvent("on" + eventStr, function() {
+                        callback.call(obj);
+                    })
+                }
+            }
+        }
+    </script>
+</head>
+<body style="height: 2000px;">
+    <div id="box1"></div>
+
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+        }
+    </style>
+</body>
+</html>

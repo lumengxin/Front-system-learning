@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <h1>History页面</h1>
+    <a href="01.Navigator.html">到上一个页面</a>
+
+    <script>
+        // length: 获取到访问的链接数量
+        var btn = document.getElementById("btn")
+        btn.onclick = function() {
+            history.forward()
+            // go(): 跳转到指定页面
+        }
+    </script>
+</body>
+</html>

@@ -35,8 +35,8 @@
                 console.log(getComputedStyle(box1, null).backgroundColor);
             }
 			
-			function getStyle(obj. name) {
-				if (widnow.getComputedStyle) {
+			function getStyle(obj, name) {
+				if (window.getComputedStyle) {
 					return getComputedStyle(obj, null)[name];
 				} else {
 					return obj.currentStyle[name];
