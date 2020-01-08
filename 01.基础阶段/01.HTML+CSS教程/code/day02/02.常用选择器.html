@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 元素选择器 */
+        h1 {
+            color: red;
+        }
+        p {
+            color: blueviolet;
+        }
+        /* id选择器 */
+        #p1 {
+            font-size: 20px;
+        }
+        /* 类选择器 */
+        .p22 {
+            background-color: coral;
+            width: 50%;
+        }
+        .p2 {
+            background-color: cadetblue;
+        }
+        /* 选择器分组 */
+        h1, #p1, .p22 {
+            border: coral solid 1px;
+        }
+        /* 通配选择器 */
+        /* * {
+            color: red;
+            margin-left: 0px;
+        } */
+        /* 复合选择器 */
+        span.p3 {
+            font-weight: 800;
+        }
+        /* 元素之间关系：父元素，子元素，祖先元素，后代元素，兄弟元素 */
+        /* 后代元素选择器 */
+        #d1 span {
+            color: cornflowerblue;
+        }
+        #d1 p span {
+            font-size: 40px;
+        }
+        /* 子元素选择器 */
+        #d1 > span {
+            color: red;
+        }
+        #d1 > span:first-child {
+            color: blue;
+        }
+        /* :nth-child()任意位置的子元素，even偶数位置、odd奇数位置 */
+        #d1 > span:nth-child(2) {
+            background-color: cadetblue;
+        }
+        #d1 > p:last-of-type {
+            background-color: chartreuse;
+        }
+        /* 伪类选择器 */
+        /* 浏览器根据历史记录判断一个链接是否访问过 */
+        a:link {
+            color: gold;
+        }
+        /* visited伪类只能设置颜色 */
+        a:visited {
+            color: red;
+        }
+        .p4:hover {
+            cursor: move;
+        }
+        input:focus {
+            background-color: yellow;
+        }
+        .p5::selection {
+            color: teal;
+        }
+        /* 伪元素选择器：使用伪元素来表示元素中的一些特殊位置 */
+        .letters:first-letter {
+            font-size: 30px;
+        }
+        .content::before {
+            content: 'p最前面的一段内容';
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title] {
+            background-color: violet;
+        }
+        p[title="t1"] {
+            font-size: 25px;
+        }
+        /* 兄弟选择器 */
+        .group > span + p {
+            background-color: chartreuse;
+        }
+        .group > span ~ p {
+            color: coral;
+        }
+        /* 否伪类 */
+        .group > p:not(.exe) {
+            border: coral solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>悯农</h1>
+    <p id="p1">锄禾日当午</p>
+    <p class="p2 p22">汗滴禾下土</p>
+    <p class="p2">谁知盘中餐</p>
+    <p class="p2">粒粒皆辛苦</p><hr/>
+
+    <i class="p3">李白</i>
+    <span class="p3">李白</span><hr/>
+
+    <div id="d1">
+        <span>div中span标签</span>
+        <span>div中span标签</span>
+        <p><span>p中的span标签</span></p>
+        <p><span>p中的span标签</span></p>
+    </div>
+    <div>
+        <span>div中第二个span标签</span>
+    </div><hr/>
+
+    <a href="http://www.baidu.com">访问过的链接</a><br/>
+    <a href="http://www.github.com">未访问过的链接</a>
+    <p class="p4">p元素</p>
+    <input type="text">
+    <p class="p5">选择p5标签的文字</p><hr/>
+
+    <p class="letters">一句p的文字</p>
+    <p class="content">一个段落，一个段落...</p><hr/>
+
+    <p title="这个段落">一个段落</p>
+    <p title="t1">一个段落</p>
+    <p>一个段落</p>
+    <p title="这个段落">一个段落</p><hr/>
+
+    <div class="group">
+        <p>一个p</p>
+        <p>一个p</p>
+        <p class="exe">一个p</p>
+        <span>一个span</span>
+        <p>一个p</p>
+        <p>一个p</p>
+    </div>
+</body>
+</html>

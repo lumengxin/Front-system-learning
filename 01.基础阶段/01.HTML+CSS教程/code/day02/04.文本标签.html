@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        em: 表示一段内容中的着重点
+        strong: 表示一个内容的重要性
+        em为斜体，strong为粗体
+     -->
+    <div>
+        <p><strong>警告：不要靠近僵尸</strong></p>
+        <p>今天天气<em>真不错</em></p>
+    </div>
+    <!-- i斜体，b加粗。无语义 -->
+    <div>
+        <i>i标签中内容</i>
+        <b>b标签中内容</b>
+    </div>
+    <!-- small: 比父元素中文字小，表示一些细则 -->
+    <div>
+        <p>p标签中的一段<small>small细则</small></p>
+    </div>
+    <!-- 
+    cite: 表示参考内容。书名、歌名、电影名
+    q: 表示一个短的引用
+    blockquote: 表示一个长引用
+    sup: 上标 sub: 下标
+    del: 删除的内容
+    ins: 插入的内容
+    pre: 预格式，不会忽略多个空格
+    code: 用来表示代码
+    -->
+    <p><cite>《论语》</cite>是一本好书</p>
+    <p>子曰：<q>学而不思则罔</q></p>
+    <div>子曰：<blockquote>有朋自远方来，不亦乐乎</blockquote></div>
+    <p>2<sup>3</sup></p>
+    <p>老子<sup><a href="#">[1]</a></sup></p>
+    <p>H<sub>2</sub>O</p>
+    <p><del>13.23</del><br/>15.45</p>
+    <p>老师<ins>真好</ins>！</p>
+    <pre>
+        window.onload = function() {
+            alert('hello')
+        };
+    </pre>
+    <code>
+        'use strict';
+        
+        import Vue from 'vue';
+    </code>
+</body>
+</html>

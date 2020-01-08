@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box, .jump {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        margin-top: 30px;
+    }
+    .box1 {
+        position: relative;
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: red;
+    }
+    .jump1 {
+        font-size: 10px;
+        width: 10em;
+        height: 50%;
+        background: yellow;
+    }
+    </style>
+</head>
+<body>
+    <!-- 长度：
+        px: 一个像素就相当于屏幕中的一个点。不同显示器一个像素大小不同，显示效果越清晰像素越小
+        %: 根据父元素样式计算
+        em: 和%类似。相对于当前元素的字体大小计算，1em = 1font-size
+     -->
+    <div class="box">
+        <div class="box1">
+        </div>
+    </div>
+
+    <div class="jump">
+        <div class="jump1">
+            aaa
+        </div>
+    </div>
+    <!-- 颜色：
+        直接使用颜色单词：red, blue, green...
+        RGB：rgb(红，绿，蓝) 0-255或者0%-100%表示浓度
+        十六进制rgb: #红色绿色蓝色 使用三组两位的十六进制表示一个颜色
+            00 - ff 00表示没有0 ff表示最大255
+            两位相同可以简写，只写一个
+    -->
+    <div style="width: 100px; height: 100px; background: #ff0000"></div>
+    <div style="width: 100px; height: 100px; background: #abc"></div>
+</body>
+</html>

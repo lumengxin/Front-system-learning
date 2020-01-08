@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* 优先级：
+    !important > 内联样式 1000 > id选择器 100 > 类和伪类 10 > 元素选择器 1 > 通配* 0 > 继承的样式 无 
+    */
+    .group1 > p {
+        background-color: red;
+    }
+    .group1 > .cp {
+        background-color: blue;
+    }
+    .group1 > #ip {
+        background-color: orange;
+    }
+    /* 包含多种选择器时，优先级相加在比较（不会超过最大数量级） */
+    .group1 > p#ip {
+        background-color: hotpink;
+    }
+    /* a 的伪类优先级一样，一般按照顺序：:link :visited :hover :active */
+    </style>
+</head>
+<body>
+    <!-- css中，祖先元素样式会被继承
+    背景、边框、定位相关的不会 -->
+    <div style="font-size: 20px; background-color: coral;">
+        <p>
+            div中p标签的文字
+            <span>span标签的文字</span>
+        </p>
+    </div>
+    <p>div之外p标签的文字</p><hr/>
+
+    <div class="group1">
+        <p class="cp" id='ip'>选择器样式优先级</p>
+    </div>
+</body>
+</html>

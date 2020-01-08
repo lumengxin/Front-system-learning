@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .text1 {
+        color: red;
+        /* 浏览器默认大小16px,文字所在盒子的高度 */
+        font-size: 20px;
+        /*  可以同时指定多个字体，优先前面 
+            浏览器默认使用的计算机中的字体(C:\Windows\Fonts)
+            字体分类：serif衬线字体 sans-serif非~ moonspace等宽 cursive草书 fantasy虚幻
+        */
+        font-family: Vladimir Script, 华文彩云, Arial, Helvetica, sans-serif, 微软雅黑;
+    }
+    .text2 {
+        /* 设置文字斜体: normal正常 italic斜体 oblique倾斜*/
+        font-style: italic;
+        /* 文本的粗细: normal正常 bold加粗 100-200~900 */
+        font-weight: 900;
+        /* 设置小型大写字母 */
+        font-variant: small-caps;
+    }
+    .text3 {
+        /* 统一设置字体样式，文字大小、字体必须写，字体最后，大小倒数第二(字体大小后可指定行高) */
+        font: italic small-caps bold 25px/30px "华文彩云";
+    }
+    .text4 {
+        /* 行间距，通过行高间接设置 = 行高 - 字体大小 */
+        font-size: 20px;
+        /* 数值：字体大小的倍数 */
+        line-height: 2;
+    }
+    .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: lawngreen;
+        /* 单行文本垂直居中 */
+        line-height: 200px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <p class="text1">
+            辅导费大肥肥,fadsoifA;OFAJDS
+        </p>
+        <!-- 设置为大的分类，会自动选择指定的字体样式, 一般指定最后一项 -->
+        <p style="font-size: 30px; font-family: serif;">fadj;oi偶发滴滴dafofd房贷</p>
+        <p style="font-size: 30px; font-family: sans-serif;">fadj;oi偶发滴滴dafofd房贷</p>
+        <p style="font-size: 30px; font-family: monospace;">fadj;oi偶发滴滴dafofd房贷</p>
+        <p style="font-size: 30px; font-family: cursive;">fadj;oi偶发滴滴dafofd房贷</p>
+        <p style="font-size: 30px; font-family: fantasy;">fadj;oi偶发滴滴dafofd房贷</p>
+        
+        <p class="text2">一段随表的文字，afiodFADWEW</p>
+
+        <p class="text3">一段随表的文字，afiodFADWEW</p>
+
+        <p class="text4">
+            Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+            如果你想在深入学习 Vue 之前对它有更多了解，我们制作了一个视频，带您了解其核心概念和一个示例工程。
+            如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看对比其它框架。安装教程给出了更多安装 Vue 的方式。请注意我们不推荐新手直接使用 vue-cli，尤其是在你还不熟悉基于 Node.js 的构建工具时。
+            如果你喜欢交互式的东西，你也可以查阅这个 Scrimba 上的系列教程，它揉合了录屏和代码试验田，并允许你随时暂停和播放。
+        </p>
+    </div>
+
+    <div class="box2">
+        <p>单行文本</p>
+    </div>
+</body>
+</html>
