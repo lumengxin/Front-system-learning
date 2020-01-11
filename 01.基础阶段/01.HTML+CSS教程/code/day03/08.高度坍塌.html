@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            border: 10px solid red;
+            /* W3C标准，页面元素都有隐含属性Block Formatting Context(BFC),开启后：
+            *   1.父元素的垂直外边距不会和子元素重叠
+            *   2.不会被浮动元素覆盖
+            *   3.可以包含浮动元素
+            *  开启：设置浮动；设置绝对定位；设置为inline-block；overflow设为非visible
+            **/
+            overflow: hidden;
+        }
+        /* 子元素设置浮动时，脱离文档流，无法撑起父元素导致高度坍塌
+        * - 父元素设置固定高度，不够灵活
+        **/
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #fba;
+            float: left;
+        }
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            
+            /* clear 清楚其他浮动元素对当前元素的影响 */
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    <div class="box3"></div>
+</body>
+</html>

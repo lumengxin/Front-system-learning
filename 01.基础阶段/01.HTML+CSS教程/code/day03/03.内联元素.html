@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            background-color: #baf;
+        }
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #fba;
+        }
+        .s1 {
+            /* 内联元素不能设置宽高 */
+            /* width: 100px;
+            height: 100px; */
+            background-color: #cac;
+            /* 可以设置垂直方向内边距，但是不影响布局 */
+            padding-left: 100px;
+            padding-top: 60px;
+            /* 可以设置边框，垂直的边框不会影响布局 */
+            border: 1px blue solid;
+            /* 水平方向外边距不重叠（相加）, 垂直方向不支持 */
+            margin-left: 50px;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <span>一个span元素</span>
+    <span>一个span元素</span>
+    <span>一个span元素</span>
+    <span>一个span元素</span>
+
+    <div class="box1"></div>
+
+    <span class="s1">s1</span>
+</body>
+</html>

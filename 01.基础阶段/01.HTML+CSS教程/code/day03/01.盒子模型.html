@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            /* 内容区高宽 */
+            width: 100px;
+            height: 100px;
+            background: blue;
+            padding: 50px;
+            /* 边框：border-width宽度 border-color颜色 border-style样式 */
+            border: 10px red dotted;
+            margin: 50px;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            border-width: 10px;
+            border-style: solid dotted double groove;
+            /* 水平居中 */
+            margin: 10px auto;
+        }
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: #fba;
+            /* border-left: 10px dashed red; */
+            border: 10px solid red;
+            border-left: none;
+            /* left/right 设置为auto，取最大值 */
+            margin-left: auto;
+        }
+        .box4 {
+            background-color: #d9f;
+            padding-bottom: 100px;
+        }
+        p {
+            /* font-size: 20px; */
+            background-color: cadetblue;
+            padding: 30px 100px;
+            /* width: 50px; */
+            /* height: 50px; */
+            margin-top: -50px;
+        }
+        .contanin1, .contanin2 {
+            width:100px;
+            height: 100px;
+            background-color: burlywood;
+        }
+        /* 垂直方向相邻外边距会发生重叠。
+            兄弟元素相邻之间，取最大值 
+            父子元素垂直外边距相邻时，子元素的外边距会传递给父元素
+        */
+        .contanin1 {
+            margin-bottom: 100px;
+        }
+        .contanin2 {
+            margin-top: 150px;
+        }
+        .contanin4 {
+            width: 200px;
+            height: 200px;
+            background-color: burlywood;
+        }
+        .contanin3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- css处理网页时，认为每个元素都包含在一个不可见的盒子中
+        盒模型：内容区content 内边距padding 边框border 外边距margin
+        盒子可见大小：content + padding + border决定
+    -->
+    <div class="box1">
+        aaa
+    </div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4">
+        aaa
+    </div>
+
+    <p>一段小小的文字</p>
+
+    <div class="contanin1"></div>
+    <div class="contanin2"></div>
+    <div class="contanin4">
+        <div class="contanin3"></div>
+    </div>
+</body>
+</html>

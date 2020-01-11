@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        /* float: 是元素浮动，脱离文档流 
+            元素会向页面右/左上浮动，直到遇到父元素边框或者其他浮动元素
+            下边的元素会向上移动
+            浮动元素上边是一个没有浮动的块元素，则不会超过块元素
+            浮动元素不会超过上边的兄弟元素
+           内联元素脱离文档流后，变成块元素
+           块元素脱离文档流后，高度和宽度被内容撑开
+        */
+        float: right; 
+    }
+    .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+    .box3 {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        /* float: right; */
+    }
+    .contain1 {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(131, 17, 224);
+        float: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <hr/>
+
+    <div class="contain1"></div>
+    <p class="p1">
+        前端入门和进阶学习笔记。从零开始学前端，做一名精致的前端工程师。持续更新中。本项目的主要作用有：
+网上的大部分入门教程，都不太适合初学者，本项目争取照顾到每一位入门者的同理心。
+帮助前端同学提供一个精品学习路线和资源，提高学习效率，少走很多弯路。
+可以当做前端字典，随时翻阅，查漏补缺。
+维护这个项目的初衷，可以看这篇文章：《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》
+前端入门路线和推荐学习资源，可以看这篇文章：《2019年Web前端入门的自学路线》
+项目指引
+如果你发现文中的部分图片加载不出来，不妨看这里。当然，您也可以直接「下载项目到本地」，通过 markdown 软件（比如 typora）打开项目文件，以便正常展示图片。
+如果你发现本项目有内容上的错误，欢迎提交 issues 进行指正。写在前面
+不谈什么：传统的模块化开发方式，比如文件拆分、全局变量、命名空间，以及 YUI3 式的模块化开发方式。有兴趣的可阅读：#547
+谈什么： 关于 CommonJS、AMD、Node.js、CMD 等相关的故事与未来趋势，很有意思。
+不一定精准：本文是基于史实的扯淡，因此部分文字特别是时间都是模糊记忆，不一定精准。关于流派、趋势则是个人在社区的感受，不代表客观看法。（看法都是主观的，呵呵）
+CommonJS 社区
+大概 09 年 - 10 年期间，CommonJS 社区大牛云集。CommonJS 原来叫 ServerJS，推出 Modules/1.0 规范后，在 Node.js 等环境下取得了很不错的实践。
+09年下半年这帮充满干劲的小伙子们想把 ServerJS 的成功经验进一步推广到浏览器端，于是将社区改名叫 CommonJS，同时激烈争论 Modules 的下一版规范。分歧和冲突由此诞生，逐步形成了三大流派：
+Modules/1.x 流派。这个观点觉得 1.x 规范已经够用，只要移植到浏览器端就好。要做的是新增 Modules/Transport 规范，即在浏览器上运行前，先通过转换工具将模块转换为符合 Transport 规范的代码。主流代表是服务端的开发人员。现在值得关注的有两个实现：越来越火的 component 和走在前沿的 es6 module transpiler。
+Modules/Async 流派。这个观点觉得浏览器有自身的特征，不应该直接用 Modules/1.x 规范。这个观点下的典型代表是 AMD 规范及其实现 RequireJS。这个稍后再细说。
+Modules/2.0 流派。这个观点觉得浏览器有自身的特征，不应该直接用 Modules/1.x 规范，但应该尽可能与 Modules/1.x 规范保持一致。这个观点下的典型代表是 BravoJS 和 FlyScript 的作者。BravoJS 作者对 CommonJS 的社区的贡献很大，这份 Modules/2.0-draft 规范花了很多心思。FlyScript 的作者提出了 Modules/Wrappings 规范，这规范是 CMD 规范的前身。可惜的是 BravoJS 太学院派，FlyScript 后来做了自我阉割，将整个网站（flyscript.org）下线了。这个故事有点悲壮，下文细说。
+    </p>
+</body>
+</html>
