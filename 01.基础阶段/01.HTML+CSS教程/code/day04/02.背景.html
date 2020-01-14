@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: blue;
+            /* 背景图片大于元素时，显示左上角 */
+            background-image: url(../cub.jpg);
+            background-repeat: no-repeat;
+        }
+        .box2 {
+            width: 990px;
+            height: 54px;
+            margin: 30px auto;
+            background-color: #fba;
+        }
+        .box3 {
+            width: 500px;
+            height: 500px;
+            margin: 30px auto;
+            background-color: #fba;
+            background-image: url(../icon.png);
+            background-repeat: no-repeat;
+            /* background-position: center center; */
+            background-position: 100px 100px;
+        }
+    </style>
+</head>
+<body style="height: 2200px; background-image: url(../cub.jpg); background-attachment: fixed;">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

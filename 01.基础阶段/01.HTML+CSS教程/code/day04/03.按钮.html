@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         /* 图片整合技术（CSS-Sprite）
+            浏览器加载外部资源时，使用才加载，加载图片图片需要时间，导致闪烁
+            可以将多张图片整合为一张，通过切换图片位置显示不同图片
+         */
+        .btn:link {
+            display: block;
+            width: 93px;
+            height: 29px;
+            background-image: url(../link.png);
+            background-repeat: no-repeat;
+        }
+        .btn:hover {
+            background-image: url(../hover.png);
+        }
+        .btn:active {
+            background-image: url(../active.png);
+        }
+
+        .btn2:link {
+            display: block;
+            width: 93px;
+            height: 29px;
+            background-image: url(../btn.png);
+            background-repeat: no-repeat;
+            /* background 同时设置所有背景相关，无数量顺序要求 */
+            /* background: #bfa url(../btn.png) center center no-repeat fixed; */
+        }
+        .btn2:hover {
+            background-position: -93px 0;
+        }
+        .btn2:active {
+            background-position: -186px 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="btn"></a>
+    <br/><br/><hr/>
+    <a href="#" class="btn2"></a>
+</body>
+</html>

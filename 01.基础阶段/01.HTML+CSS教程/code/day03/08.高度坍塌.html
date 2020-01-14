@@ -33,6 +33,12 @@
             /* clear 清楚其他浮动元素对当前元素的影响 */
             clear: left;
         }
+        /* after伪类向元素最后添加一个空的块元素，清除浮动 */
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
     </style>
 </head>
 <body>

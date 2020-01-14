@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 1200px;
+        }
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            /* position:设置元素定位 
+            * static -默认值，没有开启定位
+            * relative -相对定位（原点：盒子左上角）- 不设置偏移量时无变化,不会脱离文档流，提升层级（覆盖其他）
+            * absolute - 绝对定位（原点：网页左上角） - 脱离文档流
+            * fixed - 固定定位 - 也是一种绝对定位，永远相对于浏览器
+            */
+           /*  position: relative;
+            right: -100px;
+            top: 200px; */
+            /* 没有开启定位的不能使用z-index, 父元素盖不住子元素 */
+            position: relative;
+            z-index: 1;
+            opacity: 0.6;
+        }
+        .box3 {
+            /* w300  */
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.box$*3 -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>
