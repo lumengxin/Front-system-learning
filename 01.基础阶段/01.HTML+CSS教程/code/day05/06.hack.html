@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="style-ie8.css">
+    <![endif]-->
+
+    <style>
+        /* 2.属性hack */
+        body {
+            background-color: #fab;
+            /* _: <ie6 起作用; *: <ie7 起作用 */
+            _background-color: yellow;
+            /* \0: >ie8  */
+            background-color: blue\0;
+        }    
+    </style>
+</head>
+<body>
+    <!-- 1.条件hack, 只对ie(< 10)浏览器有效，其他视为注释 -->
+    <!--[if IE 6]>
+    <p>ie6中才能显示!</p>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <p>ie9以下才能显示!</p>
+    <![endif]-->
+
+</body>
+</html>

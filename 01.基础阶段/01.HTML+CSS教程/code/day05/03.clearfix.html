@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box1 {
+        width: 300px;
+        height: 300px;
+        background-color: #fab;
+
+        /* padding-top: 1px; */
+    }
+    .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+
+        margin-top: 100px;
+    }
+    /* 解决父子元素外边距重叠 */
+    .box1:before {
+        content: '';
+        display: table;
+    }
+    .box3 {
+        border: 10px red solid;
+    }
+    .box4 {
+        width: 100px;
+        height: 100px;
+        background-color: #baf;
+
+        float: left;
+    }
+    /* 解决父元素高度塌陷(两者可以一起用) */
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    /* .clearfix:before, .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    } */
+    </style>
+    
+</head>
+<body>
+    <div class="box3 clearfix">
+        <div class="box4"></div>
+    </div><br /><br />
+
+    <div class="box1">
+        <!-- <div>a</div> -->
+        <!-- <table></table> -->
+        <div class="box2">
+        </div>
+    </div>
+</body>
+</html>
