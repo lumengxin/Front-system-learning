@@ -1,0 +1,35 @@
+/* 预处理器：less
+    - 变量
+        @；变量的延迟加载；变量都是块级作用域
+    - 嵌套 &
+    - 混合：将一系列的规则集引入另一个规则集中
+        普通混合；不带输出的混合；带参数混合；带默认值的混合；匹配模式
+    - 计算
+        加减乘除 计算的一方带单位即可
+    - 继承
+*/
+
+// 属性值作变量
+@bgColor: #fab;
+// 属性作变量
+@pos: position;
+// 选择器作变量
+@selector: .wrap;
+
+/* 水平居中 */
+@{selector} {
+    @{pos}: relative;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 10px auto;
+    .inner {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        background-color: @bgColor;
+        transform: translate(-50%, -50%);
+    }
+}

@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 普通混合(会输出到css代码中) */
+/* .faBox {
+
+} */
+/* 不带输出混合 */
+/* 带参数混合，带默认值 */
+.top {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.top .inner {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: #0000ff;
+}
+.bottom {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.bottom .inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: #ff0000;
+}
+/* 三角形 */
+/* .drawTriangle(@_) {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+} */
+.container .triangle {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 40px;
+  border-style: dashed solid dashed dashed;
+  border-color: transparent #0000ff transparent transparent;
+}

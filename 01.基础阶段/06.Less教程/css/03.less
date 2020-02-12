@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 普通混合(会输出到css代码中) */
+/* .faBox {
+
+} */
+/* 不带输出混合 */
+.faBox() {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+/* 带参数混合，带默认值 */
+.sonCenter(@w:100px, @h:100px, @c: red) {
+    position: absolute;
+    width: @w;
+    height: @h;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: @c;
+}
+
+.top {
+    .faBox;
+    .inner {
+       .sonCenter(200px, 200px, blue); 
+    }
+}
+.bottom {
+    .faBox;
+    .inner {
+        .sonCenter();
+        // .sonCenter(@c:green); 
+     }
+}
+
+
+/* 三角形 */
+@import './triangle.less';
+
+.container .triangle {
+    /* .drawTriangle();
+    .drawTriangle(L, 40px, blue); */
+    .drawTriangle(B, 50px, red);
+}
+
+
+/* arguments属性 */
+.border (@w, @s, @c) {
+    border: @arguments;
+}
+
+.container .triangle {
+    .border(1px, solid, black);
+}

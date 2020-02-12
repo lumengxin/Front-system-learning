@@ -1,0 +1,43 @@
+@import "mixin.less";
+
+/* .wrap {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border: 1px solid;
+    .inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        &:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        &:nth-child(2) {
+                width: 50px;
+                height: 50px;
+                background-color: blue;
+            }
+        }
+} */
+
+.wrap {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border: 1px solid;
+    .inner {
+        &:nth-child(1) {
+            .center(100px, 100px, pink);
+        }
+        &:nth-child(2) {
+            .center(50px, 50px, black);
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/less">
+        .box {
+            width: 100px + 100;
+            /* calc：css原生计算 */
+            height: calc(100px + 100);
+            /* 避免编译成calc(200px)给浏览器 */
+            /* height: ~"calc(100px + 100)"; */
+            background-color: #fab;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/less.js/3.10.3/less.min.js"></script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
