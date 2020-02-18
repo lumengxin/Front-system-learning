@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 禁用系统滚动条 */
+        /* html, body {
+            height: 100%;
+            overflow: hidden;
+        } */
+        html {
+            overflow: hidden;
+            /* 要调整到视口的100%,需要从html开始设置 */
+            height: 100%;
+        }
+        body {
+            /* 此时滚动条在body上，不能控制初始包含块滚动，达到固定元素效果 */
+            overflow: auto;
+            height: 100%;
+        }
+
+        /* 系统滚动条中，初始包含块才能滚动 */
+        #test {
+            /* 使用绝对定位来固定定位 */
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+    <div style="height: 1000px;">
+        aaa
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            /* text-indent: 32px; */
+            text-indent: 2em;
+            text-decoration: underline;
+            letter-spacing: 10px;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浏览器中：shift + 单击，切换颜色不同格式 -->
+    <p style="color: pink;background-color: blue;text-align: center;">一段简单的文本。</p>
+
+    <div class="box">
+        一些随便的文字。一些随便的文字。一些随便的文字。一些随便的文字。一些随便的文字。
+    </div><br/><br/>
+
+    <div class="box2">
+        <!-- 英文没有空格认为是一个单词 -->
+        ad fsdasf awef josa fd asjfo;aejfadsfadsfadsojfoidsjfoidaj foia dsjf
+    </div>
+</body>
+</html>

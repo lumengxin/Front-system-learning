@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap {
+            width: 800px;
+            border: 1px solid black;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        .left {
+            float: left;
+            width: 200px;
+            background-color: pink;
+            padding-bottom: 1000px;
+            /* margin 为负值，控制边界；只要不超过1000px,都是等高 */
+            margin-bottom: -1000px;
+        }
+        .right {
+            float: left;
+            width: 500px;
+            background-color: green;
+            padding-bottom: 1000px;
+            margin-bottom: -1000px;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap" class="clearfix">
+        <div class="left">
+            left<br/>
+            left<br/>
+            left<br/>
+            left<br/>
+            left<br/>
+            left<br/>
+            left<br/>
+        </div>
+        <div class="right">
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            right<br/>
+            add right, left auto adjust height<br/>
+            add right, left auto adjust height<br/>
+            add right, left auto adjust height<br/>
+            add right, left auto adjust height<br/>
+        </div>
+    </div>
+</body>
+</html>

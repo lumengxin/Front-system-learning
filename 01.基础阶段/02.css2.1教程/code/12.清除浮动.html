@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            border: 1px solid black;
+            /* height: 200px; */
+            /* overflow: hidden; */
+            /* position: fixed; */
+        }
+        .inner {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: #fab;
+        }
+
+        .clearfix {
+            /* ie中开启haslayout, ie6/ie7不支持伪元素 */
+            *zoom: 1;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- 清除浮动：
+    - 让浮动的子元素撑开父级的高度
+        1. 直接给父元素设置高度(扩展性不好)
+        2. 开启BFC(ie中需要出发haslayout,拥有布局)
+        3. br标签清浮动(添加了多余结构，ie不兼容)
+        4. 空标签清浮动(添加了多余结构)
+        5. 伪元素after()
+    -->
+    <div class="wrap clearfix">
+        <div class="inner"></div>
+        <!-- <br clear="all" /> -->
+        <!-- <div style="clear: both;"></div> -->
+    </div>
+</body>
+</html>

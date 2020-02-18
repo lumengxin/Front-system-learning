@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 右查询：在等号的非左侧 */
+        // console.log(b); // undefined
+
+        /* 左查询： */
+        var a = 8;
+        test();
+        function test() {
+            b = a;
+            console.log(b); // 8
+        }
+        
+    </script>
+</body>
+</html>

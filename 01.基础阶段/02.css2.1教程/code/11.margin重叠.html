@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .up, .down {
+            width: 200px;
+            height: 200px;
+            background-color: #fba;
+            margin: 50px;
+        }
+        .wrap {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 50px;
+            /* overflow: hidden; */
+            border: 1px solid black;
+        }
+        .inner {
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="up">up</div>
+    <!-- <div style="height: 1px;"></div> -->
+    <!-- br 默认有21px高度 -->
+    <!-- <br/> -->
+    <div style="overflow: hidden;">
+        <div class="down">down</div>
+    </div>
+
+    <div class="wrap">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

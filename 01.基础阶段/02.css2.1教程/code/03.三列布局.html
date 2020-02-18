@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            /* 2*left + right  */
+            min-width: 600px;
+        }
+        div {
+            height:100px;
+        }
+        .left, .right,
+        .l, .r {
+            width: 200px;
+            background: pink;
+        }
+        .middle {
+            background: yellow;
+            /* 文字在内容区显示 */
+            padding: 0 200px;
+        }
+        .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .m {
+            background: yellow;
+        }
+        .l {
+            float: left;
+        }
+        .r {
+            float: right;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="left">left</div>
+    <div class="middle">middle</div>
+    <div class="right">right</div><br/><br/><hr/>
+
+    <div class="l">left</div>
+    <div class="r">right</div>
+    <div class="m">middle</div>
+</body>
+</html>

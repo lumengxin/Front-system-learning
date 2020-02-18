@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            position: relative;
+            margin:30px;
+            border: 1px solid pink;
+        }
+        body {
+            margin: 30px;
+            border: 1px solid yellow;
+        }
+        #test {
+            position: absolute;
+            /* padding: 0 50px; */
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .inner {
+            /* width height left top等默认值为auto */
+            width: 100%;
+            height: 60px;
+            margin: 0 50px;
+            background-color: #fab;
+        }
+    </style>
+</head>
+<body>
+    <!-- 包含块：(定位元素参照与包含块来定位)
+    - 对于浮动元素：定义为最近的块级祖先元素
+    - 对于定位：
+        - “根元素”的包含块有用户代理。在html中，就是html元素，有些浏览器为body元素。
+        大多初始包含块为一个视窗大小的矩形。
+        - 非根元素，position值为relative或static时，由最近的块级框、表单元格内容边界构成
+          
+    -->
+    <!-- 
+        1.定位参照谁？
+        - 没有定位：包含块
+        - 相对：元素本来的位置
+        - 绝对：包含块
+                - 如果最近的祖先元素存在定位元素，则这个定位元素就是包含块
+                - 如果没有，包含块为初级包含块
+        2.什么是初级包含块？
+        - 是一个视窗大小的矩形，不等于视窗
+        3.百分比参照谁？
+        - width(margin,padding): 包含块的width 
+        - height: 包含块的height
+        - left: 包含块的width
+        - top: 包含块的height
+     -->
+    <div id="test">
+        <div class="inner">
+    
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .test {
+            width: 200px;
+            height: 200px;
+            background-color: #fab;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .wrap, .wrap2, .wrap3 {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        .inner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            background-color: yellow;
+        }
+
+        /* 绝对定位盒子特性：
+        *   高度由内容撑开
+        *   水平方向：left+right+width+padding+margin=包含块padding区域的尺寸
+        *               0    0    100    0      auto = 400 => auto = 150
+        *   垂直方向：top+bottom+height+padding+margin=包含块padding区域的尺寸
+        */
+        .inner2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-color: yellow;
+        }
+
+        .inner3 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.单个元素 -->
+    <div class="test">test</div><br/><hr/>
+
+    <!-- 2.已知高宽 -->
+    <div class="wrap">
+        <div class="inner">inner</div>
+    </div><br/><hr/>
+    <div class="wrap2">
+        <div class="inner2">inner2</div>
+    </div><br/><hr/>
+
+    <!-- 3.未知高宽 -->
+    <div class="wrap3">
+        <div class="inner3">
+            innerfadifji<br/>
+            innerfadifji<br/>
+            innerfadifji<br/>
+            innerfadifji<br/>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"> 
+        <title>商品列</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .goods {
+                width: 400px;
+                margin: 30px auto;
+                border: 1px solid black;
+            }
+            .goods .left {
+                float: left;
+                width: 80px;
+                height: 80px;
+                background: url(../../01.HTML+CSS教程/code/atguigu.png) no-repeat;
+                
+            }
+            .goods .info {
+                /* 文字溢出 */
+                /* display: block;(隐含条件) */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                padding-left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="goods">
+            <div class="left">
+            </div>
+            <div class="info">
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！<br/>
+                产品清仓，买一送三！超出的部分自动溢出，...的形式
+            </div>
+        </div>
+    </body>
+</html>

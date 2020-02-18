@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fon {
+            font: bold italic 20px/40px 'Bauhaus 93'
+        }
+    </style>
+</head>
+<body style="font-size: 10px;">
+    <!-- chrome 默认字体16px, 最小12px, 0px 消失 -->
+    <div style="font-size: 30px;">张三丰</div>
+    <div style="font-size: 2em;font-style: italic;">张无忌</div>
+    <div style="font-size: 200%;font-style: oblique;">赵敏</div>
+
+    <div style="font-size: 3rem;font-family: 华文行楷;">孙悟空</div>
+    <!-- font简写：
+    - 必须同时设置font-style,font-family
+    - 设置font-style/font-weight中任意一个时，必须放在font-size前
+    - line-height必须紧跟font-size后，/隔开。font-family最后
+    - font: font-style font-weight font-size/line-height font-family
+    -->
+    <div class="fon">猪八戒 zhubajie</div>
+</body>
+</html>

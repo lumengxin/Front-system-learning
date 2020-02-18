@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 400px;
+            height: 400px;
+            border: 1px solid gold;
+            margin: 0 auto;
+            /* 水平居中 */
+            text-align: center;
+        }
+        /* 图片垂直居中 */
+        .wrap:after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            /* width: 2px;
+            background-color: #fab; */
+            vertical-align: middle;
+        }
+        .wrap img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: hotpink;">
+        <span style="font-size: 30px;background-color:blue;line-height:1.5;vertical-align: top;">中文English</span>
+        <span style="font-size: 40px;background-color:blue;line-height:1.5;">中文English</span>
+        <span style="font-size: 50px;background-color:blue;line-height:1.5;">中文English</span>
+    </div><br/><br/>
+
+    <!-- vertical-align:
+    - 用来指定行内元素的垂直对齐方式，常在img上使用
+    -->
+    <div class="wrap">
+        <img src="../../01.HTML+CSS教程/code/cub.jpg" width="100">
+    </div>
+</body>
+</html>

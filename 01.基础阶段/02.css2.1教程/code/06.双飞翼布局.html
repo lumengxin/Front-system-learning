@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-width: 600px;
+        }
+        #header, #footer {
+            border: 1 solid black;
+            background-color: gray;
+            text-align: center;
+        }
+
+        /* 伪等高布局 */
+        #content {
+            overflow: hidden;
+        }
+        #content .middle, #content .left, #content .right {
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+            height: 50px;
+            /* 垂直居中，行高与高度设置一样 */
+            line-height: 50px;
+            float: left;
+        }
+
+        /* 双飞翼布局 */
+        #content .middle {
+            background-color: pink;
+            width: 100%;
+        }
+        /* 通过给middle内部添加元素实现,没有使用定位，内容任然在文档流中 */
+        #content .m-inner {
+            padding: 0 200px;
+        }
+        #content .left, #content .right {
+            background-color: yellow;
+            width: 200px;
+            text-align: center;
+        }
+        #content .left {
+            margin-left: -100%;
+        }
+        #content .right {
+            margin-left: -200px;
+        }
+
+        /* 清除浮动影响 */
+        
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h4>header</h4>
+    </div>
+    <div id="content">
+        <div class="middle">
+            <div class="m-inner">
+                m-inner 
+            </div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div id="footer">
+        <h4>footer</h4>
+    </div>
+</body>
+</html>

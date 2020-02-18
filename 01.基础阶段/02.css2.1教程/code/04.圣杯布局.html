@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .header,
+        .footer {
+            height: 40px;
+            background-color: gray;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .content {
+            padding: 0 200px;
+            
+            overflow: hidden;
+        }
+        .content .middle {
+            float: left;
+            width: 100%;
+            background-color: pink;
+        }
+        .content .left {
+            position: relative;
+            left: -200px;
+            float: left;
+            width: 200px;
+            margin-left: -100%;
+            background-color: yellow;
+        }
+        .content .right {
+            position: relative;
+            right: -200px;
+            float: left;
+            width: 200px;
+            margin-left: -200px;
+            background-color: yellow;
+        }
+
+        .content .middle, .content .left, .content .right {
+            padding-bottom: 10000px; 
+            margin-bottom: -10000px;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        header
+    </div>
+    <div class="content clearfix">
+        <!-- 放到前面，为了让主体内容先加载出来 -->
+        <div class="middle">
+            middle<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+            add content<br/>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <!-- <div>a</div> -->
+    <div class="footer">
+        footer
+    </div>
+</body>
+
+</html>

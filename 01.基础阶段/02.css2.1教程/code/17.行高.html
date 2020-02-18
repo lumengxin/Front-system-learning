@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            line-height: 1;
+        }
+        p, span {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行高：
+    - 顶线，中线，基线，底线
+    - 行高，行距，半行距
+        行高：上下文本行的基线键的垂直高度
+        行距：一行底线到下一行顶线之间垂直距离
+    - 内容区，行内框，行框
+        内容区：底线和顶线包裹的区域。由字体大小确定，实际浏览器渲染略大。
+    -->
+    <div style="background-color: greenyellow;margin-top:50px;">
+        <span style="font-size: 30px;background-color: blue;">中文English中文English中文English中文English</span>
+    </div><br/><br/><hr/>
+
+    <div style="background-color: greenyellow;margin-top:50px;">
+        <span style="font-size: 30px;background-color: blue;line-height: 20px;">中文English中文English中文English中文English</span>
+    </div><br/><br/><hr/>
+
+    <!-- 处理大量的文本时，建议把行高设置比字体大 -->
+    <div style="background-color: greenyellow;margin-top:50px;">
+        <span style="font-size: 30px;background-color: blue;line-height: 60px;">中文English中文English中文English中文English</span>
+    </div><br/><br/><hr/><br/><br/>
+
+    <div class="wrap" style="font-size: 30px;line-height: 100%;border: 1px solid;background-color: #fab;">
+        <div class="inner" style="font-size: 20px;">
+            adofadijfioef
+        </div>
+    </div><br/><br/>
+    <div class="wrap" style="font-size: 30px;line-height: 1;border: 1px solid;background-color: #fab;">
+        <div class="inner" style="font-size: 20px;">
+            adofadijfioef
+        </div>
+    </div><br/><br/>
+
+    <div class="y-center" style="height: 200px;line-height: 200px;background-color:pink;">
+        垂直居中
+    </div>
+</body>
+</html>

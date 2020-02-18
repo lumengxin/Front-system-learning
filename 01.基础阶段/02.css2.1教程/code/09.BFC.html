@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BFC</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* BFC实现两列布局 */
+            .left {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+                float: left;
+            }
+            .right {
+                height: 200px;
+                background-color: yellow;
+                /* 开启BFC, 不与float box产生重叠 */
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- BFC: 
+        - Block formatting context 块级格式化上下文，独立的渲染区，
+        规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干
+        - 布局规则：
+          - 内部的Box会在垂直方向，一个接一个地放置
+          - BFC的区域不会与float box重叠
+          - 内部的box垂直方向距离由marign决定。属同一个BFC的两个相邻box的margin会发生重叠
+          - 计算BFC的高度时，浮动元素也参与计算(清除浮动，haslayout)
+          - BFC就是页面一个隔离的独立容器。容器里面的子元素不会影响到外面的元素
+        - 何时出现？
+          - 根元素
+          - float属性不为none
+          - position为absolute或fixed
+          - overflow不为visible
+          - display为inline-block table-caption flex inline-flex
+        -->
+        <!-- Box:
+        - css布局的对象和基本单位
+        - 元素的类型和display属性，决定了这个box类型。
+        - 不同类型的box,会参与不同的Formatting Context(一个决定如何渲染文档的容器)
+          - block-level box:
+            display属性为block,list-item,table的元素，会生成block-level box,并且参与block formatting context
+          - inline-level box:
+            display属性为inline,inline-block,inline-table的元素
+        -->
+        <!-- Formatting context:
+        - W3C CSS2.1规范中一个概念
+        - 页面中的一个渲染区域，有一套渲染规则，决定了元素如何定位，及和其他元素的关系和相互作用
+        - 常见的有BFC, IFC(不同浏览器规则不同)
+        -->
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </body>
+</html>
