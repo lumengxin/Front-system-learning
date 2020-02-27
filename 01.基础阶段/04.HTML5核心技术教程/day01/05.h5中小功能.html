@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #test3 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="test" class="zsf zsf1 zsf2"></div>
+
+    <div id="test2" data-person-zsf="张三丰"></div>
+
+    <div id="test3" contenteditable="true">
+        h5可编辑
+    </div>
+</body>
+<script>
+    var testNode = document.querySelector("#test")
+    console.log(testNode.className)
+
+    console.log(testNode.classList)
+    testNode.classList.add("zsf3")
+    testNode.classList.remove("zsf1")
+
+    /* 自定义属性 */
+    var test2 = document.querySelector("#test2")
+    console.log(test2.dataset.personZsf)
+    test2.dataset.personZsf = '111'
+</script>
+</html>

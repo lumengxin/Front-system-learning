@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap, ul, ul > li {
+            height: 100%;
+        }
+        ul > li {
+            background: url(img/g02.png);
+            /* 调整至视口大小 */
+            background-size: 100% 100%;
+        }
+        #ggl {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 自动清除时添加过渡 */
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <canvas id="ggl"></canvas>
+        <ul>
+            <li></li>
+        </ul> 
+    </div>
+    
+</body>
+<script>
+    var ggl = document.getElementById("ggl")
+    ggl.width = document.documentElement.clientWidth
+    ggl.height = document.documentElement.clientHeight
+
+    if (ggl.getContext) {
+        var ctx = ggl.getContext("2d")
+
+        var img = new Image()
+        img.src = "img/g01.png"
+        img.onload = function() {
+            draw()
+        }
+        
+        function draw() {
+
+            var flag = 0
+
+            ctx.drawImage(img, 0, 0, ggl.width, ggl.height)
+
+            ggl.addEventListener("touchstart", function(ev) {
+                ev = ev || event
+                // 获取第一个手指
+                var touchF = ev.changedTouches[0]
+
+                var x = touchF.clientX - ggl.offsetLeft
+                var y = touchF.clientY - ggl.offsetTop
+
+                // ctx在两个函数外部声明，可以共用属性
+                ctx.globalCompositeOperation = "destination-out"
+                ctx.lineWidth = 40
+                ctx.lineCap = "round"
+                ctx.lineJoin = "round"
+
+                ctx.save()
+                ctx.beginPath()
+                // ctx.arc(x, y, 20, 0, 360*Math.PI/180)
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + 1, y + 1)
+                // ctx.fill()
+                ctx.stroke()
+                ctx.restore()
+            })
+
+            ggl.addEventListener("touchmove", function(ev) {
+                ev = ev || event
+                var touchF = ev.changedTouches[0]
+
+                var x = touchF.clientX - ggl.offsetLeft
+                var y = touchF.clientY - ggl.offsetTop
+
+                ctx.save()
+                ctx.lineTo(x, y)
+                ctx.stroke()
+                ctx.restore()
+            })
+
+            ggl.addEventListener("touchend", function(ev) {
+                // debugger
+                var imgData = ctx.getImageData(0, 0, ggl.width, ggl.height)
+                var allPixel = imgData.width * imgData.height
+
+                for (var i = 0; i < allPixel; i++) {
+                    if (imgData.data[4 * i + 3] === 0) {
+                        flag++
+                    }
+                }
+                console.log(flag)
+
+                if (flag >= allPixel / 2) {
+                    ggl.style.opacity = 0
+                }
+            })
+
+            // 过渡完成时，移除canvas
+            ggl.addEventListener("transitionend", function() {
+                this.remove()
+            })
+        }
+    }
+</script>
+</html>

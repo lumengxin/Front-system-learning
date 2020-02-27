@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            1. 注意事项
+            - canvas的渲染速度极快，不会出现代码覆盖后延迟渲染的问题；同步
+            - 获取上下文时，先判断
+            - 画布宽高
+                -- 默认宽高 300px*150px
+                -- 一定要用html的attribute的形式来定义画布宽高
+                -- 通过css形式会缩放画布内的图像
+            - 绘制矩形
+                -- 边框宽度，是在偏移量上下分别渲染一半，可能出现小数边框而向上取整
+                -- canvas的api只支持一种图像的直接渲染：矩形
+
+            2. 画布api
+            - oc.getContext("2d")
+            - oc.width
+            - oc.height
+            - oc.toDataURL()
+
+            3. 上下文api
+            - ctx.fillRect(x,y,w,h): 填充矩形
+            - ctx.strokeRect(x,y,w,h): 带边框矩形
+            - ctx.fillStyle: 填充颜色
+                             背景 createPattern(image, repetition)
+                             渐变
+                                - 线性 createLinearGradient(x1,y1,x2,y2),返回的对象addColorStop(position,color)
+                                - 径向 createRadiaGradient(x1,y1,x2,y2),返回的对象addColorStop(position,color)
+            - ctx.strokeStyle: 边框颜色
+            - ctx.clearRect(0, 0, oc.width, oc.height): 清除整个画布
+                * 注意原点位置（清除第一象限）
+            - ctx.lineWidth: 线的宽度
+            - ctx.lineCap: 线两端样式
+            - ctx.lineJoin: 线连接处的样式
+            - ctx.moveTo(x,y): 将画笔抬起点到(x,y)
+            - ctx.lineTo(x,y): 将画笔移动到(x,y)
+            - ctx.rect(x,y,w,h): 画矩形
+            - ctx.arc(x,y,r,degS,degE,dir): 画圆
+            - ctx.arcTo(x1,y1,x2,y2,r): 画曲线
+                -- 结合moveTo(x,y)使用
+                -- (x,y):起始点,(x1,y1):控制点,(x2,y2):结束点
+            - ctx.quadraticCurveTo(x1,y1,x2,y2): 画二次贝赛尔曲线
+                -- 结合moveTo(x,y)使用
+                -- (x,y):起始点,(x1,y1):控制点,(x2,y2):结束点
+                -- 必须经过起始点和结束点
+            - ctx.bezierCurveTo(x1,y1,x2,y2,x3,y3): 画三次贝赛尔曲线
+                -- 结合moveTo(x,y)使用
+                -- (x,y):起始点,(x1,y1)(x2,y2):控制点,(x3,y3):结束点
+                -- 必须经过起始点和结束点
+            - ctx.beginPath(): 清除路径容器
+            - ctx.closePath(): 闭合路径  
+                -- fill()自动闭合；stroke需要手动闭合
+            - ctx.save(): 将画布当前状态(样式相关，变换相关)压入到样式栈中
+            - ctx.restore(): 将样式栈中栈顶的元素弹到样式容器中；图像最终渲染依赖样式容器
+            - ctx.translate(x,y): 将原点平移(x,y)
+            - ctx.rotate(弧度单位): 将坐标轴按顺时针方向旋转
+            - ctx.scale(因子): 缩放画布
+                -- 放大：画布中一个css像素所占据的物理面积变大，画布中包含的css
+                   像素个数变少，画布图像所包含的css像素个数不变
+
+            - ctx.drawImage(img, x, y, w, h): 画图
+                canvas中引入图片需要加载完再操作
+            - ctx.measureText("文本"): 返回一个持有文本渲染宽度的对象
+            - ctx.fillText()
+            - ctx.strokeText()
+            - ctx.font 
+            - ctx.textAlign 
+            - ctx.textBaseLine 
+            - shadowOffsetX = float, shadowColor = color ... 
+            - ctx.getImageData(x, y, w, h)
+                -- 返回ImageData对象：width, height, data
+            - ctx.putImageData(imgData, x, y)
+            - ctx.createImageData(w, h)
+                -- 返回imgdata对象，默认像素点信息rgba(0,0,0,0)
+            - ctx.globalAlpha 0~1
+            - ctx.globalCompositeOperation
+            - ctx.isPointInPath(x,y)
+
+        </code>
+    </pre>
+</body>
+</html>

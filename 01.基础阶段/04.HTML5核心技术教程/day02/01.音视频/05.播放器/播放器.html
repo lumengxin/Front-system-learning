@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet/less" href="less/index.less">
+</head>
+<body>
+   <!--  https://www.17sucai.com/preview/1111042/2019-04-16/videoTest/mp4/1.mp4
+    https://blz-videos.nosdn.127.net/1/OverWatch/AnimatedShots/Overwatch_AnimatedShot_Soldier76_Hero.mp4 -->
+    <div id="wrap">
+        <video preload="auto"
+            src="https://blz-videos.nosdn.127.net/1/OverWatch/AnimatedShots/Overwatch_AnimatedShot_Soldier76_Hero.mp4">
+        </video>
+        <div class="controls">
+            <div class="btns">
+                <span class="start"></span>
+                <span class="stop"></span>
+            </div>
+            <div class="progress">
+                <div class="progress-wrap">
+                    <div class="progress-block">
+
+                    </div>
+                </div>
+                <div class="progress-bar"></div>
+            </div>
+            <div class="others">
+                <div class="time">
+                    <span class="now">00:00:00</span>
+                    <span>/</span>
+                    <span class="all">00:00:00</span>
+                </div>
+                <div class="sound">
+                    <div class="switch">
+                        <span></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-wrap">
+                            <div class="progress-block">
+                            </div>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="full-screen">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.staticfile.org/less.js/3.11.1/less.min.js"></script>
+
+<script src="js/drag.js"></script>
+<script>
+    window.onload = function() {
+        var video = document.querySelector("#wrap > video")
+        var controls = document.querySelector("#wrap > .controls")
+        var progress = document.querySelector("#wrap > .controls > .progress")
+        var block = document.querySelector("#wrap > .controls > .progress > .progress-wrap > .progress-block")
+        var bar = document.querySelector("#wrap > .controls > .progress > .progress-bar")
+        
+        var start = document.querySelector("#wrap .btns .start")
+        var stop = document.querySelector("#wrap .btns .stop")
+
+        var allSpan = document.querySelector("#wrap > .controls > .others .all")
+        var nowSpan = document.querySelector("#wrap > .controls > .others .now")
+
+        var blockVoice = document.querySelector("#wrap > .controls > .others > .sound > .progress > .progress-wrap > .progress-block")
+        var barVoice = document.querySelector("#wrap > .controls > .others > .sound > .progress > .progress-bar")
+        var progressVoice = document.querySelector("#wrap > .controls > .others > .sound > .progress")
+        var switchNode =  document.querySelector("#wrap > .controls > .others > .sound > .switch")
+        var switchSpan =  document.querySelector("#wrap > .controls > .others > .sound > .switch > span")
+
+        var fullScreen =  document.querySelector("#wrap > .controls > .others > .full-screen")
+        var fullScreenSpan =  document.querySelector("#wrap > .controls > .others > .full-screen > span")
+
+
+        video.width = document.documentElement.clientWidth
+        video.height = document.documentElement.clientHeight - controls.offsetHeight
+
+        window.onresize = function() {
+            if (document.documentElement.clientWidth >= 600) {
+                video.width = document.documentElement.clientWidth
+                video.height = document.documentElement.clientHeight - controls.offsetHeight
+            }
+        }
+
+        /* 功能模块 */
+        var timer = 0
+        // 同步音量
+        var flag = 0
+        // 全屏标志
+        var isFullScreen = false
+
+        player()
+
+        function player() {
+            // 播放功能
+            start.onclick = function() {
+                if (video.paused) {
+                    // 暂停 -> 播放 显示暂停按钮 this指start
+                    _addClass(this, "active")
+                    video.play()
+
+                    timer = setInterval(move, 100)
+                } else {
+                    _removeClass(this, "active")
+                    video.pause()
+                    // 暂停时清除定时器
+                    clearInterval(timer)
+                }
+            }
+
+            // 停止功能
+            stop.onclick = function() {
+                _removeClass(start, "active")
+                video.pause()
+                clearInterval(timer)
+                
+                block.style.left = bar.style.width = 0 + "px"
+                video.currentTime = 0
+
+            }
+
+            // 进度条
+            progress.onclick = function(ev) {
+                ev = ev || event
+
+                _addClass(start, "active")
+                video.play()
+                timer = setInterval(move, 100)
+
+                var jumpProg = video.duration * ((ev.clientX - this.offsetLeft) / (progress.clientWidth - block.offsetWidth))
+                video.currentTime = jumpProg
+            }
+
+            // 时间显示
+            video.addEventListener("loadeddata", function() {
+                // allSpan.innerHTML = video.duration
+                allSpan.innerHTML = _formatTime(video.duration)
+            })
+
+            // 音量控制
+            blockVoice.style.left = barVoice.style.width = progressVoice.clientWidth - blockVoice.offsetWidth + "px"
+            switchNode.onclick = function() {
+                // 初始没有静音，音量为满格 1
+                if (video.muted) {
+                    video.muted = false 
+                    video.volume = 1
+                    _removeClass(switchSpan, 'active')
+
+                    flag = flag === 0 ? 1 : flag
+                    barVoice.style.width = blockVoice.style.left = (progressVoice.clientWidth - blockVoice.offsetWidth) * flag + "px"
+
+                } else {
+                    video.muted = true
+                    video.volume = 0
+                    _addClass(switchSpan, 'active')
+                    barVoice.style.width = blockVoice.style.left = 0 + "px"
+                }
+            }
+
+            // 全屏
+            fullScreen.onclick = function() {
+                if(isFullScreen) {
+                    // 全屏 ---> 不是全屏 --> remove
+                    _removeClass(fullScreenSpan,"active")
+                    isFullScreen = false
+                    if (document.exitFullscreen) {  
+                        document.exitFullscreen();  
+                    }  
+                    else if (document.mozCancelFullScreen) {  
+                        document.mozCancelFullScreen();  
+                    }  
+                    else if (document.webkitCancelFullScreen) {  
+                        document.webkitCancelFullScreen();  
+                    }
+                    else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                    }
+                } else {
+                    _addClass(fullScreenSpan,"active")
+                    isFullScreen = true
+                    var docElm = document.documentElement;
+                    //W3C  
+                    if (docElm.requestFullscreen) {  
+                        docElm.requestFullscreen();  
+                    }
+                    //FireFox  
+                    else if (docElm.mozRequestFullScreen) {  
+                        docElm.mozRequestFullScreen();  
+                    }
+                    //Chrome等  
+                    else if (docElm.webkitRequestFullScreen) {  
+                        docElm.webkitRequestFullScreen();  
+                    }
+                    //IE11
+                    else if (docElm.msRequestFullscreen) {
+                        docElm.msRequestFullscreen();
+                    }
+                }
+            }
+
+            
+            function move() {
+                var currentProg = (video.currentTime / video.duration) * (progress.clientWidth - block.offsetWidth)
+                block.style.left = bar.style.width = currentProg + "px"
+
+                nowSpan.innerHTML = _formatTime(video.currentTime)
+            }
+
+           
+        }
+
+        // 进度条拖动逻辑
+        var callback = {
+            move: function() {
+                // console.log("move")
+                // bar.style.width = block.offsetLeft + "px"
+                bar.style.width = this.offsetLeft + "px"
+
+                var scale = this.offsetLeft / (progress.clientWidth - block.offsetWidth)
+                video.currentTime = video.duration * scale
+
+                nowSpan.innerHTML = _formatTime(video.currentTime)
+
+            }
+        }
+        // 音量调拖动逻辑
+        var callbackVoice = {
+            move: function() {
+                barVoice.style.width = this.offsetLeft + "px"
+
+                var scale = this.offsetLeft / (progressVoice.clientWidth - blockVoice.offsetWidth)
+                flag = scale
+                video.volume = scale
+                if (video.volume == 0) {
+                    video.muted = true
+                    _addClass(switchSpan, 'active')
+                } else {
+                    _removeClass(switchSpan, 'active')
+                    video.muted = false
+                }
+            }
+        }
+        $.drag(block, callback)
+        $.drag(blockVoice, callbackVoice)
+
+        // 自定义工具类，兼容性高（也可使用自带的classList）
+        function _addClass(node, className) {
+            var reg = new RegExp("\\b" + className + "\\b")
+            if (!reg.test(node.className)) {
+                node.className += (" " + className)
+            }
+        }
+
+        function _removeClass(node, className) {
+            if (node.className) {
+                var reg = new RegExp("\\b" + className + "\\b")
+                var classes = node.className
+                node.className = classes.replace(reg, "")
+                if (/^\s*$/g.test(node.className)) {
+                    node.removeAttribute("class")
+                } else {
+                    node.removeAttribute("class")
+                }
+            }
+        }
+
+        function _formatTime(time) {
+            time = parseInt(time)
+
+            var h = padZero(Math.floor(time / 3600))
+            var m = padZero(Math.floor(time % 3600 / 60))
+            // var s = Math.round(time % 3600)
+            var s = padZero(Math.round(time - (h * 3600 + m * 60)))
+
+            return h + ":" + m + ":" + s
+        }
+        function padZero(num) {
+            var val = ""
+            if (num < 10) {
+                val = "0" + num
+            } else {
+                val = val + num
+            }
+            return val
+        }
+        
+    }
+    
+</script>
+
+</html>

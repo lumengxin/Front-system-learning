@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background-color: pink;
+        }
+        #test {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- canvas: 画布
+    - h5新增元素，使用js中的脚本绘制图形
+    - 默认宽高：300px 150px
+    -->
+    <!-- 不要用css指定宽高，会拉伸图形 -->
+    <canvas id="test" width="300" height="300">
+        <!-- 不支持时，会显示内容 -->
+        <span>您的浏览器暂不支持canvas元素！</span>
+    </canvas>
+</body>
+<script>
+    window.onload = function() {
+        // 获取画布
+        var canvas = document.querySelector("#test")
+        // 判断是否支持canvas
+        if (canvas.getContext) {
+            // 获取渲染上下文（画笔）
+            var ctx = test.getContext("2d")
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        1. 什么是attribute,property
+        - html标签的预定义和自定义属性统称为attribute
+        - js对象的直接属性，统称为property
+        2. 什么是布尔值属性，非布尔值属性
+        - property的属性值为布尔类型的，称为布尔值属性
+        3. attribute和property的同步关系
+        - 非布尔值属性：实时同步
+        - 布尔值属性：
+            property永远都不会同步attribute
+            在没有动过property时，attribute会同步property
+        4. 浏览器认property，用户操作的也是property
+        */
+
+
+        // 浏览器只认property, 用户操作的是property
+        window.onload = function () {
+            var zsf = document.querySelector("input[type=checkbox]");
+            var btn = document.querySelector("input[type=botton]");
+
+            btn.onclick=function(){
+                debugger
+                zsf.checked = true
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" name="zsf" />
+    <input type="button" value="test" />
+</body>
+<!-- <script>
+    var zsf = document.querySelector("input[type=checkbox]");
+    var btn = document.querySelector("input[type=botton]");
+
+    btn.onclick = function () {
+        debugger
+        zsf.checked = true
+    }
+</script> -->
+</html>

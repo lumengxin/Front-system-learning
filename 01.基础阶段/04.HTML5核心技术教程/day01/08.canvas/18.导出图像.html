@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="img" width="400" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById("img")
+
+        var ctx = canvas.getContext("2d")
+        ctx.fillStyle = "green"
+        // ctx.beginPath()
+        ctx.arc(100, 100, 50, 0, 360*Math.PI/180)
+        ctx.fill()
+        // ctx.beginPath()
+        ctx.arc(200, 200, 50, 0, 360*Math.PI/180)
+        ctx.fill()
+
+        // 导出图像
+        var image = canvas.toDataURL()
+        console.log(image)
+
+        // 绑定事件
+        canvas.onclick = function(ev) {
+            ev = ev || event
+            var x = ev.clientX - canvas.offsetLeft
+            var y = ev.clientY - canvas.offsetTop
+            if (ctx.isPointInPath(x, y)) {
+                alert(111)
+            }
+        }
+    </script>
+</body>
+</html>

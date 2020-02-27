@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var oc = document.getElementById("test")
+            oc.width = document.documentElement.clientWidth
+            oc.height = document.documentElement.clientHeight
+            
+            var ctx = oc.getContext("2d")
+            ctx.fillStyle = "red"
+            /* 1.全局透明度 */
+            ctx.globalAlpha = .9
+            ctx.fillRect(50, 50, 100, 100)
+
+            /* 2.覆盖合成 */
+            // source-in: 只留下源与目标重叠部分。最新的为源
+            ctx.globalCompositeOperation = "source-in"
+            // 目标在上面
+            ctx.globalCompositeOperation = "destination-over"
+            ctx.fillStyle = "green"
+            ctx.fillRect(100, 100, 100, 100)
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="test"></canvas>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle, #curve, #bse {
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /* 画圆：
+            arc(x, y, radius, startAngle, endAngle, antickockwise)
+            画一个以(x,y)为圆心radius为半径的圆，弧度为单位
+            ture: 逆时针 false:顺时针
+            */
+            var circle = document.querySelector("#circle")
+            if (circle.getContext) {
+                var ctx = circle.getContext("2d")
+
+                ctx.beginPath();
+                ctx.moveTo(100, 100)
+                // ctx.arc(100, 100, 50, 0, 270*Math.PI/180)
+                ctx.arc(100, 100, 50, 0, 90*Math.PI/180, true)
+                ctx.closePath()
+                ctx.stroke()
+            }
+
+            /*
+            arcTo(x1, y1, x2, y2, radius)
+            根据给定的控制点和半径画一段圆弧
+            */
+            var curve = document.querySelector("#curve")
+            if (curve.getContext) {
+                var ctx2 = curve.getContext("2d")
+
+                ctx2.beginPath()
+                ctx2.moveTo(50, 50)
+                ctx2.lineTo(200, 50)
+                ctx2.lineTo(200, 200)
+                ctx2.stroke()
+
+                ctx2.beginPath()
+                /* 三个点形成一个角，半径50圆向里靠，得到弧线 */
+                ctx2.moveTo(50, 50)
+                ctx2.arcTo(200, 50, 200, 200, 50)
+                ctx2.stroke()
+            }
+
+            var bse = document.querySelector("#bse")
+            if (bse.getContext) {
+                var ctx3 = bse.getContext("2d")
+
+                // ctx3.beginPath()
+                // ctx3.moveTo(50, 50)
+                // ctx3.lineTo(300, 0)
+                // ctx3.lineTo(200, 200)
+                // ctx3.lineTo(300, 300)
+                // ctx3.stroke()
+
+                ctx3.beginPath()
+                ctx3.moveTo(50, 50)
+                // 二次贝赛尔曲线
+                // ctx3.quadraticCurveTo(300, 0, 200, 200)
+
+                // 三次贝赛尔曲线
+                ctx3.bezierCurveTo(300, 0, 200, 200, 300, 300)
+                ctx3.stroke()
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="circle" width="300" height="300"></canvas><br/><br/><hr/>
+
+    <canvas id="curve" width="300" height="300"></canvas><br/><br/><hr/>
+
+    <canvas id="bse" width="300" height="300"></canvas>
+   
+</body>
+</html>

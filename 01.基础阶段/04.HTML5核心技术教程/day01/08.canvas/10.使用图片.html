@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #picture {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    1. 插入图片：必须等图片加载完毕
+    2. 设置背景：
+    -->
+    <canvas id="picture" width="300" height="900"></canvas>
+</body>
+<script>
+    var canvas = document.querySelector("#picture")
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d")
+
+        var img = new Image()
+        img.src = "../../../01.HTML+CSS教程/code/icon.png" 
+        img.onload = function() {
+            draw()
+        }
+
+        function draw() {
+            /* 插入图片 */
+            // ctx.drawImage(img, 100, 100, 200, 200)
+            ctx.drawImage(img, 0, 0, img.width, img.height)
+
+            /* 设置背景 */
+            var pattern = ctx.createPattern(img, "repeat")
+            ctx.fillStyle = pattern
+            ctx.fillRect(0, 100, 100, 100)
+
+            /* 渐变 */
+            // 线性渐变
+            var gradient = ctx.createLinearGradient(0, 400, 200, 600)
+            // 径向渐变
+            // var gradient = ctx.createRadiaGradient(100, 500, 80, 100, 500, 100)
+            gradient.addColorStop(0, "red")
+            gradient.addColorStop(0.5, "yellow")
+            gradient.addColorStop(0.7, "pink")
+            gradient.addColorStop(1, "green")
+            ctx.fillStyle = gradient
+            ctx.fillRect(0, 400, 200, 200)
+        }
+    }
+</script>
+</html>

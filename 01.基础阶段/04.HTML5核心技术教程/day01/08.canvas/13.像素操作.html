@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 像素操作
+    通过ImageData对象操纵像素数据，直接读取或数据数组写入该对象中
+    getImageData(sx, sy, sw, sh)
+    -->
+
+    <canvas id="pixel"></canvas>
+</body>
+<script>
+    var pixel = document.getElementById("pixel")
+    pixel.width = document.documentElement.clientWidth
+    pixel.height = document.documentElement.clientHeight
+
+    if (pixel.getContext) {
+        var ctx = pixel.getContext("2d")
+        // ctx.fillStyle = "rgba(255, 192, 203, .8)"
+        ctx.fillRect(0, 0, 100, 100)
+
+        /* 得到场景像素数据 */
+        // 获取矩形所有像素信息
+        // imgData: width 横向像素;height 纵向像素;data 数组，每个像素rgba信息
+        var imgData = ctx.getImageData(0, 0, 100, 100)
+        // console.log(imgData)
+
+        /* 修改像素数据 */
+        for (var i = 0; i < imgData.data.length; i++) {
+            imgData.data[4 * i + 3] = 100
+        }
+
+        /* 写入像素数据 */
+        ctx.putImageData(imgData, 0, 0)
+
+        /* 创建像素数据 */
+        // 默认rgba(0, 0, 0, 0) 黑色透明 不可见
+        var createImgData = ctx.createImageData(100, 100)
+        for (var i = 0; i < createImgData.data.length; i++) {
+            createImgData.data[4 * i + 3] = 255
+        }
+        ctx.putImageData(createImgData, 200, 200)
+    }
+</script>
+</html>

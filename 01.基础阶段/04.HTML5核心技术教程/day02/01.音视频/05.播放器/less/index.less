@@ -1,0 +1,148 @@
+@import 'reset.less';
+
+@bg-color: #383838;
+@control-height: 25px;
+
+.progress-mixin() {
+    position: relative;
+    &>.progress-wrap {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #737373;
+        margin-top: 11px;
+        .progress-block {
+            // 拖拽需要开启绝对定位
+            position: absolute;
+            width: 9px;
+            height: 7px;
+            background-color: white;
+            border-radius: 2px;
+            margin-top: -2px;
+        }
+    }
+    &>.progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: pink;
+        margin-top: 11px;
+    }
+}
+
+#wrap {
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: @bg-color;
+    /* 解决上下间的空隙 */
+    font-size: 0;
+    .controls {
+        min-width: 600px;
+        position: relative;
+        height: @control-height;
+        background-color: #2A2A2A;
+        .btns {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 55px;
+            height: @control-height;
+            // background-color: yellow;
+            text-align: center;
+            &>span {
+                display: inline-block;
+                width: 9px;
+                height: 11px;
+                background: url(../img/icon.png) no-repeat;
+                margin-top: 7px;
+                &:nth-child(1) {
+                    background-position: 0px -23px;
+                    margin-right: 10px;
+                    &.active {
+                        background-position: 0px -11px;
+                    }
+                }
+                &:nth-child(2) {
+                    background-position: 0px 0px;
+                }
+            }
+        }
+        & >.progress {
+            // position: relative;
+            margin: 0 230px 0 55px;
+            height: @control-height;
+            // background-color: pink;
+            // min-width: 600px;
+            .progress-mixin()
+        }
+        .others {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 230px;
+            height: @control-height;
+            z-index: 2;
+            &>div {
+                height: @control-height;
+                float: left;
+            }
+            .time {
+                width: 120px;
+                /* #wrap中重置过字体，故看不到 */
+                font-size: 12px;
+                color: white;
+                line-height: @control-height;
+                text-align: center;
+            }
+            .sound {
+                width: 80px;
+                // background-color: #fab;
+                &>div {
+                    height: @control-height;
+                    float: left;
+                }
+                .switch {
+                    width: 20px;
+                    // background-color: blue;
+                    text-align: center;
+                    &>span {
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        margin: 7px auto;
+                        background: url(../img/icon.png) no-repeat;
+                        background-position: 0 -34px;
+                        &.active {
+                            background-position: 0 -46px;
+                        }
+                    }
+                }
+                .progress {
+                    width: 60px;
+                    // background-color: yellow;
+                    .progress-mixin()
+                }
+            }
+            .full-screen {
+                width: 30px;
+                height: @control-height;
+                // background-color: blue;
+                text-align: center;
+                &>span {
+                    display: inline-block;
+                    width: 11px;
+                    height: 11px;
+                    margin: 7px auto;
+                    background: url(../img/icon.png) no-repeat;
+                    background-position: 0 -58px;
+                    &.active {
+                        background-position: 0 -71px;
+                    }
+                }
+            }
+        }
+    }
+}

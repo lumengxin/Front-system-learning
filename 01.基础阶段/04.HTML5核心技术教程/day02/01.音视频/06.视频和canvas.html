@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #oc {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <video width="0" height="0" autoplay loop
+        src="https://www.17sucai.com/preview/1111042/2019-04-16/videoTest/mp4/1.mp4">
+    </video>
+    <canvas id="oc" width="300" height="300"></canvas>
+</body>
+<script>
+    var oc = document.querySelector("#oc")
+    var video = document.querySelector("video")
+
+    if (oc.getContext) {
+        var ctx = oc.getContext("2d")
+
+        video.addEventListener("loadeddata", function() {
+            setInterval(function() {
+                ctx.drawImage(video, 0, 0, oc.width, oc.height)
+            })
+        })
+    }
+</script>
+</html>

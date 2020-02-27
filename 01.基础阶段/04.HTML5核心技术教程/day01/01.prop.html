@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+    <form action="" method="post">
+        你爱好的运动是？
+        <input type="checkbox" id="checkedAllOrNot">全选/全不选<br/>
+        <input type="checkbox" name="items" value="足球">足球
+        <input type="checkbox" name="items" value="篮球">篮球
+        <input type="checkbox" name="items" value="乒乓球">乒乓球
+        <input type="checkbox" name="items" value="羽毛球">羽毛球<br/>
+        <input type="button" id="checkedAll" value="全 选">
+    </form><br/><br/><hr/>
+
+    
+    <div>
+        <input type="checkbox" checked="checked" zdy="zdy">
+        <input type="checkbox" checked="true">
+        <input type="checkbox" checked="false">
+        <input type="checkbox" checked="">
+        <input type="checkbox" checked=null>
+        <input type="checkbox" checked=undefined>
+        <input type="checkbox" checked=0>
+        <input type="checkbox">
+    </div>
+
+    <script>
+        $(function() {
+            $("#checkedAll").click(function() {
+                $(":checkbox[name=items]").prop("checked", true);
+                $("#checkedAllOrNot").prop("checked", true);
+            })
+        })
+    </script>
+</body>
+</html>

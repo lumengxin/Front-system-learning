@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    1.容器：
+        -常见的.avi,.mp4仅仅是容器的格式，只决定怎么将视频存储起来，不关系存储
+        内容，类似于.zip。
+        -视频文件(容器)包含了音频轨道、视频轨道和其他一些元数据(封面、标题、字幕..)
+        -主流视频格式：MPEG-4 .mp4; Flash .flv; Ogg .ogv; WebM .webm; 音频视频交错 .avi
+         音频：MPEG-3 .mp3; Acc .acc; Ogg .ogg
+    2.编解码器：
+        -音频/视频解码或者编码是一组算法，用来对一段特定音频解码或编码。
+        -原始媒体文件巨大，不编码数据量非常大；不解码，无法将编码后的数据重组为原始的媒体数据
+        -视频编解码器：H.264,VP8, Ogg Theora
+         音频：AAC,MPEG-3,OGG Vorbis
+    * 目前还没有一种编解码和容器的组合能应用于所有的浏览器中
+    3.处理视频
+        -制作一个Ogg容器使用Theora视频和Vorbis音频的版本
+        -制作另一个版本，使用WebM视频容器（VP8 + Vorbis）
+        -在制作一个版本，使用MP4容器，并使用H.264基本配置的视频和ACC低配的音频
+        -链接上面3个文件到同一个video元素中，并向后兼容基于Flash的视频播放器
+    4.格式化 FFmpeg制作
+    * ffmpeg添加至环境变量：
+    右键此电脑(或者找到控制面板) -> 属性 -> 高级系统设置 -> 环境变量 -> 系统变量(或者用户变量)
+    -> 找到Path -> 编辑 -> 新建 -> E:\FilesSofts\ffmpeg\bin (至ffmpeg.exe上级，最好无中文) -> 确定
+    重启打开新的命令窗口，输入ffmpeg。有输出内容，则成功。
+    *
+    - MP4: ffmpeg -i test.mp4 -c:v libx264 -s 1280x720 -b:v 1500k -profile:v high -level 3.1 -c:a aac -ac 2 -b:a 160k -movflags faststart OUTPUT.mp4
+    - WebM: ffmpeg -i test.mp4 -c:v libvpx -s 1280*720 -b:v 1500k -c:a libvorbis -ac 2 -b:a 160k OUTPUT.webm
+    - Ogg: ffmpeg -i test.mp4 -c:v libtheora -s 1280*720 -b:v 1500k -c:a libvorbis -ac 2 -b:a 160k OUTPUT.ogv
+    - Mp3: ffmpeg -i test.mp3 -c:a libmp3lame -ac 2 -b:a 160k OUTPUT.mp3
+    - Ogg音频: ffmpeg -i test.mp3 -c:a libvorbis -ac 2 -b:a 160k OUTPUT.ogg
+    - ACC音频: ffmpeg -i test.mp3 -c:a aac -ac 2 -b:a 160k OUTPUT.aac
+    -->
+    <video controls width="620">
+        <source src="test.mp4" type="video/mp4"></source>
+        <source src="OUTPUT.webm" type="video/mp4"></source>
+        <source src="OUTPUT.ogv" type="video/ogv"></source>
+        当前浏览器不支持video直接播放，点击下载视频: <a href="test.mp4">下载视频</a>
+    </video>
+    <!-- <video controls 
+        src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4">
+    </video> -->
+    <br/><br/>
+
+    <audio controls>
+        <!-- <source src="OUTPUT.mp3" type="audio/mpeg"></source> -->
+        <source src="OUTPUT.ogg" type="audio/ogg;codecs='voribis'"></source>
+        <source src="OUTPUT.aac" type="audio/aac"></source>
+    </audio>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text, #center {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="text" width="400" height="400"></canvas><br/><br/><hr/>
+
+    <canvas id="center" width="400" height="400"></canvas><br/><br/><hr/>
+</body> 
+<script>
+    var text = document.querySelector("#text")
+
+    if (text.getContext) {
+        var ctx = text.getContext("2d")
+         
+        ctx.fillStyle = "green" 
+        // font必须有大小 字体
+        ctx.font = "40px sans-serif"
+        // 以文本(中心)对齐
+        ctx.textAlign = "center"
+        // 当前文本基线
+        ctx.textBaseline = "middle"
+        ctx.fillText("张三丰", 100, 100)
+        ctx.strokeText("张三丰", 100, 100)
+    }
+
+    /* canvas水平垂直居中 */
+    var oC = document.getElementById("center")
+    var oGC = oC.getContext("2d")
+    oGC.font = "60px impact"
+    oGC.textBaseline = "middle"
+    var w = oGC.measureText("张三丰").width
+    oGC.fillText("张三丰", (oC.width - w)/2, (oC.height - 60)/2)
+</script>
+</html>

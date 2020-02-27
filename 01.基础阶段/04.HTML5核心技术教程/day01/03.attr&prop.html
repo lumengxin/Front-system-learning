@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" checked="checked" name="zsf">
+
+    <script>
+        /* 
+        布尔值属性：property是布尔值类型
+        非布尔值属性：property是非布尔值类型
+        */
+
+        /* 
+        非布尔值属性：不管什么情况，attribute和property都会同步
+        */
+        /* var zsf = document.querySelector("input[type=checkbox]")
+
+        // Watch添加：zsf.name; zsf.attributes.name.nodeValue
+        debugger
+        zsf.setAttribute("name", "zsf1")
+        zsf.setAttribute("name", "zsf2")
+        zsf.setAttribute("name", "zsf3")
+
+        zsf.name="zsf4"
+        zsf.name="zsf5"
+        zsf.name="zsf6"
+
+        zsf.setAttribute("name", "zsf7")
+        zsf.setAttribute("name", "zsf8")
+        zsf.setAttribute("name", "zsf9") */
+
+        /* 
+        布尔值属性：
+        - 改变property时，不会同步attribute; 
+        - 没有动过property时：attribute会同步property
+          一旦动过property时：attribute不会同步property
+        */
+        var zsf = document.querySelector("input[type=checkbox]")
+
+        // Watch添加：zsf.checked; zsf.attributes.checked.nodeValue
+        debugger
+        zsf.setAttribute("checked", "zsf1")
+        zsf.setAttribute("checked", "zsf2")
+        zsf.setAttribute("checked", "zsf3")
+
+        zsf.checked="zsf4"
+        zsf.checked="zsf5"
+        zsf.checked="zsf6"
+        
+        zsf.checked=false
+
+        zsf.setAttribute("checked", "zsf7")
+        zsf.setAttribute("checked", "zsf8")
+        zsf.setAttribute("checked", "zsf9")
+    </script>
+</body>
+</html>

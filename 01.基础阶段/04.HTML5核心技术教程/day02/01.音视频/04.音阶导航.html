@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/less">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        @bg-color: pink;
+
+        body {
+            background-color: @bg-color;
+        }
+
+        .nav {
+            width: 910px;
+            height: 36px;
+            background-color: deeppink;
+            margin: 200px auto;
+            list-style: none;
+            border: 1px solid black;
+            overflow: hidden;
+            li {
+                float: left;
+                height: 100%;
+                width: 100px;
+                text-align: center;
+                line-height: 38px;
+                &:not(:last-child) {
+                    border-right: 1px solid black;
+                }
+                a {
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                }
+                .down {
+                    height: 100%;
+                    background-color: yellow;
+                    transition: 1.5s;
+                }
+                &:hover .down {
+                    transform: translateY(-38px);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <audio></audio>
+        <ul class="nav">
+            <li data-flag="a">
+                <a href="javascript:;">我的主页</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">头条新闻</a>
+                <div class="down"></div>
+            </li>
+            <li data-flag="b">
+                <a href="javascript:;">明星</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">旅游度假</a>
+                <div class="down"></div>
+            </li>
+            <li data-flag="c">
+                <a href="javascript:;">最新影视</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">电视剧</a>
+                <div class="down"></div>
+            </li>
+            <li data-flag="d">
+                <a href="javascript:;">正品团购</a>
+                <div class="down"></div>
+            </li>
+            <li>
+                <a href="javascript:;">热门资讯</a>
+                <div class="down"></div>
+            </li>
+            <li data-flag="e">
+                <a href="javascript:;">科学之家</a>
+                <div class="down"></div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/less.js/3.11.1/less.js"></script>
+<script>
+    var liNodes = document.querySelectorAll(".nav>li")
+    var audio = document.querySelector("audio")
+
+    for (var i = 0; i < liNodes.length; i++) {
+        liNodes[i].addEventListener("mouseenter", function() {
+            // var flag = this.getAttribute("data-flag")
+            var flag = this.dataset.flag === undefined ? this.getAttribute("data-flag") : this.dataset.flag
+            if (flag) {
+                audio.src = "http://s8.qhimg.com/share/audio/piano1/" + flag + "4.mp3"
+                audio.play()
+            }
+            
+        })
+    }
+
+</script>
+</html>

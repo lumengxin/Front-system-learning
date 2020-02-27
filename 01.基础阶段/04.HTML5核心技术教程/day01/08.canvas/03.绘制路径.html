@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #path, #pathRect, #saveRect {
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector("#path")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+
+                ctx.strokeStyle = "pink"
+                ctx.fillStyle = "green"
+                ctx.lineWidth = 4
+
+                ctx.moveTo(50, 50)
+                ctx.lineTo(50, 100)
+                ctx.lineTo(100, 100)
+                // ctx.lineTo(50, 50)
+                // ctx.closePath()
+                // fill方法会自动合并路径
+                ctx.fill()
+
+                ctx.beginPath()
+                ctx.moveTo(100, 50)
+                ctx.lineTo(100, 100)
+                ctx.lineTo(150, 100)
+                ctx.closePath()
+                ctx.stroke()
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="path"></canvas><br/><br/><hr/>
+
+    <canvas id="pathRect" width="300px" height="300px"></canvas><br/><br/><hr/>
+    <script>
+        var canvas = document.querySelector("#pathRect")
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")
+            ctx.rect(50, 50, 100, 100)
+            // ctx.fill()
+            ctx.stroke()
+
+            ctx.strokeStyle = "pink"
+            ctx.lineWidth = 10
+            ctx.lineCap = "round" 
+
+            ctx.beginPath()
+            ctx.moveTo(250, 100)
+            ctx.lineTo(250, 200)
+            ctx.stroke()
+        }
+    </script>
+
+    <canvas id="saveRect" width="300px" height="300px"></canvas>
+    <script>
+        var canvas = document.querySelector("#saveRect")
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")
+            
+            ctx.save()
+            ctx.fillStyle = "pink" 
+            ctx.save()
+            ctx.fillStyle = "red" 
+            ctx.save()
+            ctx.fillStyle = "green" 
+
+            // ctx.restore()
+            ctx.restore()
+            ctx.fillRect(50, 50, 100, 100)
+        }
+    </script>
+</body>
+</html>

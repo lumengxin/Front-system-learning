@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="birds"></canvas>
+</body> 
+<script>
+    var birds = document.querySelector("#birds")
+
+    birds.width = document.documentElement.clientWidth
+    birds.height = document.documentElement.clientHeight 
+
+    if (birds.getContext) {
+        var context = birds.getContext("2d")
+        var flag = 0
+        var speed = 0
+
+        setInterval(function() {
+            context.clearRect(0, 0, birds.width, birds.height)
+
+            speed += 10
+            flag++
+            if (flag === 9) {
+                flag = 1
+            }
+
+            var img = new Image()
+            img.src="img/q_r" + (flag) + ".jpg" 
+            img.onload = function() {
+                draw(this)
+            }
+        }, 100)
+
+        function draw(img) {
+            context.drawImage(img, speed, 0)
+        }
+    }
+</script>
+</html>

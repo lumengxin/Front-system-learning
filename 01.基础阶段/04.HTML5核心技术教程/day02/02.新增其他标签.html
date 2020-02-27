@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* placeholder或after,before等伪类无法渲染dom中 */
+        input::-webkit-input-placeholder{
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.状态标签
+    - 1.1.meter:用来显示已知范围的标量值或分数值
+        value: 当前数值
+        min(max): 值域的最小边界
+        low(high): 定义了低值区间的上限值
+        optimum: 用来指示最优、最佳取值
+    - 1.2.progress: 用来显示一项任务的完成进度
+    ---- 2.列表标签
+        datalist:包含一组option元素，表示其表单控件的可选值，id必须和input中list一致
+        details:一个ui小部件，用户可以从其中检索附加信息
+        summary:用作一个details元素的内容摘要
+    ---- 3.注释标签 ruby rt
+    ---- 4.标记标签 mark
+    -->
+    <meter value=".8"></meter>
+    <meter value="80" min="20" max="100"></meter>
+    <meter value="39" min="20" max="100" low="40" high="60"></meter><br/><br/><hr/>
+
+    <progress></progress>
+    <progress value="50" max="100"></progress><br/><br/><hr/>
+
+    <input type="text" placeholder="请输入姓名.." list="search"></input>
+    <datalist id="search">
+        <option value="1">zhang</option>
+        <option value="2">lu</option>
+        <option value="3">liu</option>
+    </datalist>
+    <details open>
+        <summary>虚函数发动机安防</summary>
+        <p>防抖</p>
+        <p>粉底</p>
+        <p>偶读</p>
+    </details><br/><br/><hr/>
+
+    <span><ruby>嚄<rt>ou</rt>不怕不怕</ruby></span><br/><br/><hr/>
+
+    <span>发的哦啊地方我的骄傲附近偶滴放到<mark>迪欧发送到</mark>附带积分</span>
+
+</body>
+</html>

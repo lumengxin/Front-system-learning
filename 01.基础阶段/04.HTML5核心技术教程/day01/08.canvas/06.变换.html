@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 变换： 
+    - translate(x,y): 移动canvas原点到一个不同的位置
+    - rotate(angle): 旋转，顺时针，弧度为单位
+    - scale(x,y): 缩放
+    -->
+    <canvas id="transform" width="300" height="300" style="background-color: pink;"></canvas>
+</body>
+<script>
+    var canvas = document.querySelector("#transform")
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d")
+        ctx.translate(50, 50)
+        ctx.translate(50, 50)
+        ctx.rotate(45*Math.PI/180)
+        // 放大是css像素面积，区域内css像素个数变少
+        ctx.scale(.5, .5)
+        ctx.beginPath()
+        ctx.fillRect(0, 0, 100, 100)
+    }
+</script>
+</html>

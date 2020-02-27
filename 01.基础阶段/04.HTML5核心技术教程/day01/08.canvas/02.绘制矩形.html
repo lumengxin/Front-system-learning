@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background-color: pink;
+        }
+        #rect {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- canvas(性能极高)只支持一种原生图形绘制，矩形。其他至少需要生成一条路径
+    - 1. 绘制矩形
+        -- 填充矩形 fillRect(x, y, width, height)
+        -- 矩形边框 strokeRect(x, y, width, height)
+        -- 清除指定矩形区域，让清除部分完全透明 clearRect(x, y, widht, height)
+    - 2. 添加样式和颜色
+        fillStyle: 填充颜色（默认黑色）
+        strokeStyle: 轮廓颜色（默认黑色）
+        lineWidth: 绘线粗细（默认1.0）
+    - 3. lineWidth & 覆盖渲染（代码从上向下，下面覆盖上面）
+    - 4. lineJoin: 设置线条与线条间结合处的样式（默认miter）
+        round:圆角 bevel:斜角 miter:直角
+    -->
+    <canvas id="rect" width="300" height="300">
+        <span>您的浏览器暂不支持canvas元素！</span>
+    </canvas>
+</body>
+<script>
+    window.onload = function() {
+        var canvas = document.querySelector("#rect")
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")
+
+            /* 普通js代码顺序放后面无影响，js代码读取极快，浏览器渲染前完成
+               canvas中不行，性能极快（同步）
+            */
+            ctx.fillStyle = "blue"
+            ctx.strokeStyle = "red"
+            ctx.lineWidth = 10
+            ctx.lineJoin = 'bevel'
+
+            ctx.fillRect(0, 0, 100, 100)
+            // (100, 100)位置内外0.5px绘制边框，css不支持小数，导致最终为2px边框 
+            ctx.strokeRect(100, 100, 100, 100)
+            // ctx.strokeRect(100.5, 100.5, 100, 100)
+            ctx.clearRect(100, 100, 100, 100)
+        }
+    }
+    
+</script>
+</html>

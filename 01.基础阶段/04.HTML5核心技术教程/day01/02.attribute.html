@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- attributes: 
+    - html预定义属性
+    - html自定义属性
+    -->
+    <div>
+        <input type="checkbox" checked="checked" zdy="zdy">
+    </div>
+
+    <script>
+        /* 针对控制台中无法打断点的地方
+        * 右键 zdy 添加到watch中，或者watch中添加
+        */
+        debugger
+        var zdy = document.querySelector("input[type=checkbox]")
+    </script>
+
+    <!-- property: js原生对象的直接属性
+         每一个预定义的attribute都会有一个property与之duiy
+    -->
+    <script>
+        var zsf = {
+            name: "zsf",
+            height: 140,
+            weight: 120
+        }
+    </script>
+</body>
+</html>

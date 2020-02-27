@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.video标签属性
+    - width, height, poster
+    - src, controls, autoplay, loop, muted
+    - preload: none 提示浏览器该视频不需要缓存
+               metadata 抓取元数据
+               auto 视频优先加载
+               空字符串：指auto
+         2.audio标签属性
+    - src, controls, autoplay, loop, muted, preload
+    -->
+    <video src="test.mp4" poster="../../day01/08.canvas/img/g02.png"
+        controls width="500" height="500" preload="metadata">
+    </video>
+
+    <audio src="test.mp3" autoplay loop></audio>
+</body>
+</html>

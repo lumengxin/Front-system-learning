@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="button1"></input>
+    <input type="button" value="button2"></input>
+    <input type="button" value="让button1开启全局捕获"></input>
+</body>
+<script>
+    /* 
+    谷歌中，没有全局捕获；火狐中，有定义但是没有实际作用
+    ie中，专治各种不服
+    */
+    /* element.setCapture: 在处理一个 mousedown 事件过程中调用这个方法来把全部的鼠标事件
+    重新定向到这个元素，直到鼠标按钮被释放或者 document.releaseCapture() 被调用。
+
+       document.releaseCature: 如果该 document 中的一个元素之上当前启用了
+    鼠标捕获，则释放鼠标捕获。通过调用 element.setCapture() 实现在一个元素上启用鼠标捕获。       语法
+    */
+    var btns = document.querySelectorAll("input[type=button]")
+    btns[0].mousedown = function() {
+        alert("botton1")
+    }
+    btns[1].mousedown = function() {
+        alert("botton2")
+    }
+    btns[2].mousedown = function() {
+        btns[0].setCapture()
+    }
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        用户名：<input type="text" autofocus required name="username"><br/>
+        密码：<input type="password" required name="password"><br/>
+        <input type="submit" value="提交">
+    </form>
+</body>
+<script>
+    var inputE1 = document.querySelector("input[type=text]")
+    var submit = document.querySelectorAll("input")[2]
+
+    // inputE1.addEventListener("invalid", function() {
+    //     console.log('验证失败')
+    //     console.log(this.validity)
+    // })
+    submit.onclick = function() {
+        var val = inputE1.value 
+        if (val === "zsf") {
+            inputE1.setCustomValidity("请不要输入敏感词")
+        } else {
+            inputE1.setCustomValidity("")
+        }
+    }
+</script>
+</html>

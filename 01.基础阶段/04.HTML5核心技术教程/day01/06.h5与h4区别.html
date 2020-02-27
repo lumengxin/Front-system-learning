@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- 2.DOCTYPE: Document Type Declaration, 文档类型声明DTD
+    告诉浏览器以何种模式渲染（前面最好不要加任何内容）
+- 三种模式：standards mode(strict mode),almost standards mode,quirks mode
+-->
+<html lang="en">
+<head>
+    <!-- 1.charset:告诉浏览器以何种方式解码，和编辑器编码格式一致 -->
+    <meta charset="UTF-8">
+    <!-- h4中，content表明页面的"内容类型"(MIME类型)；h5移植到http协议中了 -->
+    <meta http-equiv="Content-Type" content="text/html; chartset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .test {
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+            border: 50px solid blue;
+            margin: 50px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- html5: 定义html标准的最新版本
+    - 是一个新版本的html语言，具有新的元素、属性和行为。
+    - 有更大的技术集，允许更多样化和强大的网站和应用程序。
+    html优势：
+    - 跨平台，快速迭代，降低成本，导流入口多，分发效率高
+    -->
+    <div class="test">盒模型</div>
+</body>
+
+<script>
+    // 查看加载模式：BackCompat怪异模式，CSS1Compat标准模式
+    console.log(document.compatMode)
+</script>
+</html>
