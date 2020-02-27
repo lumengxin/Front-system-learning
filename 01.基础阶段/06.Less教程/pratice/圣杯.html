@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet/less" href="index.less"> -->
+    <style type="text/less">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-width: 600px;
+        }
+
+        /* varible */
+        @bgColor: pink;
+        @bgHeaderColor: gray;
+        @bgFooterColor: gray;
+        @bgContent: red;
+        @bgLeftColor: green;
+        @bgRrightColor: blue;
+
+        @asideWidth: 200px;
+
+        /* minxin */
+        .textCenter(@fontSize: 30px, @textColor: black) {
+            text-align: center;
+            font-size: @fontSize;
+            color: @textColor;
+        }
+
+        .container {
+            background-color: @bgColor;
+            .header {
+                .textCenter(40px, yellow);
+                height: 45px;
+                background-color: @bgHeaderColor;
+            }
+            .main {
+                overflow: hidden;
+                padding: 0 @asideWidth;
+                .content, .left, .right {
+                    float: left;
+                    padding-bottom: 1000px;
+                    margin-bottom: -1000px;
+                }
+                .content {
+                    width: 100%;
+                    background-color: @bgContent;
+                }
+                .left {
+                    position: relative;
+                    left: -@asideWidth;
+                    margin-left: -100%;
+                    width: @asideWidth;
+                    background-color: @bgLeftColor;
+                    height: 500px;
+                }
+                .right {
+                    position: relative;
+                    right: -@asideWidth;
+                    margin-left: -@asideWidth;
+                    width: @asideWidth;
+                    background-color: @bgRrightColor;
+                }
+            }
+            .clearfix {
+                display: block;
+                zoom: 1;
+                &:after {
+                    content: "";
+                    display: block;
+                    font-size: 0;
+                    height: 0;
+                    clear: both;
+                    visibility: hidden;
+                }
+            }
+            .footer {
+                .textCenter(@textColor:#fff);
+                height: 150px;
+                background-color: @bgFooterColor;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            header
+        </header>
+        <div class="main clearfix">
+            <div class="content">
+                content<br/>
+                content<br/>
+                content<br/>
+                content<br/>
+            </div>
+            <div class="left">
+                left
+            </div>
+            <div class="right">
+                right<br/>
+                right<br/>
+            </div>
+        </div>
+        <footer class="footer">
+            footer
+        </footer>
+    </div>
+
+    <script src="https://cdn.bootcss.com/less.js/3.11.1/less.js"></script>
+</body>
+</html>

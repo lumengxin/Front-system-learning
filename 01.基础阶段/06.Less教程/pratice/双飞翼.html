@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/less">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            /* overflow: hidden; */
+        }
+        .header, .footer {
+            height: 45px;
+            background-color: gray;
+            text-align: center;
+            span {
+                font-size: 30px;
+                line-height: 30px;
+            }
+        }
+        .container {
+            /* height: 100%; */
+            overflow: hidden;
+            background-color: pink;
+            .main, .left, .right {
+                float: left;
+                padding-bottom: 10000px;
+                margin-bottom: -10000px;
+            }
+            .main {
+                width: 100%;
+                .content {
+                    padding: 0 200px;
+                    background-color: red;
+                }
+            }
+             
+            .left {
+                width: 200px;
+                background-color: yellow;
+                margin-left: -100%;
+            }
+            .right {
+                width: 200px;
+                background-color: yellow;
+                margin-left: -200px;
+            }
+        }
+
+        .clearfix {
+            *zoom: 1;
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span>header</span>
+    </div>
+    <div class="container clearfix">
+        <div class="main">
+            <div class="content">
+                content<br/>
+                content<br/>
+                content<br/>
+                content<br/>
+                content<br/>
+                content<br/>content<br/>
+                fasdfas
+            </div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="footer">
+        <span>footer</span>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/less.js/3.11.1/less.js"></script>
+</html>
