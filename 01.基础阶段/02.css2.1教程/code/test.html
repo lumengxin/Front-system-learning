@@ -9,27 +9,54 @@
             margin: 0;
             padding: 0;
         }
-        div {
-            height: 100px;
+        html, body {
+            height: 100%;
+            background-color: gray;
         }
-        .l, .r {
-            width: 200px;
-            background: pink;
+        .box {
+            border: 1px solid black;
+            padding: 0 200px;
+            overflow: hidden;
         }
-        .m {
-            background: yellow;
+        .box > .middle, .box > .left, .box > .right {
+            padding-bottom: 200px;
+            margin-bottom: -200px;
         }
-        .l {
+        .middle {
             float: left;
+            width: 100%;
+            background-color: red;
         }
-        .r {
-            float: right;
+        .left {
+            position: relative;
+            left: -200px;
+            margin-left: -100%;
+            float: left;
+            width: 200px;
+            background-color: yellow;
+        }
+        .right {
+            position: relative;
+            right: -200px;
+            margin-left: -200px;
+            float: left;
+            width: 200px;
+            background-color: blue;
         }
     </style>
 </head>
 <body>
-    <div class="l">left</div>
-    <div class="m">middle</div>
-    <div class="r">right</div>
+    <div class="box">
+        <div class="middle">
+            middle<br/>
+            middle<br/>
+            middle<br/>
+            middle<br/>
+            middle<br/>
+            middle<br/>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
 </body>
 </html>
