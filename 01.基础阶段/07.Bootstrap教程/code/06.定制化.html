@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 定制化：1.将原来bootstrap.css引入，覆盖参数(需要了解源码); 2.官网配置 -->
+    <link rel="stylesheet/less" href="css/bootstrap-custom.less">
+    <style>
+        .container {
+            background-color: pink;
+        }
+        div[class|=col] {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-8">col-lg-8</div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/less.js/3.10.3/less.min.js"></script>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/bootstrap-3.3.7.js"></script>
+</html>

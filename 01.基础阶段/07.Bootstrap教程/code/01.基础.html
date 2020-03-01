@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 采用的是Normalize.css重置样式。(reset.css: https://cssreset.com) -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .container-fluid {
+            background-color: pink;
+        }
+        .container {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 流体容器：宽度自适应 -->
+    <div class="container-fluid">
+        fluid container
+    </div>
+    <!-- 2. 固定容器
+        阈值：@media (min-width: 1200px)
+        >= 1200 / lg 大屏pc:        width=1170
+        >=992 & < 1200 / md 中屏pc; width=970
+        >=768 & < 992 / sm 平板;    widht=750
+        <768 / xs 移动手机;         width=auto
+    -->
+    <!-- width:auto时 padding往里；width:100%时 padding往外 -->
+    <div class="container">
+        container
+    </div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/bootstrap-3.3.7.js"></script>
+</html>

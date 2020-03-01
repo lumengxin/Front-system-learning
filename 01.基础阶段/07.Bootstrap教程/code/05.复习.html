@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            1.less继承(类继承)
+              #test {
+                  &:extend(.father)
+              }
+              // 不推荐
+              #test:extend(.father) {}
+              继承实质是将.father和#test组合成一个选择器，声明快使用.father的
+              all: 继承所有和.father相关的声明块
+              父类不能定义成混合(继承的灵活性低，性能高)
+            2.less的避免编译
+              ~"不会被编译的内容"
+              变量在less中属于块级作用域，延迟加载
+            3.bootstrap栅格系统和源码分析
+              流体容器：width=auto 
+                        两侧15px padding
+              固定容器
+                阈值(移动优先,*注意样式顺序) xs(<768):with=auto      sm(>=768):with=720+槽宽
+                                            md(>=992):with=940+槽宽 lg(>=1200):with=1140+槽宽
+                两侧15px padding
+              行
+                两侧-15px margin
+              列
+                公共样式 
+                  两侧15px padding
+                  相对定位 relative
+                float(浮动，所有列，clearfix清除浮动)
+                width(控制列数) 1-12
+                left/right(控制列排序) 0-12 0为auto
+                margin-left(控制列偏移) 0-12
+        </code>
+    </pre>
+</body>
+</html>
