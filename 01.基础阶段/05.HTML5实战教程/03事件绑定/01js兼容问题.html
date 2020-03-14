@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			wrap
+		</div>
+	</body>
+	<script type="text/javascript">
+		var wrap = document.querySelector('#wrap')
+
+		if (wrap.addEventListener) {
+			wrap.addEventListener("click", function() {
+				console.log(1)
+			})
+			wrap.addEventListener("click", function() {
+				setTimeout(() => {
+					console.log(3)
+				}, 3000)
+			})
+			wrap.addEventListener("click", function() {
+				setTimeout(() => {
+					console.log(2)
+				}, 400)
+			})
+		} else {
+			wrap.attachEvent("onclick", function() {
+				console.log('a', this)
+			})
+			wrap.attachEvent("onclick", function() {
+				console.log('b')
+			})
+			wrap.attachEvent("onclick", function() {
+				console.log('c')
+			})
+		}
+	</script>
+</html>

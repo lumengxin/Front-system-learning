@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 200px;
+				height: 200px;
+				padding: 50px;
+				border: 10px solid green;
+				margin: 60px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<div id="wrap">
+			wrap
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		// clientWidth: padding box (可视区域)
+		console.log(wrap.clientWidth, wrap.clientHeight)
+		// offsetWidth: 可视区域 + border 
+		console.log(wrap.offsetWidth, wrap.offsetHeight)
+		
+		// 视口大小，不是根标签
+		var w = document.documentElement.clientWidth;
+		var h = document.documentElement.clientHeight;
+		console.log(w, h)
+		// 根标签的border-box (<=ie10, 为视口宽高)
+		var w2 = document.documentElement.offsetWidth;
+		var h2 = document.documentElement.offsetHeight;
+		console.log(w2, h2)
+	</script>
+</html>

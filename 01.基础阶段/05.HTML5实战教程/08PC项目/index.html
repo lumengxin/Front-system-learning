@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    /* css reset */
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    li {
+      margin: 0px;
+      padding: 0px;
+      font: 14px "微软雅黑";
+    }
+
+    a {
+      text-decoration: none;
+      display: block;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+    }
+
+    /* common css */
+    .clearfix {
+      *zoom: 1;
+    }
+
+    .clearfix:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    .commonTile {
+      color: #009ee0;
+      font-size: 80px;
+      line-height: 0.8;
+      font-weight: bold;
+      letter-spacing: -5px;
+    }
+
+    /* 头部样式 */
+    #head {
+      background-color: #FFFFFF !important;
+      width: 100%;
+    }
+
+    #head .headMain {
+      width: 1100px;
+      height: 80px;
+      margin: 0 auto;
+      /* background-color: pink; */
+    }
+
+    #head .logo {
+      float: left;
+      margin-top: 30px;
+    }
+
+    #head .nav {
+      float: right;
+      margin-top: 50px;
+    }
+
+    #head li {
+      position: relative;
+      float: left;
+      margin-left: 40px;
+    }
+
+    #head li .up {
+      position: absolute;
+      color: black;
+      width: 0;
+      overflow: hidden;
+      transition: 1s width;
+    }
+
+    #head li:hover .up {
+      width: 100%;
+    }
+
+    #head .arrow {
+      position: absolute;
+      left: 50%;
+      /* bottom: -11px; */
+      top: 69px;
+      width: 21px;
+      height: 21px;
+      background: url(img/menuIndicator.png);
+      transition: 1s left;
+      z-index: 2;
+    }
+
+    /* 内容区 */
+    #content {
+      position: relative;
+      /* height: 300px; */
+      background-color: gray;
+      overflow: hidden;
+      /* 流体布局，解决大屏问题 */
+      width: 100%;
+    }
+
+    #content .list {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      transition: 1s top;
+    }
+
+    #content li {
+      position: relative;
+      /* 让内容在背景图片中间 */
+      background-position: 50% 50% !important;
+    }
+
+    #content li section {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 1100px;
+      height: 520px;
+      background-color: pink;
+    }
+
+    #content .list>.home {
+      background: url(img/bg1.jpg) no-repeat;
+    }
+
+    #content .list>.course {
+      background: url(img/bg2.jpg) no-repeat;
+    }
+
+    #content .list>.works {
+      background: url(img/bg3.jpg) no-repeat;
+    }
+
+    /* 第三屏 */
+    #content .list .works1 {
+      margin: 50px 0 100px 50px;
+    }
+
+    #content .list .works2 {
+      margin-left: 50px;
+    }
+
+    #content .list .works2 .item {
+      position: relative;
+      float: left;
+      width: 220px;
+      height: 133px;
+      margin: 0 1px;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    #content .list .works2 .item:last-of-type {
+      width: 332px;
+    }
+    #content .list .works2 .item .mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #000000;
+      opacity: 0;
+      box-sizing: border-box;
+      padding: 10px;
+      color: white;
+      transition: 1s opacity;
+    }
+    #content .list .works2 .item .mask .icon {
+      width: 32px;
+      height: 34px;
+      margin: 0 auto;
+      margin-top: 10px;
+      background: url(img/zoomico.png) no-repeat;
+      transition: 1s background-position;
+    }
+    #content .list .works2 .item img {
+      transition: 1s transform;
+    }
+    #content .list .works2 .item .mask .icon:hover {
+      background-position: 0 -35px;
+    }
+    #content .list .works2 .item:hover .mask {
+      opacity: .8;
+    }
+    #content .list .works2 .item:hover img {
+      transform: rotate(30deg) scale(1.5)
+    }
+    #content .works3 {
+      position: absolute;
+      left: 900px;
+      top: 170px;
+      width: 167px;
+      height: 191px;
+      background: url(img/robot.png) no-repeat;
+      animation: works3Move 4s linear infinite;
+    }
+    @keyframes works3Move {
+      0% {
+        transform: translateX(0px) rotateY(0deg);
+      }
+      49% {
+        transform: translateX(-490px) rotateY(0deg);
+      }
+      50% {
+        transform: translateX(-500px) rotateY(180deg);
+      }
+      100% {
+        transform: translateX(0px) rotateY(180deg);
+      }
+    }
+    #content .works .pencel1{ width:180px; height:97px; background:url(img/pencel1.png) no-repeat; position:absolute; transition:1s; left:500px; top:0;}
+		#content .works .pencel2{ width:268px; height:38px; background:url(img/pencel2.png) no-repeat; position:absolute; transition:1s; left:300px; top:250px;}
+		#content .works .pencel3{ width:441px; height:231px; background:url(img/pencel3.png) no-repeat; position:absolute; transition:1s; left:650px; top:300px;}
+
+    #content .list>.about {
+      background: url(img/bg4.jpg) no-repeat;
+    }
+
+    #content .list>.team {
+      background: url(img/bg5.jpg) no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 适应分辨率1200 - 2000 -->
+  <section id="wrap">
+    <!-- 流体布局 -->
+    <header id="head">
+      <!-- 固定布局 -->
+      <div class="headMain">
+        <h1 class="logo">
+          <a href="javascript:;">
+            <img src="./img/logo.png">
+          </a>
+        </h1>
+        <nav class="nav">
+          <!-- li浮动，ul高度坍塌为0；清除浮动 -->
+          <ul class="list clearfix">
+            <li>
+              <a href="javascript:;">
+                <div class="up">
+                  <img src="img/home_gruen.png">
+                </div>
+                <div class="down">
+                  <img src="img/home.png">
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="up">Course</div>
+                <div class="down">Course</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="up">Works</div>
+                <div class="down">Works</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="up">About</div>
+                <div class="down">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="up">Team</div>
+                <div class="down">Team</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="arrow"></div>
+      </div>
+    </header>
+    <section id="content">
+      <ul class="list">
+        <li class="home">
+          <section>home</section>
+        </li>
+        <li class="course">
+          <section>
+            <header class="course1 commonTile">
+              <span>OEWIFJ</span><br />
+              <span>WOEIFJIDFJ</span><br />
+              <span>IFS</span><br />
+            </header>
+            <div class="course2">
+              <p>
+
+              </p>
+            </div>
+            <div class="course3">
+              <span class="line"></span>
+            </div>
+          </section>
+        </li>
+        <li class="works">
+          <section>
+            <header class="works1 commonTile">
+              <span>DOFIDFI</span><br />
+              <span>DOFIDFWEFI</span><br />
+              <span>OFISDFI</span><br />
+            </header>
+            <div class="works2">
+              <div class="item">
+                <img src="img/worksimg1.jpg">
+                <div class="mask">
+                  <span>图片文字,图片文字图片文字,图片文字</span>
+                  <div class="icon"></div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="img/worksimg2.jpg">
+                <div class="mask">
+                  <span>图片文字</span>
+                  <div class="icon"></div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="img/worksimg3.jpg">
+                <div class="mask">
+                  <span>图片文字</span>
+                  <div class="icon"></div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="img/worksimg4.jpg">
+                <div class="mask">
+                  <span>图片文字</span>
+                  <div class="icon"></div>
+                </div>
+              </div>
+            </div>
+            <div class="works3"></div>
+            <div class="pencel1"></div>
+            <div class="pencel2"></div>
+            <div class="pencel3"></div>
+          </section>
+        </li>
+        <li class="about">
+          <section>about</section>
+        </li>
+        <li class="team">
+          <section>team</section>
+        </li>
+      </ul>
+    </section>
+  </section>
+</body>
+
+<script type="text/javascript">
+  window.onload = function () {
+    // 获取dom元素
+    var arrowE1 = document.querySelector('#head .arrow')
+    var liNodes = document.querySelectorAll('#head li')
+    var upNodes = document.querySelectorAll('#head .up')
+    var firstLiNode = liNodes[0]
+    var firstUpNode = firstLiNode.querySelector('.up')
+
+    var head = document.querySelector('#head')
+    var content = document.querySelector('#content')
+    var cLiNodes = document.querySelectorAll('#content li')
+    var cList = document.querySelector('#content .list')
+
+    // 同步当前屏的索引
+    var now = 0
+    var timer = 0
+
+    headBind()
+    contentBind()
+
+    /* 内容区交互 */
+    // 鼠标滚动切换屏
+    if (content.addEventListener) {
+      content.addEventListener("DOMMouseScroll", function (ev) {
+        ev = ev || event
+        // 防止滚轮滚动过快，屏切换太多
+        clearTimeout(timer)
+        timer = setTimeout(function () {
+          fn(ev)
+        }, 200)
+      })
+    }
+    content.onmousewheel = function (ev) {
+      ev = ev || event
+      clearTimeout(timer)
+      timer = setTimeout(function () {
+        fn(ev)
+      }, 200)
+    }
+
+    function fn(ev) {
+      ev = ev || event
+      var dir = ''
+      if (ev.wheelDelta) {
+        dir = ev.wheelDelta > 0 ? 'up' : 'down'
+      } else if (ev.detail) {
+        dir = ev.detail < 0 ? 'up' : 'down'
+      }
+
+      switch (dir) {
+        case 'up':
+          if (now > 0) {
+            now--
+            move(now)
+          }
+          break
+        case 'down':
+          if (now < cLiNodes.length - 1) {
+            now++
+            move(now)
+          }
+          break
+      }
+    }
+
+    // 缩放时（调整分辨率），保持布局
+    window.onresize = function () {
+      contentBind()
+      cList.style.top = -now * (document.documentElement.clientHeight - head.offsetHeight) + "px"
+      arrowE1.style.left = liNodes[now].offsetLeft + (liNodes[now].offsetWidth - arrowE1.offsetWidth) / 2 +
+        'px'
+    }
+
+    function contentBind() {
+      content.style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
+      for (var i = 0; i < cLiNodes.length; i++) {
+        cLiNodes[i].style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
+      }
+    }
+
+    /* 头部交互 */
+    function headBind() {
+      firstUpNode.style.width = "100%"
+      arrowE1.style.left = firstLiNode.offsetLeft + (firstLiNode.offsetWidth - arrowE1.offsetWidth) / 2 + 'px'
+
+      for (var i = 0; i < liNodes.length; i++) {
+        // 转绑
+        liNodes[i].index = i
+        liNodes[i].onclick = function () {
+          move(this.index)
+          now = this.index
+        }
+      }
+    }
+    // 动画的函数
+    move(1)
+
+    function move(index) {
+      for (var i = 0; i < upNodes.length; i++) {
+        // 重置为0时，style权重高于hover,hover失效；直接设置为空，清除样式
+        upNodes[i].style.width = ""
+      }
+      // upNodes[i].style.width = "100%"
+      upNodes[index].style.width = "100%"
+      arrowE1.style.left = liNodes[index].offsetLeft + (liNodes[index].offsetWidth - arrowE1.offsetWidth) / 2 +
+        'px'
+
+      cList.style.top = -index * (document.documentElement.clientHeight - head.offsetHeight) + "px"
+    }
+
+  }
+</script>
+
+</html>

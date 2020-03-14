@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#inner2 {
+				position: absolute;
+			}
+			#wrap {
+				position: relative;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<div id="wrap">wrap
+			<div id="inner1">
+				inner1
+				<div id="inner2">
+					inner2
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			var inner2 = document.querySelector('#inner2')
+			// parentNode直接父级，和包含块无关
+			console.log(inner2.parentNode.id)
+		}
+	</script>
+</html>

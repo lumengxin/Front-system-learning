@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding:0;
+			}
+			#test {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				left: 0;
+				top: 0;
+				right:0;
+				bottom: 0;
+				margin: auto;
+				background-color: pink;
+			}
+			#test span {
+				display: block;
+				text-align: center;
+				line-height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">
+			<span>内容居中</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector('#test')
+		
+		if(testNode.addEventListener) {
+			// 火狐
+			testNode.addEventListener("DOMMouseScroll", function() {
+				console.log("火狐中滚轮事件")
+				ev = ev || event
+				console.log(ev.detail)
+			})
+		}
+		testNode.onmousewheel = function(ev) {
+			console.log('滚轮滚动事件')
+			ev = ev || event
+			console.log(ev.wheelDelta)
+		}
+		
+		
+	</script>
+</html>

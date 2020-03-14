@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<ul class="list">
+			<li>abc<a href="javascript:;">删除</a></li>
+			<li>abcd<a href="javascript:;">删除</a></li>
+			<li>abcdd<a href="javascript:;">删除</a></li>
+			<li>abcddd<a href="javascript:;">删除</a></li>
+			<li>abcdddd<a href="javascript:;">删除</a></li>
+			<li>abdddddc<a href="javascript:;">删除</a></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var aNodes = document.querySelectorAll(".list > li > a")
+		for(var a = 0; a < aNodes.length; a++) {
+			aNodes[a].onclick = function() {
+				// 假删除，数据最重要
+				this.parentNode.style.display = "none"
+			}
+		}
+	</script>
+</html>

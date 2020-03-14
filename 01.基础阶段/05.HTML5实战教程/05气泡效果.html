@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#bubble {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate3d(-50%, -50%, 0);
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="bubble" width="400" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		var bubble = document.getElementById('bubble')
+		if (bubble.getContext) {
+			var ctx = bubble.getContext('2d')
+			
+			var arr = []
+			
+			// 数组中圆绘制到画布中
+			setInterval(function() {
+				ctx.clearRect(0, 0, bubble.width, bubble.height)
+				console.log(arr)
+				for(var i = 0; i < arr.length; i++) {
+					// if(arr[i].r <= 50) {
+					// 	arr[i].r++
+					// }
+					if(arr[i].alp <= 0) {
+						// 清除透明度不大于的0的圆
+						arr.splice(i, 1)
+					}
+					arr[i].r++
+					arr[i].alp -= 0.01
+				}
+				
+				for(var i = 0; i < arr.length; i++) {
+					ctx.save()
+					ctx.fillStyle = "rgba("+arr[i].red+","+arr[i].green+","+arr[i].blue+","+arr[i].alp+")"
+					ctx.beginPath()
+					ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2*Math.PI)
+					ctx.fill()
+					ctx.restore()
+				}
+			}, 1000/60)
+			
+			// arr中注入随机圆信息
+			setInterval(function() {
+				var x = Math.random()*bubble.width;
+				var y = Math.random()*bubble.height;
+				var r = 10
+				var red = Math.round(Math.random()*255)
+				var green = Math.round(Math.random()*255)
+				var blue = Math.round(Math.random()*255)
+				var alp = 1
+				arr.push({
+					x: x,
+					y: y,
+					r: r,
+					red: red,
+					green: green,
+					blue: blue,
+					alp: alp
+				})
+			}, 100)
+			
+			/* var flag = 0
+			setInterval(function() {
+				ctx.clearRect(0, 0, bubble.width, bubble.heigh)
+				
+				flag++;
+				ctx.save();
+				ctx.beginPath();
+				ctx.strokeRect(flag, flag, 100, 100);
+				ctx.restore();
+			}) */
+		}
+	</script>
+</html>

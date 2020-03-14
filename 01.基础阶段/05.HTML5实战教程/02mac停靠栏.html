@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+
+			#wrap {
+				/* 开启定位：width 不是 auto, 靠内容撑开 */
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				/* font-size: 0; */
+				font-size: 45px;
+			}
+
+			#wrap img {
+				width: 64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="images/m1.png">
+			<img src="images/m2.png">
+			<img src="images/m3.png">
+			<img src="images/m4.png">
+			<img src="images/m5.png">
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var r = 128
+			var imgNodes = document.querySelectorAll('#wrap > img')
+
+			document.onmousemove = function(ev) {
+				ev = ev || event
+				for (var i = 0; i < imgNodes.length; i++) {
+					var dx = imgNodes[i].getBoundingClientRect().left + imgNodes[i].offsetWidth / 2 - ev.clientX
+					var dy = imgNodes[i].getBoundingClientRect().top + imgNodes[i].offsetHeight / 2 - ev.clientY
+					var dz = Math.sqrt(dx * dx + dy * dy)
+
+					if (dz > r) {
+						dz = r
+					}
+					imgNodes[i].style.width = r - dz * 0.5 + "px"
+				}
+			}
+		}
+	</script>
+</html>

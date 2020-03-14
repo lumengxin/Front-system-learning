@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			<code>
+				1.Dom关于位置和尺寸的api
+					parentNode:直接父级
+					offsetParen:类似css中包含块的概念
+						a.offsetLeft和offsetTop都是参照于offsetParent的内边距边界
+						b.规则
+							本身定位为fixed,不管父级有没有定位
+								= 火狐 body 
+								= 非火狐 null  
+							非fixed
+							  = 父级没有定位 body
+								= 父级有定位 父级定位
+				2.js兼容问题
+					ev || event 
+					offsetParent
+					事件绑定（事件流机制，事件委托）
+					鼠标滚轮事件
+						非火狐：onmousewhell(dom0) ev.whellDelta 上正下负
+						火狐：DOMMouseScroll(dom2) ev.delta 上负下正
+					视口尺寸的获取
+				3.绝对位置，相对位置
+					绝对：到body的距离（HTML和body之间的margin以清除）
+						原生实现：while循环不断累加（没办法兼容border和margin）
+					相对：到视口的距离
+						原生实现：绝对位置减滚动条距离（没办法兼容border和margin）
+				4.getBoundingClientRect():返回一个对象（兼容性极好）
+					{ 
+						width：border-box的宽
+						height: borer-box的高
+						<!-- 元素border-box的左上角相对位置 -->
+						top:
+						left: 
+						x:
+						y:
+						<!-- 元素border-box的右下角相对位置 -->
+						bottom:
+						right:
+					}
+				5.尺寸
+					clientWidth/clientHeight: 可视区宽高padding-box
+					offsetWidth/offsetHeight: border-box
+				6.获取视口尺寸
+					document.documetElement.offsetWidth
+				7.曲线运动
+					三角函数，如何将三角函数图像运用到js中
+				8.结合canvas实现气泡运动
+					第一个循环定时器：
+						在canvas上实现动画
+							第一个for循环：将随机数组中需要动画的参数取出来进行平滑累加
+							第二个for循环：使用canvas api绘制
+					第二个循环定时器：
+						维护一个保存圆信息的数组：圆心，半径，rgba，初始位置，波峰波谷，度数
+			</code>
+		</pre>
+	</body>
+</html>

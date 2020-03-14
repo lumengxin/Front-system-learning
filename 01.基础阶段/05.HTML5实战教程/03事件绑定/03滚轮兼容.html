@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding:0;
+			}
+			#test {
+				position: absolute;
+				width: 100%;
+				height: 200px;
+				background-color: pink;
+			}
+		
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="test">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector('#test')
+		
+		if(testNode.addEventListener) {
+			testNode.addEventListener("DOMMouseScroll", fn)
+		}
+		testNode.onmousewheel = fn;
+		
+		function fn(ev) {
+			ev = ev || event;
+			var dir = ""
+			if(ev.wheelDelta) {
+				dir = ev.wheelDelta > 0 ? 'up' : 'down';
+			}
+			if(ev.detail) {
+				dir = ev.detail < 0 ? 'up' : 'down'
+			}
+			console.log(dir)
+			
+			// 对样式设置 node.style.height
+			// 对样式读取 一般通过api 
+			switch(dir) {
+				case 'up':
+					testNode.style.height = testNode.offsetHeight - 10 + "px";
+					break;
+				case 'down':
+					testNode.style.height = testNode.offsetHeight + 10 + "px";
+					break;
+			}
+			
+			// 禁止事件默认行为 dom2
+			if(ev.preventDefault) {
+				ev.preventDefault()
+			}
+			
+			// 禁止事件默认行为 dom0
+			return false
+		}
+		
+	</script>
+</html>

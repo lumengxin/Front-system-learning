@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html id="html">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* body设为视口，清除系统滚动条 */
+			html, body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			div {
+				width: 200px;
+				height: 200px;
+			}
+			#wrap {
+				position: absolute;
+				background-color: navajowhite;
+				left: 100px;
+				top: 50px;
+			}
+			#inner1 {
+				position: fixed;
+				background-color: hotpink;
+				left: 50px;
+				top: 150px;
+			}
+			#inner2 {
+				position: relative;
+				background-color: pink;
+				left: 80px;
+				top: 70px;
+			}
+			#inner3 {
+				position: fixed;
+				background-color: blue;
+				left: 60px;
+				top: 30px;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<div id="wrap">wrap
+			<div id="inner1">inner1
+				<div id="inner2">inner2
+					<div id="inner3"> 
+						inner3
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// 兼容性处理：ev || event, 鼠标滚轮，事件绑定，offsetParent
+			/* offsetParent
+			 本身定位为fixed
+			 - offsetParent:null (不是火狐)
+					offsetLeft依然参照body
+			 - offsetParent:body (火狐)
+			 本身点位不为fixed
+			 - 父级没有定位
+				-- offsetParent:body
+			 - 父级有定位
+			  -- offsetParent:定位父级
+			*/
+			console.log(inner3.offsetParent)
+			console.log(inner3.offsetLeft, inner3.offsetTop)
+		</script>
+	</body>
+</html>
