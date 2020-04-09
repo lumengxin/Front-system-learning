@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content1 a:link {
+      color:red;
+    }
+    .content1 a:visited {
+      color:blue;
+    }
+    .content2 div {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      display: none;
+      text-align: center;
+      font:50px/200px '微软雅黑';
+    }
+    .content2 :target {
+      display: block;
+    }
+    .content3 input:enabled{
+      background: pink;
+    }
+    .content3 input:disabled{
+      background: blue;
+    }
+    .content3 input:checked {
+      width: 100px;
+      height: 100px;
+    }
+    .content4 label {
+      position: relative;
+      float: left;
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    .content4 input {
+      position: absolute;
+      left: -50px;
+      top: -50px;
+    }
+    .content4 span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+    .content4 input:checked + span {
+      background: pink;
+    }
+    .content5 li:nth-child(1) {
+      color: pink;
+    }
+    .content5 p:nth-of-type(1) {
+      color: blue;
+    }
+    .content6 .inner:nth-of-type(1) {
+      border: 1px solid red;
+    }
+    .content7 a:not(:last-of-type) {
+      border-right: 1px solid red;
+    }
+    .content7 span {
+      display: inline-block;
+      width: 100px;
+      height: 21px;
+    }
+    .content7 span:empty {
+      background: pink;
+    }
+    .content8::after {
+      content:"";
+      display: block;
+      width: 200px;
+      height: 200px;
+      background: pink;
+    }
+    .content8 p::first-letter {
+      font-size: 25px;
+      color: red;
+    }
+    .content8 div::selection {
+      background: gold;
+      color: blue;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+    .clearfix:after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <!-- 伪类与伪元素选择器
+  1.链接伪类：作用于链接元素
+    - :link 表示作为超链接，并指向一个未访问地址所有锚
+    - :visited 表示作为超链接，并指向一个已访问地址所有锚
+    - :target 作为一个特殊元素，id是URL的片段标识符
+  2.动态伪类：:hover,:active基本可以作用于所有的元素
+    - :hover 表示悬浮到的元素上
+    - :active 表示匹配被用户激活的元素
+    由于a标签的:link和:visited可以覆盖了所有a标签的状态，不能放最后。
+    隐私与:visited：只有color,background-color,barder-color才能被
+    应用到以访问链接。
+  3.表单相关伪类
+    - :enabled 匹配可编辑的表单
+    - :disable 匹配被禁用的表单
+    - :checked 匹配被选中的表单
+    - :focus 匹配获焦表单
+  4.结构性伪类
+    index值从1开始，可以为变量n，可以为even odd
+      #wrap ele:nth-child(index) 表示匹配#wrap中第index的子元素
+      #wrap ele:nth-of-type(index) 表示匹配#wrap中第index的ele子元素
+      nth-of-type以元素为中心
+    :nth-child(index)系列
+      :first-child
+      :last-child 
+      :nth-last-child(index)
+      :only-child(相对于:first-child:last-child或:nth-child(1):nth-last-child(1))
+    :nth-of-type(index)系列
+      :first-of-type
+      :last-of-type 
+      :nth-last-type(index)
+      :only-of-type(相对于:first-of-type:last-of-type或:nth-of-type(1):nth-last-child(1))
+    :not 
+    :empty(内容必须是空，有空格不行，有attr可以)
+  5.伪元素选择器
+    :after, :before(:或者::都可以)，处于dom之外，一个元素只能有一个
+  -->
+  <div class="content1">
+    <a href="#">一个超级链接</a>
+  </div><br/><hr/>
+  <div class="content2">
+    <a href="#div1">div1</a>
+    <a href="#div2">div2</a>
+    <a href="#div3">div3</a>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+  </div><br/><hr/>
+  <div class="content3">
+    <input type="text">
+    <input type="text" disabled>
+    <input type="checkbox">
+  </div><br/><hr/>
+  <div class="content4 clearfix">
+    <label>
+      <input type="radio" name="s">
+      <span></span>
+    </label>
+    <label>
+      <input type="radio" name="s">
+      <span></span>
+    </label><label>
+      <input type="radio" name="s">
+      <span></span>
+    </label>
+    <!-- <div style="clear:both;"></div> -->
+  </div><br/><hr/>
+  <div class="content5">
+    <ul>
+      <!-- <p>p1</p> -->
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <p>p2</p>
+    </ul>
+  </div><br/><hr/>
+  <div class="content6">
+    <div class="inner">div</div>
+    <p class="inner">p</p>
+    <span class="inner">span</span>
+    <h1 class="inner">h1</h1>
+    <h2 class="inner">h2</h2>
+  </div><br/><hr/>
+  <div class="content7">
+    <a href="#">first</a>
+    <span></span>
+    <a href="#">second</a>
+    <span></span>
+    <a href="#">third</a>
+    <span></span>
+    <a href="#">fourth</a>
+  </div><br/><hr/>
+  <div class="content8">
+    <p>ava</p>
+    <div>selection selection selection selection</div>
+  </div>
+</body>
+</html>

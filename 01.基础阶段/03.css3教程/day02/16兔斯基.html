@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .box {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      background: url(img/animation.png);
+      animation: move 1s steps(12, end) infinite;
+    }
+    @keyframes move {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -576px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+</body>
+</html>

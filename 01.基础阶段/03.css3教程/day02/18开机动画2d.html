@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewpost" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+  html, body {
+        height: 100%;
+        overflow: auto;
+      }
+      .container {
+        position: relative;
+        height: 100%;
+        background: rgb(50, 49, 26);
+      }
+      .inner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        text-align: center;
+        white-space: nowrap;
+        font-size: 20px;
+      }
+      .inner span {
+        position: relative;
+
+        /* animation: move 2s linear infinite alternate; */
+      }
+      @keyframes move {
+        from {
+          top: 10px;
+        }
+        to {
+          top: -10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner">
+        <span>网</span>
+        <span>页</span>
+        <span>正</span>
+        <span>在</span>
+        <span>赶</span>
+        <span>来</span>
+        <span>的</span>
+        <span>路</span>
+        <span>上</span>
+        <span>..</span>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        var spanNode = document.querySelectorAll('.inner > span');
+        for (let i = 0; i < spanNode.length; i++) {
+          spanNode[i].style.animation = 'move .3s '+(i*50)+'ms linear infinite alternate';
+          spanNode[i].style.color = 'rgba'+randomColor()+'';
+        }
+
+        function randomColor() {
+          let r = Math.floor(Math.random()*256)
+          let g = Math.floor(Math.random()*256)
+          let b = Math.floor(Math.random()*256)
+          let a = 1
+          let rgba = '('+r+','+g+','+b+','+a+')'
+
+          return rgba
+        }
+
+      }
+    </script>
+  </body>
+</html>

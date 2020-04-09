@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>模糊背景</title>
+    <style>
+      *{
+        margin:0;
+        padding:0;
+       }
+      #wrap{
+        position: relative;
+        height: 100px;
+        background: rgba(0,0,0,.5);
+      }
+      #wrap #bg {
+        position: absolute;
+        left:0;
+        top: 0;
+        right:0;
+        bottom: 0;
+        /* background: pink; */
+        z-index:-1;
+        background: url(https://source.unsplash.com/collection/190727/250x250) no-repeat;
+        background-size: 100% 100%;
+        filter: blur(10px);
+      }
+      img{
+        margin: 24px 0 0 24px;
+      }
+      .content h1:nth-of-type(1) {
+        font: 40px/100px '微软雅黑';
+        text-align: center;
+        color: #fff;
+        -webkit-text-stroke: 2px pink;
+      }
+      .content h1:nth-of-type(2) {
+        margin: 0 auto;
+        width: 200px;
+        text-align: center;
+        direction: rtl;
+        unicode-bidi: bidi-override;
+      }
+          
+      .content2 p{
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 溢出显示省略号：盒子不能靠内容撑开 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <img src="https://source.unsplash.com/collection/190727/250x250" 
+        alt="img" width="64" height="64"
+      >
+      <div id="bg"></div>
+    </div>
+    <div class="content">
+      <h1>元素描边</h1>
+      <h1>文字排版</h1>
+    </div>
+    <div class="content2">
+      <p>结尾激发的佛教偶发煎熬地方是佛教大教辅大我的家佛大</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 400px;
+        height: 300px;
+        background: gray;
+        text-align: center;
+        display: flex;
+      }
+      .wrap > .item {
+        height: 50px;
+        background: pink;
+        border: 1px solid;
+
+        /* flex-shrink: 1;
+        flex-basis: 0;
+        flex-grow: 1; */
+        /* 等分布局，flex简写属性 语法糖 */
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="item">1</div>
+      <div class="item">22</div>
+      <div class="item">333</div>
+      <div class="item">4444</div>
+      <div class="item">55555</div>
+    </div>
+  </body>
+</html>

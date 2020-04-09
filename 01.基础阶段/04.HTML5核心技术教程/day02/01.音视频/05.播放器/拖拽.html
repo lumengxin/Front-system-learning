@@ -14,12 +14,17 @@
             overflow: hidden;
         }
         .test {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             width: 200px;
             height: 200px;
             background-color: pink;
+        }
+        .test h1 {
+            position: absolute;
+            width: 100%;
+            background: red;
         }
         .coll {
             width: 200px;
@@ -31,7 +36,8 @@
     <script>
         window.onload = function() {
             // var testNode = document.querySelector(".test")
-            var testNode = document.getElementsByClassName("test")[0]
+            // var testNode = document.getElementsByClassName("test")[0]
+            var testNode = document.querySelector(".test h1")
             var imgNode = document.getElementsByClassName("coll")[0]
 
             // drag(testNode, 10, imgNode)
@@ -144,7 +150,12 @@
 </head>
 <body>
     <p>ctal + a选中文字，浏览器默认拖拽行为</p>
-    <div class="test">aaa</div>
+    <div class="test">
+        <h1>test</h1>
+        <p>sdafiodajf</p>
+        <p>sdafiodajf</p>
+        <p>sdafiodajf</p>
+    </div>
 
     <img src="../../../day01/08.canvas/img/g01.png" class="coll">
 </body>

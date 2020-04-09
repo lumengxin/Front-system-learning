@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin:0;padding:0}
+    html,body{height:100%;overflow: hidden;}
+    .container {
+      height: 100%;
+      background: black;
+      opacity: .8;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      display: inline-block;
+      color: rgba(255, 255, 255, .4);
+      font:bold 80px '微软雅黑';
+      background: linear-gradient(120deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 100px,rgba(255,255,255,0) 260px);
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      /* transition: 4s; */
+    }
+    /* h1:hover {
+      background-position: 500px 0;
+    } */
+  </style>
+  <script>
+    window.onload = function() {
+      var h1 = document.querySelector('h1')
+      var flag = -160
+
+      setInterval(function() {
+        flag += 5
+        if(flag === 700) {
+          flag = -160
+        }
+        h1.style.backgroundPosition = flag + 'px'
+      }, 30)
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Animated 光斑动画</h1>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 400px;
+        height: 300px;
+        background: gray;
+        margin: 100px auto;
+      }
+      .item {
+        width: 50px;
+        height: 50px;
+        background: pink;
+        font: 20px/50px '微软雅黑';
+        text-align: center;
+      }
+
+      .box1 {
+        display: -webkit-box;
+      }
+      .box1 > .item {
+        /* 弹性因子：弹性空间150px / 弹性因子1*5 = 30px, 项目 50px + 30px = 80px
+        *  弹性空间管理：将主轴上的富裕空间按比列分配到项目的width/height上
+        */
+        -webkit-box-flex: 1;
+      }
+      .box > .item:nth-child(1) {
+        /* 150 / (4+4) * 4 + 50 = 125px */
+        -webkit-box-flex: 4;
+      }
+
+      .box2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-satrt;
+        align-items: flex-start;
+        /* flex-wrap: 控制容器为单行/列还是多行/列，并定义了侧轴方向 */
+        width: 120px;
+        height: 450px;
+        flex-wrap: wrap;
+        /* 控制多行/列时，富裕空间的管理 */
+        align-content: flex-end;
+        /* flex-direction 和 flex-wrap简写 */
+        flex-flow: row wrap;
+      }
+      .box2 > .item {
+        /* flex-grow: 1; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+    <div class="box box2">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </body>
+</html>

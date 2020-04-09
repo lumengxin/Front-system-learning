@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap p {
+      text-align: center;
+      font: 40px/200px '华文彩玉';
+      text-shadow:gray 10px 10px 10px, gold -20px -20px 20px;
+    }
+    .wrap h1 {
+      text-align: center;
+      font: 100px/200px '微软雅黑';
+      color: white;
+      text-shadow: black 1px 1px 10px;
+    }
+    .wrap h2 {
+      text-align: center;
+      font: 100px/200px '微软雅黑';
+      color: black;
+      transition: 1s;
+    }
+    .wrap h2:hover {
+      color: rgba(0,0,0,0);
+      text-shadow: black 0 0 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 文本新增样式
+  opacity, rgba, 
+  文字阴影 text-shadow:none,不可继承，可添加多层,
+  文字描边，文字排版
+  -->
+  <div class="wrap">
+    <p>文字阴影</p>
+    <h1>浮雕文字</h1>
+    <h2>文字模糊</h2>
+  </div>
+</body>
+</html>

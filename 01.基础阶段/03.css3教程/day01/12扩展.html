@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .d1 {
+      /* 浮动层级提升半层 */
+      float: left;
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+    .d2 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background: gold;
+    }
+    .d3 {
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+
+    /* 禁用系统滚动条，使用自定制 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap {
+      height: 100%;
+      overflow: auto;
+    }
+    .test {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+  <!-- 初始包含块：是一个视窗大小的矩形
+  包含块：最近开启定位的元素
+  -->
+  <!-- wrap滚动的是初始包含块 -->
+  <div class="wrap">
+    <div class="test"></div>
+    <div style="height:2000px;">
+    </div>
+    <div class="d1">div1</div>
+    <div class="d2">div2</div>
+    <div class="d3">div3</div>
+  </div>
+</body>
+</html>

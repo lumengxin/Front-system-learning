@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .wrap {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 1px solid;
+      margin: 200px auto;
+    }
+    .test {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+      background: pink;
+      text-align: center;
+      font: 20px/100px '微软雅黑';
+      border-radius: 50%;
+
+      animation-name: move;
+      animation-duration: 3s;
+      animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+      /* 反转的是关键帧和animation-timing-function */
+      animation-direction: reverse;
+      animation-direction: alternate;
+      /* 动画外的属性（只开始执行一次） */
+      animation-delay: 2s;
+      /* 重复的是关键帧 */
+      animation-iteration-count: 3;
+      /* 控制元素在动画外状态。backwrads：form之前和from一致，元素直接从100px位置开始动画 */
+      animation-fill-mode: backwards;
+    }
+
+    @keyframes move {
+      from {
+        transform: rotate(0deg) translateY(100px);
+      }
+      to {
+        transform: rotate(360deg) translateY(-100px);
+      }
+    }
+    .wrap:hover > .test {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="test">
+      朱范德
+    </div>
+  </div>
+</body>
+</html>

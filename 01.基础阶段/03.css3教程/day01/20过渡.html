@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 60%;
+      width: 60%;
+      border: 1px solid black;
+      margin: 170px auto 0;
+    }
+    .test {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: pink;
+      text-align: center;
+      /* line-height: 200px;
+      font-size: 40px; */
+      font: 30px/100px '微软雅黑';
+
+      /* css效率极高，其变化过程都是在一瞬间完成，速度极快
+      * transition-property,transition-duration,transition-timing-function,transition-delay
+      * 当属性值的列表长度不一致时：超出的会被截掉；
+      *   不够时，关于时间会重复。transition-timing-function使用默认ease
+      */
+      /* transition: 2s; */
+      transition-property: background,width,height;
+      /* 不够时，重复 5s 2s 5s 2s； 0s要带单位*/
+      transition-duration: 5s,2s;
+    }
+    body:hover .test {
+      width: 100px;
+      height: 100px;
+      background: black;
+      /* transition: 2s; */
+    }
+  </style>
+</head>
+<body>
+  <div class="test">
+    张三丰
+  </div>
+</body>
+</html>

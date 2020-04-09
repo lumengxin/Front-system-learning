@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      color: red;
+    }
+    #test.div1 {
+      background: blue;
+    }
+    #test {
+      width: 200px;
+      height: 200px;
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+  <!-- css声明的优先级
+  1选择器的特殊性
+    选择器的特殊性有选择器本身的组件确定，特殊性值表述为4个部分，如0，0，0，0
+    一个选择器具体特殊性如下：
+      - 对于选择器给定的ID属性值 加0,1,0,0
+      - 对于选择器中给定的各个类属性，属性选择，或伪类 加0,0,1,0 
+      - 对于选择器中给定的各个元素和伪元素 加0,0,0,1 
+      - 通配符选择器是特殊性为0,0,0,0 
+      - 结合符对选择器特殊性没有一点贡献
+      - 内联声明特殊性都是1,0,0,0 
+      - 继承没有特殊性
+    特殊性1,0,0,0大于所有以0开头的特殊性(不进位 .div1.div2...)
+    选择器的特殊性最终都会授予给其对应的声明
+    如果多个规则与同一个元素匹配，而且有些声明互相冲突时，特殊性越大越占优势
+    div[id="test"] 元素加类属性 0,0,1,1;   #test 0,1,0,0
+    2重要声明
+      有时某个声明比较重要，超过了其他声明，css2,1称之为重要声明
+      !important 放在声明最后，分号前面
+    3继承
+      继承没有特殊性，0特殊性(通配符*)比没有特殊性强
+    4来源: 创作人员，读者(用户)，用户代理(浏览器)
+      权重：
+        读者重要声明
+        创作人员重要声明
+        创作人员正常声明
+        读者正常声明
+        用户代理声明
+
+  -->
+  <div id="test" class="div1 box" style="color: black;">
+    <div>
+      内部的div，继承属性
+    </div>
+  </div>
+</body>
+</html>

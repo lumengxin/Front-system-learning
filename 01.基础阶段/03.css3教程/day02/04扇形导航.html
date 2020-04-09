@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      width: 50px;
+      height: 50px;
+    }
+    .wrap > .inner {
+      /* 子元素定位后，inner高度为0 */
+      height: 100%;
+    }
+    .wrap > .inner > img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      border-radius: 50%;
+
+      /* transition: 1s; */
+    }
+    .wrap > .home {
+      height: 100%;
+      background: url(img/home.png) no-repeat;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      /* 层级生效需要开启定位 */
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+
+      transition: 1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner">
+      <img src="img/clos.png" alt="">
+      <img src="img/full.png" alt="">
+      <img src="img/open.png" alt="">
+      <img src="img/prev.png" alt="">
+      <img src="img/refresh.png" alt="">
+    </div>
+    <div class="home"></div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      var homeEle = document.querySelector('.home')
+      var flag = true 
+      var imgs = document.querySelectorAll('.wrap img')
+      var c = 140
+
+      homeEle.onclick = function() {
+        if(flag) {
+          // 绝大部分变换样式切换时，如果变换函数的位置个数不同时不会触发过渡
+          // this.style.transform = 'rotate(-720deg) scale(1)'
+          this.style.transform = 'rotate(-720deg)'
+
+          for(var i = 0; i < imgs.length; i++) {
+            imgs[i].style.left = -getPoint(c, (90/(imgs.length-1)) * i).left + 'px'
+            imgs[i].style.top = -getPoint(c, (90/(imgs.length-1)) * i).top + 'px'
+          
+            // 每个img延时时间不同
+            imgs[i].style.transition = '1s ' + (i * 0.1) + 's'
+            imgs[i].style.transform = 'rotate(-720deg) scale(1)'
+          }
+        } else {
+          this.style.transform = 'rotate(0deg)'
+          for(var i = 0; i < imgs.length; i++) {
+            imgs[i].style.left = 0 + 'px'
+            imgs[i].style.top = 0 + 'px'
+            imgs[i].style.transition = '1s ' + ((imgs.length-1-i) * 0.1) + 's'
+            imgs[i].style.transform = 'rotate(0deg) scale(1)'
+          }
+        }
+        flag = !flag
+      }
+
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function() {
+          // 清除掉之前的延时
+          this.style.transition = '1s'
+
+          // this表示imgs[i],闭包不能直接用
+          this.style.transform = 'rotate(-720deg) scale(2)'
+          // 保持个数一致，规避过渡异常问题
+          // this.style.transform = 'scale(2)'
+          this.style.opacity = 0.2
+
+          this.addEventListener('transitionend', fn)
+        }
+      }
+      function fn() {
+        this.style.transition = '0.3s'
+        this.style.transform = 'rotate(-720deg) scale(1)'
+        this.style.opacity = 1
+
+        // 用完后，解绑。否则函数一直存在，其他属性变化时可能触发
+        this.removeEventListener('transitionend', fn)
+      }
+
+      // 根据半径和角度，求点坐标
+      function getPoint(c, deg) {
+        var x = Math.round(c * Math.sin(deg*Math.PI/180))
+        var y = Math.round(c * Math.cos(deg*Math.PI/180))
+
+        return {left: x, top: y}
+      }
+    }
+  </script>
+</body>
+</html>

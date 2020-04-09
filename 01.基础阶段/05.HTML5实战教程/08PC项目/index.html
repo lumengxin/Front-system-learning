@@ -59,6 +59,11 @@
       font-weight: bold;
       letter-spacing: -5px;
     }
+    .commonText {
+      color: white;
+      line-height: 1.5;
+      font-size: 15px;
+    }
 
     /* 头部样式 */
     #head {
@@ -117,7 +122,7 @@
     #content {
       position: relative;
       /* height: 300px; */
-      background-color: gray;
+      /* background-color: gray; */
       overflow: hidden;
       /* 流体布局，解决大屏问题 */
       width: 100%;
@@ -146,22 +151,238 @@
       margin: auto;
       width: 1100px;
       height: 520px;
-      background-color: pink;
+      /* background-color: gray; */
     }
 
+    /** 第一屏 */
     #content .list>.home {
       background: url(img/bg1.jpg) no-repeat;
     }
-
-    #content .list>.course {
-      background: url(img/bg2.jpg) no-repeat;
+    #content .list > .home .home1 {
+      width: 100%;
+      height: 100%;
+      perspective: 500px;
+      transform-style: preserve-3d;
+    }
+    #content .list > .home .home1 > li {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      height: 520px !important;
+      visibility: hidden;
+    }
+    #content .list > .home .home1 > li:nth-child(1) {
+      background: #dc6c5f;
+    }
+    #content .list > .home .home1 > li:nth-child(2) {
+      background: #95dc84;
+    }
+    #content .list > .home .home1 > li:nth-child(3) {
+      background: #64b9d2;
+    }
+    #content .list > .home .home1 > li:nth-child(4) {
+      background: #000000;
+    }
+    #content .list > .home .home1 > li.active {
+      visibility: visible;
+    }
+    #content .list > .home .home1 > li > div {
+      color: white;
+      text-align: center;
+      margin-top: 200px;
+    }
+    #content .list > .home .home2 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* background: yellow; */
+      text-align: center;
+    }
+    #content .list > .home .home2 li {
+      display: inline-block;
+      width: 20px;
+      height: 20px !important;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .5);
+      box-shadow: 0 0 10px rgba(25, 25, 25, .8);
+      cursor: pointer;
+    }
+    #content .list > .home .home2 li.active {
+      background: white;
+      cursor: default;
     }
 
+    /* 从左往右leftHide rightShow */
+    #content .list > .home .home1 > li.leftHide {
+      visibility: hidden;
+      animation: 1s leftHide 1 linear;
+    }
+    #content .list > .home .home1 > li.rightShow {
+      visibility: visible;
+      animation: 1s rightShow 1 linear;
+    }
+    /* 从右往左leftShow rightHide */
+    #content .list > .home .home1 > li.leftShow {
+      visibility: visible;
+      animation: 1s leftShow 1 linear;
+    }
+    #content .list > .home .home1 > li.rightHide {
+      visibility: hidden;
+      animation: 1s rightHide 1 linear;
+    }
+    @keyframes leftHide {
+      0% {
+        visibility: visible;
+      }
+      50% {
+        transform: translateX(-40%) rotateY(30deg) scale(.8);
+      }
+      100% {
+        transform: translateZ(-200px);
+      }
+    }
+    @keyframes rightShow {
+      0% {
+        visibility: hidden;
+        transform: translateZ(-200px);
+      }
+      50% {
+        transform: translateX(40%) rotateY(-30deg) scale(.8);
+      }
+      100% {
+      }
+    }
+    @keyframes leftShow {
+      0% {
+        visibility: hidden;
+        transform: translateZ(-200px);
+      }
+      50% {
+        transform: translateX(-40%) rotateY(30deg) scale(.8);
+      }
+      100% {
+      }
+    }
+    @keyframes rightHide {
+      0% {
+        visibility: visible;
+      }
+      50% {
+        transform: translateX(40%) rotateY(-30deg) scale(.8);
+      }
+      100% {
+        transform: translateZ(-200px);
+      }
+    }
+    /** END 第一屏 */
+
+
+    /** 第二屏 */
+    #content .list>.course {
+      background: url(img/bg2.jpg) no-repeat;
+      overflow: hidden;
+    }
+
+    #content .course1 {
+      margin: 50px;
+    }
+    #content .course2 {
+      margin-left: 50px;
+      width: 400px;
+    }
+    #content .course3 {
+      position: absolute;
+      right: 50px;
+      top: 70px;
+      width: 480px;
+    }
+
+    #content .course3 .line {
+      position: absolute;
+      width: 9px;
+      height: 410px;
+      top: -7px;
+      background: url(./img/plus_row.png) no-repeat;
+    }
+    #content .course3 .line:nth-of-type(1) {
+      left: -5px;
+    }
+    #content .course3 .line:nth-of-type(2) {
+      left: 115px;
+    }
+    #content .course3 .line:nth-of-type(3) {
+      left: 235px;
+    }
+    #content .course3 .line:nth-of-type(4) {
+      left: 355px;
+    }
+    #content .course3 .line:nth-of-type(5) {
+      left: 475px;
+    }
+
+    #content .course3 .item {
+      position: relative;
+      float: left;
+      width: 120px;
+      height: 132px;
+      /* background: pink; */
+      perspective: 300px;
+      transform-style: preserve-3d;
+    }
+    #content .course3 .item .face,
+    #content .course3 .item .back-face {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      transition: 2s transform;
+    }
+    #content .course3 .item .back-face {
+      background: url(img/bks.png) no-repeat;
+      background-position: 50% 50% !important;
+    }
+    /* :nth-child()不行 .course3下有span */
+    #content .course3 .item:nth-of-type(1) .back-face {
+      background: url(img/apcoa.png) no-repeat;
+      /* background-position: 50% 50%; */
+    }
+    #content .course3 .item:nth-of-type(2) .back-face {
+      background: url(img/binoli.png) no-repeat;
+    }
+    #content .course3 .item:nth-of-type(3) .back-face {
+      background: url(img/bks.png) no-repeat;
+    }
+    #content .course3 .item:nth-of-type(4) .back-face {
+      background: url(img/gu.png) no-repeat;
+    }
+    #content .course3 .item:nth-of-type(5) .back-face {
+      background: url(img/hlx.png) no-repeat;
+    }
+    #content .course3 .item .face {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      background: #009ee0;
+      color: white;
+    }
+    #content .course3 .item:hover .face{
+      transform: rotateY(360deg);
+    }
+    #content .course3 .item:hover .back-face{
+      transform: rotateY(180deg);
+    }
+    /** END 第二屏 */
+
+    /** 第三屏 */
     #content .list>.works {
       background: url(img/bg3.jpg) no-repeat;
     }
 
-    /* 第三屏 */
     #content .list .works1 {
       margin: 50px 0 100px 50px;
     }
@@ -239,16 +460,212 @@
         transform: translateX(0px) rotateY(180deg);
       }
     }
-    #content .works .pencel1{ width:180px; height:97px; background:url(img/pencel1.png) no-repeat; position:absolute; transition:1s; left:500px; top:0;}
+    /* #content .works .pencel1{ width:180px; height:97px; background:url(img/pencel1.png) no-repeat; position:absolute; transition:1s; left:500px; top:0;}
 		#content .works .pencel2{ width:268px; height:38px; background:url(img/pencel2.png) no-repeat; position:absolute; transition:1s; left:300px; top:250px;}
-		#content .works .pencel3{ width:441px; height:231px; background:url(img/pencel3.png) no-repeat; position:absolute; transition:1s; left:650px; top:300px;}
+		#content .works .pencel3{ width:441px; height:231px; background:url(img/pencel3.png) no-repeat; position:absolute; transition:1s; left:650px; top:300px;} */
+    /** END 第三屏 */
 
+    /** 第四屏 */
     #content .list>.about {
       background: url(img/bg4.jpg) no-repeat;
     }
+    #content .list > .about .about1 {
+      margin: 50px 0 100px 50px;
+    }
+    #content .list > .about .about2 {
+      margin-left: 50px;
+      width: 400px;
+    }
+    #content .list > .about .about3 > .item {
+      position: absolute;
+      width: 260px;
+      height: 200px;
+      border: 5px solid rgba(255, 255, 255, .5);
+      border-radius: 8px;
+      z-index: 2;
+      overflow: hidden;
+    }
+    #content .list > .about .about3 > .item:nth-child(1) {
+      left: 750px;
+      top: 50px;
+    }
+    #content .list > .about .about3 > .item:nth-child(2) {
+      left: 600px;
+      top: 290px;
+    }
+    #content .list > .about .about3 > .item > span,
+    #content .list > .about .about3 > .item > ul {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+    #content .list > .about .about3 > .item:nth-child(1) > span {
+      background: url(img/about2.jpg) no-repeat;
+      transform: scale(1.5);
+      transition: 1s transform;
+    }
+    #content .list > .about .about3 > .item:nth-child(2) > span {
+      background: url(img/about4.jpg) no-repeat;
+      transform: scale(1.5);
+      transition: 1s transform;
+    }
+    #content .list > .about .about3 > .item:hover span {
+      transform: scale(1);
+    }
+    #content .list > .about .about3 > .item > ul > li {
+      position: relative;
+      float: left;
+      overflow: hidden;
+    }
+    #content .list > .about .about3 > .item > ul > li > img {
+      position: absolute;
+      transition: 1s top, 1s left;
+    }
+    #content .list > .about .about4 {
+      position: absolute;
+      width: 357px;
+      height: 998px;
+      left: 50%;
+      top: -100px;
+      background: url(img/greenLine.png) no-repeat;
+    }
+    /** END 第四屏 */
 
+    /** 第五屏 */
     #content .list>.team {
       background: url(img/bg5.jpg) no-repeat;
+    }
+    #content .list > .team .team1 {
+      float: left;
+      width: 400px;
+      margin: 50px;
+    }
+    #content .list > .team .team2 {
+      float: right;
+      width: 400px;
+      margin: 50px;
+    }
+    #content .list > .team .team3 {
+      position: absolute;
+      width: 944px;
+      height: 448px !important;
+      left: 50%;
+      top: 250px;
+      margin-left: -472px;
+    }
+    #content .list > .team .team3 ul {
+      position: relative;
+      height: 100%;
+    }
+    #content .list > .team .team3 ul > li {
+      width: 118px;
+      /* height: 100%; */
+      height: inherit !important;
+      background: url(img/team.png) no-repeat;
+      float: left;
+      transition: 1s opacity;
+    }
+    #content .list > .team .team3 ul > li:nth-child(1) {
+      background-position: 0, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(2) {
+      background-position: -118px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(3) {
+      background-position: -236px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(4) {
+      background-position: -354px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(5) {
+      background-position: -472px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(6) {
+      background-position: -590px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(7) {
+      background-position: -708px, 0 !important;
+    }
+    #content .list > .team .team3 ul > li:nth-child(8) {
+      background-position: -826px, 0 !important;
+    }
+    #content .list > .team canvas {
+      position: absolute;
+      top: 0px;
+    }
+    /** END 第五屏 */
+
+
+    /* 原点导航 */
+    #content > .dot {
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      z-index: 100;
+    }
+    #content > .dot > li {
+      width: 10px;
+      height: 10px !important;
+      border: 5px solid pink;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    #content > .dot > li.active {
+      background: white;
+    }
+
+    /* 出入场 */
+    #content > .list > .home .home1,#content > .list > .home .home2{transition:1s transform,1s opacity;}
+		#content  .course .plane1{ width:359px; height:283px; background:url(img/plane1.png) no-repeat; position:absolute; left:300px; top:-100px; transition:1s;}
+		#content  .course .plane2{ width:309px; height:249px; background:url(img/plane2.png) no-repeat; position:absolute; left:-100px; top:200px; transition:1s;}
+		#content  .course .plane3{ width:230px; height:182px; background:url(img/plane3.png) no-repeat; position:absolute; left:300px; top:400px; transition:1s;}
+		#content  .works .pencel1{ width:180px; height:97px; background:url(img/pencel1.png) no-repeat; position:absolute; transition:1s; left:500px; top:0;}
+		#content  .works .pencel2{ width:268px; height:38px; background:url(img/pencel2.png) no-repeat; position:absolute; transition:1s; left:300px; top:250px;}
+		#content  .works .pencel3{ width:441px; height:231px; background:url(img/pencel3.png) no-repeat; position:absolute; transition:1s; left:650px; top:300px;}
+		#content > .list > .about .about3 > .item,#content > .list > .team .team1,#content > .list > .team .team2
+		{transition:1s transform;}
+
+    /* 音频 */
+    #head > .headMain .music {
+      width: 14px;
+      height: 14px;
+      background: url(img/musicon.gif);
+      float: left;
+      margin: 50px 0 0 5px;
+    }
+
+    /* 开机动画 */
+    #mask {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 100;
+    }
+    #mask .up {
+      width: 100%;
+      height: 50%;
+      background: deepskyblue;
+      transition: 1s height;
+    }
+    #mask .down {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background: deepskyblue;
+    }
+    #mask .line {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -2px;
+      width: 0;
+      height: 4px;
+      background: white;
+      z-index: 101;
+      transition: 1s width;
     }
   </style>
 </head>
@@ -257,6 +674,11 @@
   <!-- 适应分辨率1200 - 2000 -->
   <section id="wrap">
     <!-- 流体布局 -->
+    <div id="mask">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="line"></div>
+    </div>
     <header id="head">
       <!-- 固定布局 -->
       <div class="headMain">
@@ -265,6 +687,10 @@
             <img src="./img/logo.png">
           </a>
         </h1>
+        <div class="music">
+          <audio src="img/audio.mp3" loop>
+          </audio>
+        </div>
         <nav class="nav">
           <!-- li浮动，ul高度坍塌为0；清除浮动 -->
           <ul class="list clearfix">
@@ -310,7 +736,28 @@
     <section id="content">
       <ul class="list">
         <li class="home">
-          <section>home</section>
+          <section>
+            <ul class="home1">
+              <li class="commonTile active">
+                <div class="itme">One Layer</div>
+              </li>
+              <li class="commonTile">
+                <div class="itme">Two Layer</div>
+              </li>
+              <li class="commonTile">
+                <div class="itme">Three Layer</div>
+              </li>
+              <li class="commonTile">
+                <div class="itme">Four Layer</div>
+              </li>
+            </ul>
+            <ul class="home2">
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </section>
         </li>
         <li class="course">
           <section>
@@ -320,13 +767,74 @@
               <span>IFS</span><br />
             </header>
             <div class="course2">
-              <p>
-
+              <p class="commonText">
+                Flexbox is a one-dimensional layout method for laying out items in rows or
+                columns. Items flex to fill additional space and shrink to fit into smaller spaces.
+                This article explains all the fundamentals.
+              </p>
+              <p class="commonText">
+                For a long time, the only reliable cross browser-compatible tools available for
+                creating CSS layouts were things like floats and positioning.
               </p>
             </div>
             <div class="course3">
               <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
+              <div class="item">
+                <div class="back-face"></div>
+                <div class="face">face to face</div>
+              </div>
             </div>
+            <div class="plane1"></div>
+            <div class="plane2"></div>
+            <div class="plane3"></div>
           </section>
         </li>
         <li class="works">
@@ -373,11 +881,66 @@
           </section>
         </li>
         <li class="about">
-          <section>about</section>
+          <section>
+            <header class="about1 commonTile">
+              <span>DIE</span><br/>
+              <span>SPEZIELLE</span><br/>
+              <span>DISPEZIELLEE</span><br/>
+            </header>
+            <div class="about2">
+              <p class="commonText">
+                Der bunte Medienmix ist die Faszination die uns antreibt und das, was man an uns schätzt.
+                Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt
+                unter unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.
+              </p>
+            </div>
+            <div class="about3">
+              <div class="item">
+                <span></span>
+                <ul data-src="img/about1.jpg"></ul>
+              </div>
+              <div class="item">
+                <span></span>
+                <ul data-src="img/about3.jpg"></ul>
+              </div>
+            </div>
+            <div class="about4"></div>
+          </section>
         </li>
         <li class="team">
-          <section>team</section>
+          <section>
+            <header class="team1 commonTile">
+              <span>WIR SIND</span><br/>
+              <span>VOXELAIR</span><br/>
+            </header>
+            <div class="team2">
+              <p class="commonText">Wir sind seit 2002 eine Full-Service-Werbeagentur mit Stammsitz in Heimsheim, zwischen Stuttgart und Karlsruhe.</p>
+              <p class="commonText">Über 60 Jahre Erfahrung vereinen das gesamte VoxelAir-Team. Dabei hat
+                jedes Voxel neben professionellem Allroundwissen auch sein ganz spezielles Gebiet,
+                um selbst die individuellsten Kundenwünsche schnell und kompetent umzusetzen.
+              </p>
+            </div>
+            <div class="team3">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </section>
         </li>
+      </ul>
+      <ul class="dot">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
     </section>
   </section>
@@ -397,9 +960,441 @@
     var cLiNodes = document.querySelectorAll('#content li')
     var cList = document.querySelector('#content .list')
 
+    var home2LiNodes = document.querySelectorAll('#content > .list > .home .home2 > li')
+    var home1LiNodes = document.querySelectorAll('#content > .list > .home .home1 > li')
+    var home1 = document.querySelector('#content > .list > .home .home1')
+
+    var aboutUls = document.querySelectorAll("#content > .list > .about .about3 > .item > ul");
+
+    var dotLis = document.querySelectorAll('#content > .dot > li')
+
+    var teamC = document.querySelector('.team3')
+    var team3Ul = document.querySelector('.team3 ul')
+    var team3Lis = document.querySelectorAll('.team3 li')
+
+    var musicNode = document.querySelector('#head > .headMain .music')
+    var aidioNode = document.querySelector('#head > .headMain .music audio')
+
+    var mask = document.querySelector("#mask")
+		var line = document.querySelector("#mask .line")
+		var mians = document.querySelectorAll("#mask div")
+
     // 同步当前屏的索引
     var now = 0
     var timer = 0
+
+    // 开机动画
+    loadingAn()
+    function loadingAn() {
+      var arr = ['bg1.jpg','bg2.jpg','bg3.jpg','bg4.jpg','bg5.jpg','about1.jpg',
+      'about2.jpg','about3.jpg','about4.jpg','worksimg1.jpg','worksimg2.jpg',
+      'worksimg3.jpg','worksimg4.jpg','team.png','greenLine.png'
+      ]
+      var flag = 0
+      for(var i = 0; i < arr.length; i++) {
+        var img = new Image()
+        img.src = 'img/' + arr[i]
+        img.onload = function() {
+          flag++
+          line.style.width = flag / arr.length * 100 + '%'
+        }
+      }
+      line.addEventListener('transitionend', function() {
+        if(flag === arr.length) {
+          for(var i = 0; i < mians.length; i++) {
+            mians[i].style.height = 0 + 'px'
+          }
+          this.style.display = 'none'
+        }
+      })
+      mians[0].addEventListener('transitionend', function() {
+        mask.remove()
+        aidioNode.play()
+        home3D()
+      })
+    }
+
+    // 音频
+    musicNode.onclick = function() {
+      if(aidioNode.paused) {
+        aidioNode.play()
+        musicNode.style.background = 'url(img/musicon.gif)'
+      } else{
+        aidioNode.pause()
+        musicNode.style.background = 'url(img/musicoff.gif)'
+      }
+    }
+
+    // 出入场
+    // 上一屏
+    var preIndex = 0
+
+    var anArr = [
+			{
+				inAn:function(){
+					var home1 = document.querySelector("#content > .list > .home .home1");
+					var home2 = document.querySelector("#content > .list > .home .home2");
+
+					home1.style.transform="translateY(0px)";
+					home2.style.transform="translateY(0px)";
+					home1.style.opacity=1;
+					home2.style.opacity=1;
+				},
+				outAn:function(){
+					var home1 = document.querySelector("#content > .list > .home .home1");
+					var home2 = document.querySelector("#content > .list > .home .home2");
+
+					home1.style.transform="translateY(-400px)";
+					home2.style.transform="translateY(100px)";
+					home1.style.opacity=0;
+					home2.style.opacity=0;
+				}
+			},
+			{
+				inAn:function(){
+					var plane1 = document.querySelector("#content  .course .plane1");
+					var plane2 = document.querySelector("#content  .course .plane2");
+					var plane3 = document.querySelector("#content  .course .plane3");
+
+					plane1.style.transform = "translate(0px,0px)";
+					plane2.style.transform = "translate(0px,0px)";
+					plane3.style.transform = "translate(0px,0px)";
+				},
+				outAn:function(){
+					var plane1 = document.querySelector("#content  .course .plane1");
+					var plane2 = document.querySelector("#content  .course .plane2");
+					var plane3 = document.querySelector("#content  .course .plane3");
+
+					plane1.style.transform = "translate(-200px,-200px)";
+					plane2.style.transform = "translate(-200px,200px)";
+					plane3.style.transform = "translate(200px,-200px)";
+				}
+			},
+			{
+				inAn:function(){
+					var pencel1 = document.querySelector("#content  .works .pencel1");
+					var pencel2 = document.querySelector("#content  .works .pencel2");
+					var pencel3 = document.querySelector("#content  .works .pencel3");
+
+					pencel1.style.transform = "translateY(0px)";
+					pencel2.style.transform = "translateY(0px)";
+					pencel3.style.transform = "translateY(0px)";
+				},
+				outAn:function(){
+					var pencel1 = document.querySelector("#content  .works .pencel1");
+					var pencel2 = document.querySelector("#content  .works .pencel2");
+					var pencel3 = document.querySelector("#content  .works .pencel3");
+
+					pencel1.style.transform = "translateY(-100px)";
+					pencel2.style.transform = "translateY(100px)";
+					pencel3.style.transform = "translateY(100px)";
+				}
+			},
+			{
+				inAn:function(){
+					var Rect1 = document.querySelector("#content > .list > .about .about3 > .item:nth-child(1)");
+					var Rect2 = document.querySelector("#content > .list > .about .about3 > .item:nth-child(2)");
+
+					Rect1.style.transform = "rotate(0deg)";
+					Rect2.style.transform = "rotate(0deg)";
+				},
+				outAn:function(){
+					var Rect1 = document.querySelector("#content > .list > .about .about3 > .item:nth-child(1)");
+					var Rect2 = document.querySelector("#content > .list > .about .about3 > .item:nth-child(2)");
+
+					Rect1.style.transform = "rotate(45deg)";
+					Rect2.style.transform = "rotate(-45deg)";
+				}
+			},
+			{
+				inAn:function(){
+					var Rect1 = document.querySelector("#content > .list > .team .team1");
+					var Rect2 = document.querySelector("#content > .list > .team .team2");
+
+					Rect1.style.transform = "translateX(0px)";
+					Rect2.style.transform = "translateX(0px)";
+				},
+				outAn:function(){
+					var Rect1 = document.querySelector("#content > .list > .team .team1");
+					var Rect2 = document.querySelector("#content > .list > .team .team2");
+
+					Rect1.style.transform = "translateX(-200px)";
+					Rect2.style.transform = "translateX(200px)";
+				}
+			}
+		]
+
+    for(var i = 0; i < anArr.length; i++) {
+      anArr[i]['outAn']()
+    }
+    setTimeout(function() {
+      anArr[0].inAn()
+    }, 2000)
+
+    // 第五屏气泡效果
+    bubble()
+    function bubble() {
+      var oc = null
+      var time1 = 0
+      var time2 = 0
+
+      for(var i = 0; i < team3Lis.length; i++) {
+        team3Lis[i].onmouseenter = function() {
+          for(var i = 0; i < team3Lis.length; i++) {
+            team3Lis[i].style.opacity = .5
+          }
+          this.style.opacity = 1
+
+          addCanvas()
+          oc.style.left = this.offsetLeft + 'px'
+        }
+      }
+
+      function addCanvas() {
+        if(!oc) {
+          oc = document.createElement('canvas')
+          oc.width =  team3Lis[0].offsetWidth
+          oc.height = team3Lis[0].offsetHeight * 2/3
+
+          oc.onmouseleave = function() {
+            for(var i = 0; i < team3Lis.length; i++) {
+              team3Lis[i].style.opacity = 1
+            }
+
+            removeCanvas()
+          }
+
+          teamC.appendChild(oc)
+          bubbling()
+        }
+      }
+
+      // team3Ul.onmouseleave = function() {
+      //   for(var i = 0; i < team3Lis.length; i++) {
+      //     team3Lis[i].style.opacity = 1
+      //   }
+      // }
+
+      function removeCanvas() {
+        oc.remove()
+        oc = null
+        clearInterval(time1)
+        clearInterval(time2)
+      }
+
+      function bubbling() {
+    		if (oc.getContext) {
+    			var ctx = oc.getContext('2d')
+
+    			var arr = []
+
+    			// 数组中圆绘制到画布中
+    			time1 = setInterval(function() {
+    				ctx.clearRect(0, 0, oc.width, oc.height)
+    				// console.log(arr)
+    				for(var i = 0; i < arr.length; i++) {
+    					// arr[i].deg++
+    					arr[i].deg += 10
+    					arr[i].x = arr[i].startX + Math.sin(arr[i].deg*Math.PI/180)*arr[i].step*2
+    					arr[i].y = arr[i].startY - (arr[i].deg*Math.PI/180)*arr[i].step
+
+    					if(arr[i].y <= 0) {
+    						arr.splice(i, 1)
+    					}
+    				}
+
+    				for(var i = 0; i < arr.length; i++) {
+    					ctx.save()
+    					ctx.fillStyle = "rgba("+arr[i].red+","+arr[i].green+","+arr[i].blue+","+arr[i].alp+")"
+    					ctx.beginPath()
+    					ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2*Math.PI)
+    					ctx.fill()
+    					ctx.restore()
+    				}
+    			}, 1000/60)
+
+    			time2 = setInterval(function() {
+    				var r = Math.random()*6 + 2;
+    				var x = Math.random()*oc.width;
+    				var y = oc.height - r;
+    				var red = Math.round(Math.random()*255)
+    				var green = Math.round(Math.random()*255)
+    				var blue = Math.round(Math.random()*255)
+    				var alp = 1
+
+    				var deg = 0
+    				var startX = x
+    				var startY = y
+    				var step = Math.random()*10 + 2
+
+    				arr.push({
+    					x: x,
+    					y: y,
+    					r: r,
+    					red: red,
+    					green: green,
+    					blue: blue,
+    					alp: alp,
+    					deg: deg,
+    					startX: startX,
+    					startY: startY,
+    					step: step
+    				})
+    			}, 100)
+
+    		}
+      }
+    }
+
+    // 第四屏图片裂开特效
+    picBoom()
+    function picBoom() {
+      for(var i = 0; i < aboutUls.length; i++) {
+        change(aboutUls[i])
+      }
+
+      function change(UL) {
+        var src = UL.dataset.src
+        var w = UL.offsetWidth / 2
+        var h = UL.offsetHeight / 2
+        for(var i = 0; i < 4; i++) {
+          var liNodes = document.createElement('li')
+          liNodes.style.width = w + 'px'
+          liNodes.style.height = h + 'px'
+          /*
+					1. left:0    top:0
+					2. left:-w   top:0
+					3. left:0    top:-h
+					4. left:-w   top:-h
+					*/
+          var imgNode = document.createElement('img')
+          imgNode.style.left = -(i % 2) * w + 'px'
+          imgNode.style.top = -Math.floor(i / 2) * h + 'px'
+          imgNode.src = src
+
+          liNodes.appendChild(imgNode)
+          UL.appendChild(liNodes)
+
+        }
+
+        UL.onmouseenter = function() {
+          /*
+							1. left:0    top:0
+							2. left:-w   top:0
+							3. left:0    top:-h
+							4. left:-w   top:-h
+						*/
+						/*
+							1. left:0    top:h
+							2. left:-2w   top:0
+							3. left:w    top:-h
+							4. left:-w   top:-2h
+					*/
+          var imgNodes = this.querySelectorAll("li>img");
+					imgNodes[0].style.top = h+"px";
+					imgNodes[1].style.left = -2*w+"px";
+					imgNodes[2].style.left = w+"px";
+					imgNodes[3].style.top = -2*h+"px";
+        }
+        UL.onmouseleave = function() {
+          var imgNodes = this.querySelectorAll("li>img");
+					imgNodes[0].style.top = 0+"px";
+					imgNodes[1].style.left = -w+"px";
+					imgNodes[2].style.left = 0+"px";
+					imgNodes[3].style.top = -h+"px";
+        }
+      }
+    }
+
+    // 第一屏3D效果
+    var oldIndex = 0
+    var time3D = ''
+    var autoIndex = 0
+
+    home3D()
+    function home3D() {
+      for(var i = 0; i < home2LiNodes.length; i++) {
+        home2LiNodes[i].index = i
+        // 注册回调函数（同步） 执行回调函数（异步），点击时上层for执行完，i=4
+        home2LiNodes[i].onclick = function() {
+          clearInterval(time3D)
+          for(var i = 0; i < home2LiNodes.length; i++) {
+            home2LiNodes[i].classList.remove('active')
+          }
+          this.classList.add('active')
+
+          // 从左往右，当前索引大于上一次索引 rightShow
+          if(this.index > oldIndex) {
+            home1LiNodes[this.index].classList.remove('leftShow')
+            home1LiNodes[this.index].classList.remove('leftHide')
+            home1LiNodes[this.index].classList.remove('rightHide')
+            home1LiNodes[this.index].classList.add('rightShow')
+
+            home1LiNodes[oldIndex].classList.remove('leftShow')
+            home1LiNodes[oldIndex].classList.remove('rightShow')
+            home1LiNodes[oldIndex].classList.remove('rightHide')
+            home1LiNodes[oldIndex].classList.add('leftHide')
+          }
+          // 从右往左，当前索引小于上一次索引 leftShow
+          if(this.index < oldIndex) {
+            home1LiNodes[this.index].classList.remove('rightShow')
+            home1LiNodes[this.index].classList.remove('leftHide')
+            home1LiNodes[this.index].classList.remove('rightHide')
+            home1LiNodes[this.index].classList.add('leftShow')
+
+            home1LiNodes[oldIndex].classList.remove('leftShow')
+            home1LiNodes[oldIndex].classList.remove('rightShow')
+            home1LiNodes[oldIndex].classList.remove('leftHide')
+            home1LiNodes[oldIndex].classList.add('rightHide')
+          }
+
+          oldIndex = this.index
+
+          // 自动轮播同步
+          autoIndex = this.index
+        }
+      }
+
+      move3D()
+      function move3D() {
+        clearInterval(time3D)
+        // 定时器的调用(同步)  定时器回调函数的执行(异步)
+        time3D = setInterval(function() {
+          autoIndex++
+
+          // 无缝
+          if(autoIndex === home1LiNodes.length) {
+            autoIndex = 0
+          }
+
+          for(var i = 0; i < home2LiNodes.length; i++) {
+            home2LiNodes[i].classList.remove('active')
+          }
+          home2LiNodes[autoIndex].classList.add('active')
+
+          home1LiNodes[autoIndex].classList.remove('leftShow')
+          home1LiNodes[autoIndex].classList.remove('leftHide')
+          home1LiNodes[autoIndex].classList.remove('rightHide')
+          home1LiNodes[autoIndex].classList.add('rightShow')
+
+          home1LiNodes[oldIndex].classList.remove('leftShow')
+          home1LiNodes[oldIndex].classList.remove('rightShow')
+          home1LiNodes[oldIndex].classList.remove('rightHide')
+          home1LiNodes[oldIndex].classList.add('leftHide')
+
+          // 自动轮播 -> 手动轮播 同步问题
+          oldIndex = autoIndex
+        }, 2000)
+      }
+
+      // 鼠标移入时，停止自动轮播
+      home1.onmouseenter = function() {
+        clearInterval(time3D)
+      }
+      home1.onmouseleave = function() {
+        move3D()
+      }
+    }
 
     headBind()
     contentBind()
@@ -433,6 +1428,7 @@
         dir = ev.detail < 0 ? 'up' : 'down'
       }
 
+      preIndex = now
       switch (dir) {
         case 'up':
           if (now > 0) {
@@ -473,13 +1469,25 @@
         // 转绑
         liNodes[i].index = i
         liNodes[i].onclick = function () {
+          preIndex = now
+
+          move(this.index)
+          now = this.index
+        }
+      }
+
+      for (var i = 0; i < dotLis.length; i++) {
+        dotLis[i].index = i
+        dotLis[i].onclick = function () {
+          preIndex = now
+
           move(this.index)
           now = this.index
         }
       }
     }
     // 动画的函数
-    move(1)
+    // move(4)
 
     function move(index) {
       for (var i = 0; i < upNodes.length; i++) {
@@ -492,6 +1500,18 @@
         'px'
 
       cList.style.top = -index * (document.documentElement.clientHeight - head.offsetHeight) + "px"
+
+      for (var i = 0; i < dotLis.length; i++) {
+        dotLis[i].className = ''
+      }
+      dotLis[index].className = 'active'
+
+      if(anArr[index] && typeof anArr[index]['inAn'] === 'function') {
+        anArr[index]['inAn']()
+      }
+      if(anArr[preIndex] && typeof anArr[preIndex]['inAn'] === 'function') {
+        anArr[preIndex]['outAn']()
+      }
     }
 
   }

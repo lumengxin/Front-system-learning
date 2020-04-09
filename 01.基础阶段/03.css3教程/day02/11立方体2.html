@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .center {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+    .wrap {
+      width: 400px;
+      height: 400px;
+      border: 1px solid;
+      background: deeppink;
+
+      perspective: 200px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+
+      transition: 2s;
+      transform-style: preserve-3d;
+      transform-origin: center center -50px;
+    }
+    .box > div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(123,124,211,1);
+      font: 30px/100px '微软雅黑';
+      text-align: center;
+
+      transform-origin: center center -50px;
+
+    }
+    .box > div:nth-child(6) {
+      transform: rotateX(270deg);
+    }
+    .box > div:nth-child(5) {
+      transform: rotateX(90deg);
+    }
+    .box > div:nth-child(4) {
+      transform: rotateY(90deg);
+    }
+    .box > div:nth-child(3) {
+      transform: rotateY(270deg);
+    }
+    .box > div:nth-child(2) {
+      transform: rotateY(180deg) rotate(180deg);
+    }
+    .box > div:nth-child(1) {
+    }
+
+    .wrap:hover .box {
+      transform: rotateY(180deg);
+      transform: rotateX(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap center">
+    <div class="box center">
+      <div>前</div>
+      <div>后</div>
+      <div>左</div>
+      <div>右</div>
+      <div>上</div>
+      <div>下</div>
+    </div>
+  </div>
+</body>
+</html>

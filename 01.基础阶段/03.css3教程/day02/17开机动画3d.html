@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap {
+      height: 100%;
+      position: relative;
+      background: pink;
+
+      perspective: 200px;
+    }
+    .wrap .inner {
+      position: relative;
+      height: 100%;
+
+      transform-style: preserve-3d;
+    }
+    .wrap img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateY(0deg);
+      width: 30%;
+
+      animation: move 2s infinite alternate;
+    }
+    .wrap p {
+      position: relative;
+      top: 54%;
+      text-align: center;
+      line-height: 100%;
+    }
+    @keyframes move {
+      from {
+        transform: translate(-50%, -50%) rotateY(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner">
+      <img src="img/load/logo2.png" alt="">
+      <p>已加载100%</p>
+    </div>
+  </div>
+  <script src="js/data.js"></script>
+  <script>
+    window.onload = function() {
+      var picList = []
+      var flag = 0
+      var pNode = document.querySelector('.inner p')
+
+      for (item in imgData) {
+        picList = picList.concat(imgData[item])
+      }
+      // console.log(picList)
+      for(var i = 0; i < picList.length; i++) {
+        var img = new Image()
+        img.src = picList[i]
+        img.onload = function() {
+          flag++
+          pNode.innerHTML = '已加载'+(Math.round(flag / picList.length * 100))+'%'
+        }
+        img.onerror = function() {
+          console.log('图片加载失败')
+        }
+      }
+    }
+  </script>
+</body>
+</html>

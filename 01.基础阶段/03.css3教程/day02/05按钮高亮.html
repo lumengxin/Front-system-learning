@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      text-decoration: none;
+      background: gray;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      /* 不带black，会继承color */
+      border: 1px solid black;
+      box-sizing: border-box;
+      font-weight: 400;
+
+      /** 百分比
+      * top,height 参照包含块高度
+      * left,margin,padding,width 参照包含块宽度
+      * translate 参照自身宽高
+      * background-position 参照 图片区域-图片位图像素值
+      */
+      position: absolute;
+      /* 参照初始包含块宽高 */
+      left: 50%;
+      top: 50%;
+      /* 参照元素宽高 */
+      transform: translate(-50%, -50%);
+
+      transition: 2s;
+    }
+
+    a:hover {
+      background: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+<a href="javascript:;">HOME</a>
+</body>
+</html>

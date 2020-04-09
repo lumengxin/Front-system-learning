@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .center {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+    .wrap {
+      width: 400px;
+      height: 400px;
+      border: 1px solid;
+      background: deeppink;
+
+      perspective: 200px;
+    }
+    .box {
+      width: 100px;
+      height: 200px;
+
+      transition: 2s;
+      transform-style: preserve-3d;
+      transform-origin: center center -28.867513459481287px;
+    }
+    .box > div {
+      position: absolute;
+      width: 100px;
+      height: 200px;
+      background: rgba(123,124,211,1);
+      font: 30px/200px '微软雅黑';
+      text-align: center;
+
+      /* 50*Math.tan(30*Math.PI/180) */
+      transform-origin: center center -28.867513459481287px;
+
+    }
+    
+    .box > div:nth-child(3) {
+      transform: rotateY(240deg);
+    }
+    .box > div:nth-child(2) {
+      transform: rotateY(120deg);
+    }
+    .box > div:nth-child(1) {
+    }
+
+    .wrap:hover .box {
+      transform: rotateY(360deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap center">
+    <div class="box center">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+  </div>
+</body>
+</html>

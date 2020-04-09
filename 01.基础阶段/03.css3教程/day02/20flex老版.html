@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 400px;
+        height: 300px;
+        margin: 100px auto;
+        border: 1px solid black;
+      }
+      .wrap1 {
+        display: -webkit-box;
+        /* 控制主轴侧轴分别是那个 */
+        -webkit-box-orient: horizontal; 
+        /* 控制主轴排列方向 */
+        -webkit-box-direction: normal;
+        /* 富裕空间管理（主轴）
+        *  start 右边，end 左边
+        *  center 两边，justify 项目之间
+        */
+        -webkit-box-pack: start;
+        /* 富裕空间管理（侧轴）reverse不影响侧轴方向
+        *  start 右边（下边），end 左边（上边）
+        *  center 两边
+        */
+        -webkit-box-align: center;
+      }
+      .wrap2 {
+        display: flex;
+        flex-direction: row-reverse;
+        /* 富裕空间在主轴正方向上 */
+        justify-content: flex-start;
+        justify-content: space-around;
+        /* 富裕空间管理（侧轴）
+        *  flex-start 正方向，flex-end 反方向，center 两边
+        *  baseline 按基线对齐，stretch 等高布局（项目无高度）
+        */
+        align-items: stretch;
+      }
+      .item {
+        width: 50px;
+        height: 50px;
+        background: pink;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap wrap1">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+
+    <div class="wrap wrap2">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </body>
+</html>

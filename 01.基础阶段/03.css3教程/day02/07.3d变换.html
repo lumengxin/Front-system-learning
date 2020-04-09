@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      margin-top: -200px;
+      margin-left: -200px;
+      border: 1px solid black;
+
+      /* 景深，作用父元素 舞台上 */
+      perspective: 100px;
+    }
+    .inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      /* transform: translate(-50%, -50%); */
+      margin-top: -100px;
+      margin-left: -100px;
+      background: pink;
+      text-align: center;
+      font: 30px/200px '微软雅黑';
+      border-radius: 50%;
+      transition: 1s;
+    }
+    .wrap:hover .inner {
+      transform: rotateX(180deg);
+      transform: rotate3d(1,1,1,180deg);
+      transform: translateZ(100px);
+      transform: translate3d(100%,100%,100px);
+      transform: scaleZ(2) translateZ(100px);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner">张丹峰</div>
+  </div>
+</body>
+</html>

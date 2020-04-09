@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 60%;
+      width: 60%;
+      border: 1px solid black;
+      margin: 170px auto 0;
+    }
+    .test {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: 100px;
+      height: 200px;
+      background: pink;
+      text-align: center;
+      font: 30px/100px '微软雅黑';
+
+      transition-property: all;
+      transition-duration: 2s;
+      transition-timing-function: linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="test"></div>
+
+  <script>
+    window.onload = function() {
+      var testNode = document.querySelector('.test')
+      var bodyNode = document.querySelector('body')
+      // dom0事件
+      bodyNode.onmousemove = function() {
+        testNode.style.width = '300px'
+        
+        testNode.style.height = '300px'
+
+        // setTimeout时间不准；最理想时，3s(过渡2s完成)
+        setTimeout(function() {
+          testNode.style.display = 'none'
+        }, 1000)
+      }
+      // dom2。transitionend: 每个属性都会触发一次；完成前设置display:none，不会被触发
+      testNode.addEventListener('transitionend', function() {
+        alert('over')
+      })
+    }
+  </script>
+</body>
+</html>

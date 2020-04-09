@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='uft-8'>
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .text {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      border: 1px solid;
+      border-radius: 50%;
+      text-align: center;
+      font: 30px helvetica;
+      line-height: 200px;
+    }
+    .text:before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 60px;
+      height: 60px;
+      border: 1px solid;
+      right: -20px;
+      bottom: -20px;
+      border-radius: 50%;
+    }
+    .text:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 80px;
+      height: 80px;
+      border: 1px solid;
+      right: -100px;
+      bottom: -100px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="text">
+    大前端，欢迎你
+  </div>
+</body>
+
+</html>

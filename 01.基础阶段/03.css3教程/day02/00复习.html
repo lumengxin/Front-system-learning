@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <pre>
+    <code>
+      1.过渡
+        * 过渡只关心元素初始结束状态，没有办法获取每一帧状态
+        * 元素在初次渲染还未结束时，不能触发过渡
+        * 大多数变换样式切换中，变换组合个数或位置不一样时，无法触发过渡
+        transition-property 
+          过渡动画属性(不是所有属性都可以动画)
+        transition-duration 
+          过渡动画时间(0也要带单位)
+        transition-timing-function 
+          过渡动画形式(贝塞尔)
+        transition 
+          第一个被解析成时间的值赋给transition-duration
+        tansitionend事件
+          每个属性完成过渡时都会触发
+        当属性值的列表长度不一致时
+          时间相关的重复；transition-fiming-function使用默认值
+      2.2d变换(transform)
+          rotate     旋转   
+          translate  平移
+          skew       斜切
+          scale      缩放
+          变换组合   从右往左，矩阵运算
+          基点变换   transform-origin 
+
+      ----------------------------------------------------------------------
+      1.3d变换
+      2.css3动画
+
+      ----------------------------------------------------------------------
+      ----------------------------------------------------------------------
+      
+    </code>
+  </pre>
+</body>
+</html>

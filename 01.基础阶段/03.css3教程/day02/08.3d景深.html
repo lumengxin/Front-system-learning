@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 景深：让3d场景有近大远小的效果(肉眼距离屏幕距离)
+        是一个不可继承属性，但可以作用于后代元素
+       原理：景深越大，灭点越远，元素变形更小
+       景深基点：视觉位置 perspecitve-origin: 50% 50%;(默认值)
+       景深叠加：尽量避免，规则不一致
+    */
+    .wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      margin-top: -200px;
+      margin-left: -200px;
+      border: 1px solid black;
+
+      /* 1.直接使用属性 */
+      perspective: 300px;
+      perspective-origin: right bottom;
+    }
+    .inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      margin-top: -100px;
+      margin-left: -100px;
+      background: pink;
+      text-align: center;
+      font: 30px/200px '微软雅黑';
+      /* border-radius: 50%; */
+      transition: 1s;
+
+      transform: rotateX(45deg);
+
+      /* 2.函数式写法，放在被作用的元素上 且位于首位 */
+      /* transform: perspective(100px) rotateX(0deg); */
+    }
+    .wrap:hover .inner {
+      /* transform: rotateX(180deg); */
+      /* transform: perspective(100px) rotateX(180deg); */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner">张丹峰</div>
+  </div>
+</body>
+</html>

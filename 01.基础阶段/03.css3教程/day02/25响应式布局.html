@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- css2媒体查询 -->
+  <link rel="stylesheet" href="/css/master.css" media="print">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* css3媒体查询是响应式的核心
+    * 媒体类型：all 所有媒体(默认) screen 彩色屏幕 print 打印预览 ...
+    * 媒体属性：width/height: 浏览器窗口尺寸 可加max/min前缀(min-width: 800px 大于等于800)
+               device-width：设备独立像素(pc:分辨率 移动：机器参数) 可加前缀
+               device-pixel-ratio：像素比(pc:1 移动：看参数) 可加前缀，必须加-webkit-
+               orientation: portrait竖屏 landscape横屏
+      操作符,关键字：only 老版本浏览不支持带媒体属性的查询，加上only可以忽略后面样式
+                    and 与，一般用来连接媒体类型和媒体属性
+                    ，(代表or) 或
+                    not
+    */
+    .wrap, .box{
+      width: 100px;
+      height: 100px;
+      border: 1px solid;
+      margin: 100px auto;
+    }
+    @media screen and (min-width: 800px){
+      /* 规则 */
+      .wrap {
+        border: 10px solid red;
+      }
+    }
+    @media only screen and (orientation:landscape) and (-webkit-device-pixel-ratio: 2) {
+      .box {
+        background: pink;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+  </div>
+  <div class="box">
+  </div>
+</body>
+
+</html>

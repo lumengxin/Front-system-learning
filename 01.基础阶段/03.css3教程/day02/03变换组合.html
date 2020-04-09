@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .box {
+      position: relative;
+      margin-top: 100px;
+      height: 800px;
+      border: 1px solid;
+    }
+    .block1, .block2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      /* margin: auto; */
+      width: 100px;
+      height: 100px;
+      background: pink;
+      font: 30px/100px '微软雅黑';
+      text-align: center;
+
+      transition: 2s;
+    }
+    .block2 {
+      margin-top: 200px;
+    }
+    /* 矩阵运算不可逆，不满足交换律 
+    * 变换组合时，从右往左进行计算
+    * 基点 (50, 50) -> (125, 25)
+      .5  0  0   50    25
+      0  .5  0   50    25
+      0   0  1   1     1
+
+      1   0  100  25    125
+      0   1  0    25    25
+      0   0  1    1     1
+    */
+    .box:hover .block1 {
+      transform: translateX(100px) scale(.5);
+    }
+    /* 原理是矩阵计算；抽象记忆，从左往右，坐标轴缩放一倍再平移 */
+    .box:hover .block2 {
+      transform: scale(.5) translateX(100px) ;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="block1">
+      张三丰
+    </div>
+    <div class="block2">
+      张三丰
+    </div>
+  </div>
+</body>
+</html>

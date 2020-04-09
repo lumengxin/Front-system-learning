@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 60%;
+      width: 60%;
+      border: 1px solid black;
+      margin: 170px auto 0;
+    }
+    #test {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: 100px;
+      height: 100px;
+      background: pink;
+      text-align: center;
+      font: 30px/100px '微软雅黑';
+
+      transition-property: width;
+      transition-duration: 2s;
+      transition-timing-function: linear;
+    }
+    /* 代码解析极快，渲染慢。先height后width */
+    /* body:hover #test {
+      transition-property: height;
+      width: 200px;
+      height: 200px;
+    } */
+  </style>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script>
+   /*  alert(1)
+    // transition在元素首次渲染没有结束时不会被触发(id时才可以用，不推荐)
+    test.style.width = '300px'
+    // alert(1) */
+
+    window.onload = function() {
+      /* test.style.width = '300px'
+      // test.style.width = '100px'
+
+      // 此时页面已经渲染了，只是没有显示出来
+      alert(1) */
+
+      var test = document.createElement("div")
+      test.id = 'test'
+      document.documentElement.appendChild(test)
+      setTimeout(function() {
+        test.style.width = '300px'
+      }, 1000)
+    }
+  </script>
+</body>
+</html>

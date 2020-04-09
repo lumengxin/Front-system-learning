@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 60%;
+      width: 60%;
+      border: 1px solid black;
+      margin: 170px auto 0;
+    }
+    #test {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: pink;
+      text-align: center;
+      font: 30px/100px '微软雅黑';
+
+      /* transition-property: all;
+      transition-duration: 2s;
+      transition-timing-function: linear; */
+      transition: 2s 3s width, 3s height;
+    }
+    body:hover #test {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="test"></div>
+</body>
+</html>

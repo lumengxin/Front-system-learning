@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='uft-8'>
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* 禁用系统滚动条 */
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      transition: 2s;
+    }
+    .wrap div {
+      width: 130px;
+      height: 130px;
+      margin: 10px;
+      background: pink;
+      float: left;
+
+      border: 1px solid;
+      box-sizing: border-box;
+    }
+    .wrap div:nth-child(1), .wrap div:nth-child(4) {
+      border-radius: 0 60%;
+    }
+    .wrap div:nth-child(2), .wrap div:nth-child(3) {
+      border-radius: 60% 0;
+    }
+    .wrap:hover {
+      transform: rotate(360deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+
+</html>

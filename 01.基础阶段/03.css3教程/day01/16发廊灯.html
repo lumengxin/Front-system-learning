@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .wrap{
+      width:40px;
+      height: 300px;
+      margin:100px auto;
+      border: 1px solid;
+      overflow: hidden;
+    }
+    .wrap > .inner {
+      height: 600px;
+      /* 重复的只能是渐变区域 */
+      /* background: repeating-linear-gradient(black 10px,white 10px); */
+      background: repeating-linear-gradient(135deg, black 0px,black 10px,white 10px,white 20px);
+      /* transition: 3s; */
+    }
+    /* .wrap:hover .inner {
+      margin-top: -300px;
+    } */
+  </style>
+  <script>
+    window.onload = function() {
+      var inner = document.querySelector('.inner')
+      var flag = 0
+
+      setInterval(function() {
+        flag++
+        if(flag === 300) {
+          flag = 0
+        }
+        inner.style.marginTop = -flag + 'px'
+      }, 1000/60)
+    }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner"></div>
+  </div>
+</body>
+</html>
