@@ -60,21 +60,35 @@
                     return false;
                 }
             }
-            var box2 = document.getElementById("box2");
+            var box2 = document.getElementsByClassName("box2")[0];
+            var box2 = document.querySelector('.box2')
             drag(box2);
+            console.log('box2: ', box2)
+            // var h1 = document.querySelector(".box2 h1")
+            // console.log('h1: ', h1)
+            // drag(h1)
+            
             var img1 = document.getElementById("img1");
             drag(img1);
 
             var box3 = document.getElementById("test")
             drag(box3);
+            console.log('box3: ', box3)
         }
     </script>
 </head>
 
 <body>
     <p>一点文字</p>
-    <div id="box1"></div>
-    <div id="box2"></div>
+    <div id="box1">
+    </div>
+    <div id="box2" class="box2">
+        <h1>box2</h1>
+        <p>内容部分</p>
+        <p>内容部分</p>
+        <p>内容部分</p>
+        <p>内容部分</p>
+    </div>
     <img src="01.png" id="img1" style="position:absolute;" />
 
     <test id="test"></test>
@@ -88,12 +102,13 @@
         }
 
         #box2 {
-            position: absolute;
             width: 200px;
             height: 200px;
             background-color: yellow;
             left: 400px;
             top: 400px;
+            position: absolute;
+            -webkit-user-select: text;
         }
 
         #test {
