@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+    1.reset(可变)参数
+      用来取代arguments, 比其灵活，只能是最后部分形参参数
+    2.扩展运算符
+    -->
+
+    <script type="text/javascript">
+      // arguments：函数内部用来收集实参的伪数组
+      function foo(a, b) {
+        console.log(arguments)
+        // arguments.forEach(function(item, index) {
+        //   console.log(item, index)
+        // })
+
+        // callee属性，等于函数本身。可以用来递归
+        // arguments.callee()
+      }
+      foo(2, 3)
+
+      function foo2(a, ...value) {
+        // ...value可变参数必须放在最后。value代替arguments, 数组
+        console.log(value)
+        value.forEach(function(item, index){
+          console.log(item, index)
+        })
+      }
+      foo2(2, 3, 6, 9)
+
+      let arr = [1, 8]
+      let arr1 = [2, 3, 5]
+      arr = [1, ...arr1, 8]
+      console.log(arr)
+      console.log(...arr)
+    </script>
+  </body>
+</html>

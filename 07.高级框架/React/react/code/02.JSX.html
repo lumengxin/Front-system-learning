@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.js"></script>
+</head>
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+
+  <script type="text/javascript">
+    const msg = 'i like you'
+    const myId = 'Zhuang'
+
+    // js
+    const vDom1 = React.createElement('h2', {id: myId.toLowerCase()}, msg.toUpperCase())
+    const test1Div = document.getElementById('test1')
+    // debugger
+    ReactDOM.render(vDom1, document.getElementById('test1'))
+  </script>
+  <script type="text/babel">
+    // jsx = javascript + xml
+    const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>
+    ReactDOM.render(
+      vDom2,
+      document.getElementById('test2')
+    )
+  </script>
+</body>
+</html>

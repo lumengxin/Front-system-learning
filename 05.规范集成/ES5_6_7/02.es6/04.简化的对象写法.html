@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let username = 'wang'
+      let age = 34
+      /* let obj = {
+        username: username,
+        age: age,
+        getName: function() {
+          return this.username
+        }
+      } */
+      let obj = {
+        // 同名的属性可以省略不写
+        username,
+        age,
+        // 可以省略函数的function
+        getName() {
+          return this.username
+        }
+      }
+      console.log(obj)
+    </script>
+  </body>
+</html>

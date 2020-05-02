@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    getNews('http://localhost:3000/news?id=2')
+      .then(data => {
+        console.log(data)
+        let commentsUrl = JSON.parse(data).commentsUrl
+        let comUrl = 'http://localhost:3000' + commentsUrl
+
+        return getNews(comUrl)
+      }, error => {
+        console.log(error)
+      })
+        // 链式调用，上一个成功回调返回promise
+        .then((data) => {
+          console.log(data)
+        }, () => {
+
+        })
+
+    // 获取新闻
+    function getNews(url) {
+      let promise = new Promise((resolve, reject) => {
+        // 原生ajax请求(默认异步)
+        // 1.创建xmlHttp实例对象
+        let xmlHttp = new XMLHttpRequest()
+        console.log(xmlHttp.readyState)
+        // 绑定监听 readState
+        // onreadystatechange 0-4 调用四次，readyState状态发生变化时调用
+        xmlHttp.onreadystatechange = function() {
+          /* if(xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+            // 请求成功
+            console.log(xmlHttp.response) // xmlHttp.responseText
+            // 修改状态
+            resolve(xmlHttp.responseText)
+          } else {
+            reject('暂无内容...')
+          } */
+          if(xmlHttp.readyState === 4) {
+            if (xmlHttp.status === 200) {
+                resolve(xmlHttp.responseText)
+              } else {
+                reject('暂无内容...')
+              }
+            }
+        }
+        // 2.open 设置请求的方式以及url
+        xmlHttp.open('GET', url)
+        // 3.发送
+        xmlHttp.send()
+      })
+
+      return promise
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- * es5中对象的属性名都是字符串，容易造成重名，污染环境
+  Symbol:
+  1.概念：es6添加的一种新的原始数据类型(已有：String,Number,Boolean,Null,Undefined,Object)
+  2.特点：对应的值是惟一的，解决命名冲突；
+          值不能与其他数据进行计算，包括同字符串拼串
+          for in，for of 遍历时不会遍历symbol属性
+  -->
+  <script>
+    // 创建symbol属性值，不是构造函数
+    let symbol = Symbol()
+    console.log(symbol)
+    let obj = {username: 'xin', age: 43}
+    obj[symbol] = 'hello'
+    console.log(obj)
+
+    for (let i in obj) {
+      console.log(i)
+    }
+
+    let symbol2 = Symbol()
+    let symbol3 = Symbol()
+    console.log(symbol2 === symbol3)
+    console.log(symbol2, symbol3)
+
+    // 定义常量
+    const Person_key = Symbol('person_key')
+    console.log(Person_key)
+  </script>
+</body>
+</html>

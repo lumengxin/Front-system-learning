@@ -14,7 +14,7 @@
       ** 项目永远在主轴的正方向上排列
       */
       .wrap {
-        width: 100px;
+        width: 600px;
         height: 300px;
         margin: 100px auto;
         border: 1px solid black;
@@ -28,6 +28,15 @@
         background: pink;
         text-align: center;
         line-height: 50px;
+        /* margin-left: 20px; */
+      }
+
+      .split {
+        display: block;
+        margin-left: 400px;
+        /* transform: rotate(30deg); */
+        /* transform: translateX(100px); */
+        transform: rotate(30deg);
       }
     </style>
   </head>
@@ -43,5 +52,6 @@
       <div class="item">4</div>
       <div class="item">5</div>
     </div>
+    <span class="split">|</span>
   </body>
 </html>

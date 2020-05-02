@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+    JSON.stringify(obj/arr): js对象数组转化为json对象数组
+    JSON.parse(json): json对象数组转化为js对象数组
+     -->
+    <script type="text/javascript">
+      var obj = {
+        username: 'koko',
+        age: 21
+      }
+      obj = JSON.stringify(obj)
+      console.log(obj, typeof obj);
+    </script>
+  </body>
+</html>

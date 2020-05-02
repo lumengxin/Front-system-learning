@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+    1.Array.prototype.indexOf(value):得到值在数组中的第一个下标
+    2.Array.prototype.lastIndexOf(value):得到值在数组中的最后一个下标
+    3.Array.prototype.forEach(function(item,index){}):遍历数组
+    4.Array.prototype.map(function(item,index){}):遍历返回新数组，加工之后的值
+    5.Array.prototype.filter(function(item,index){}):遍历过滤出一个新数组，返回条件为true的值
+    -->
+    <script type="text/javascript">
+      var arr = [2,7,4,3,2,4,8]
+      console.log(arr)
+      console.log(arr.indexOf(4))
+      console.log(arr.lastIndexOf(4))
+      arr.forEach(function(item, index) {
+        console.log(item, index)
+      })
+
+      var arr1 = arr.map(function(item, index) {
+        return item + 10
+      })
+      console.log(arr1)
+
+      var arr2 = arr.filter(function(item, index) {
+        return item > 3
+      })
+      console.log(arr2)
+    </script>
+  </body>
+</html>

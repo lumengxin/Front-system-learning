@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+</head>
+<body>
+  <div class="app"></div>
+  <div class="app2"></div>
+
+  <script type="text/babel">
+    class Person extends React.Component {
+      render() {
+        return (
+          <ul>
+            <li>姓名：{this.props.name}</li>  
+            <li>年龄：{this.props.age}</li>  
+            <li>性别：{this.props.sex}</li>  
+          </ul>
+        )
+      }
+    }
+   
+    // function Person(props) {
+    //   return (
+    //     <ul>
+    //       <li>姓名：{props.name}</li>  
+    //       <li>年龄：{props.age}</li>  
+    //       <li>性别：{props.sex}</li>  
+    //     </ul>
+    //   )
+    // }
+    // 指定默认值
+    Person.defaultProps = {
+      sex: 'male',
+      age: 18
+    }
+    // 指定属性值的类型和必要性
+    Person.propTypes = {
+      name: PropTypes.string.isRequired,
+      age: PropTypes.number
+    }
+
+    const p1 = {
+      name: 'Tom',
+      age: 32, 
+      sex: 'male'
+    }
+
+    const p2 = {
+      name: 'zhang'
+    }
+
+    ReactDOM.render(
+      // <Person name={p1.name} age={p1.age} sex={p1.sex} />, 
+      <Person {...p1} />, 
+      document.querySelector('.app')
+    )
+    ReactDOM.render(
+      <Person name={p2.name} age={20} />, 
+      document.querySelector('.app2')
+    )
+  </script>
+</body>
+</html>

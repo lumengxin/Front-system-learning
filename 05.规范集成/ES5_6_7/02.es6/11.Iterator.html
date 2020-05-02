@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  1.概念：iterator是一种接口机制，为各种不同的数据结构提供统一的访问机制
+  2.作用：为各种数据结构，提供一个统一的、简便的访问接口
+          使得数据结构的成员能够按某种次序排列
+          es6创造了一种新的遍历命令for of,Iterator接口主要供for of消费
+  
+   -->
+   <script>
+     /* 模拟指针对象（遍历器对象） */
+     // iterator接口
+     function myIterator(arr) {
+       // 记录指针位置
+       let nextIndex = 0
+       // 返回遍历器对象
+       return {
+         next: function(){
+           return nextIndex < arr.length ? {value: arr[nextIndex++],done: false}
+                  : {value: undefined, done: true}
+         }
+       }
+     }
+     let arr = [1, 4, 9, 'ab']
+     let iteratorObj = myIterator(arr)
+     console.log(iteratorObj.next())
+     console.log(iteratorObj.next())
+     console.log(iteratorObj.next())
+     console.log(iteratorObj.next())
+     console.log(iteratorObj.next())
+   </script>
+</body>
+</html>

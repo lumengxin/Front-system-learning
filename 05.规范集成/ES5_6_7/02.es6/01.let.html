@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- let
+    1.作用：var类似，声明变量
+    2.特点：在块级作用域内有效；不能重复声明；不会预处理、不存在提升
+      * es5 全局作用域，函数作用域(局部作用域)
+      * 预处理(预解析),过程变量提升。找到var，将后面变量声明但不赋值；找到function，将函数体提前定义好
+    3.应用：循环，遍历，监听；取代var是趋势
+        const
+    定义常量；不能修改，其他特点同let；保存不用改变的数据
+    -->
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <script type="text/javascript">
+      // console.log(username) // 报错
+      let username = 'zhangsan'
+      // let username = 'zhangsan'
+
+      let btns = document.getElementsByTagName('button')
+      for (var i = 0; i < btns.length; i++) {
+        var btn = btns[i];
+        // 点击事件对应回调函数，回调函数会放到事件队列中，等主线程上代码执行完，通过钩子勾出执行(又叫钩子函数)
+        /* btn.onclick = function() {
+          alert(i)
+        } */
+        // 闭包，立即执行函数。利用的是自己的函数作用域，传进i为函数内私有
+        (function(i) {
+          btn.onclick = function() {
+            alert(i);
+          }
+        })(i)
+        // let 。利用块级作用域
+      }
+    </script>
+  </body>
+</html>

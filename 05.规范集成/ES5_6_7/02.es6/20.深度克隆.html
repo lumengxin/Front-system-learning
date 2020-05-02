@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    判断数据类型：typeof (String,Number,Boolean,Undefined,Object,Function)
+                Object.prototype.toString.call(obj)
+
+  -->
+  <script>
+    let res = 'abc'
+    res = null
+    res = [2,5]
+    // console.log(typeof res)
+    console.log(Object.prototype.toString.call(res))
+
+    // for in循环：对象 属性名；数组 下标
+    let obj = {username: 'tian', age:32}
+    for(let i in obj) {
+      console.log(i)
+    }
+    let arr = [3,2,9]
+    for(let i in arr) {
+      console.log(i)
+    }
+
+    // 定义检测数据类型的功能函数
+    function testType(target) {
+      return Object.prototype.toString.call(target).slice(8,-1)
+    }
+
+    // 深度克隆
+    function clone(target) {
+      // 判断拷贝数据类型
+      let result, targetType = testType(target)
+      if(targetType === 'Object') {
+        result = {}
+      } else if(targetType === 'Array') {
+        result = []
+      } else {
+        return target
+      }
+
+      // 遍历目标数据
+      for(let i in target) {
+        let value = target[i]
+        // 判断是否还存在数组/对象
+        if(testType(value) === 'Object' || testType(value) === 'Array') {
+          // 递归，继续遍历
+          result[i] = clone(value)
+        } else {
+          // vaule值为基本数据类型或者函数
+          result[i] = value
+        }
+      }
+
+      return result
+
+    }
+    let arr3 = [2,5,true,{name:'xin'}]
+    let arr4 = clone(arr3)
+    console.log(arr4)
+    arr4.name = "gu"
+    console.log(arr3, arr4)
+  </script>
+</body>
+</html>

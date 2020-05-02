@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 基本数据类型赋值时，在堆内存中开辟一个新的空间；修改新的不会影响原来的
+    let str = 'abc'
+    let str2 = str
+    console.log(str2)
+    str2 = ''
+    console.log(str)
+
+    let obj = {username: 'koko', age: 12}
+    let obj2 = obj
+    obj2.username = 'tom'
+    console.log(obj)
+
+    /* 
+    1.拷贝数据：
+      基本数据类型：拷贝后会生成一份新的数据，修改拷贝后的数据不会改变元数据
+      对象/数组: 拷贝后不会生成新的数据，而是拷贝引用，会影响原数据
+    2.拷贝数据的方法：
+      直接赋值给一个变量           //浅拷贝
+      Object.assign()             //浅拷贝
+      Array.prototype.concat()    //浅拷贝
+      Array.prototype.slice()     //浅拷贝
+      JSON.parse(JSON.stringify())//深拷贝(深度克隆),拷贝数据中不能有函数
+    3.浅拷贝(数组/对象): 拷贝的引用，会影响原数据
+      深拷贝/深度克隆: 拷贝生成新的数据，不影响原数据
+    */
+    console.log('-------------')
+    let ob = {username: 'zhang', age: 45}
+    let ob2 = Object.assign(ob)
+    console.log(ob2)
+    ob.username = 'song'
+    console.log(ob, ob2)
+    console.log('-------------')
+
+    let ar = [1,2,{username: 'liu'},function fun(){}]
+    let ar2 = ar.concat()
+    // ar2[2] = {username: 'huang'}
+    // console.log(ar)
+    ar2[2].username = 'huang'
+    console.log(ar)
+
+    let ar3 = ar.slice()
+    ar3[2].username = 'avar'
+    console.log(ar)
+
+    let ar4 = JSON.parse(JSON.stringify(ar))
+    console.log(ar4)
+    ar4.username = 'zhou'
+    console.log(ar4, ar)
+  </script>
+</body>
+</html>

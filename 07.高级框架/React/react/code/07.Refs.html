@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.js"></script>
+</head>
+<body>
+  <div class="app"></div>
+
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      constructor(props) {
+        super(props)
+        this.showInput = this.showInput.bind(this)
+      }
+
+      showInput() {
+        // 官方不建议次种写法
+        // const input = this.refs.content
+        // alert(input.value)
+
+        // 当前input保存到组件input,即this.input
+        alert(this.input.value)
+      }
+
+      handleBlur(e) {
+        alert(e.target.value)
+      }
+
+      render() {
+        return (
+          <div>
+            <input type="text" ref="content" />
+            <input type="text" ref={input => this.input = input} />
+            <button onClick={this.showInput}>提示输入</button>
+            <input type="text" placeholder="失去焦点提示内容" onBlur={this.handleBlur} />
+          </div>
+        )
+      }
+      
+    }
+
+    ReactDOM.render(
+      <MyComponent />, 
+      document.querySelector('.app')
+    )
+  </script>
+</body>
+</html>

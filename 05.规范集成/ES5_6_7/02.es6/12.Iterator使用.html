@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // es6已经将iterator接口部署到指定的数据类型上，可以使用for of去遍历
+    // 数组，字符串，arguments，set容器，map容器
+    let arr = [3, 5, 'abc', false]
+    for(let item of arr) {
+      console.log(item)
+    }
+
+    function fun() {
+      for(let i of arguments) {
+        console.log(i)
+      }
+    }
+    fun('a',1,4,5,'a')
+
+    // 指定的数据结构部署iterator接口
+    let targetData = {
+      [Symbol.iterator]: function() {
+        let nextIndex = 0
+        return {
+          next: function(){
+            return nextIndex < this.length ? {value: this[nextIndex++],done: false}
+                    : {value: undefined, done: true}
+          }
+        }
+      }
+    }
+
+    // 使用三点运算符，解构赋值，默认去调用iterator接口
+    let arr2 = [3,5,6]
+    arr2 = [1,...arr,5,6]
+    console.log(arr2)
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+  <script>
+    function getNews(url) {
+      $.get(url, function(data) {
+        console.log(data)
+        let comUrl = 'http://localhost:3000' + data.commentsUrl
+        
+        sx.next(comUrl)
+      })
+    }
+    // getNews('http://localhost:3000/news?id=2')
+
+    function* sendXml() {
+      let url = yield getNews('http://localhost:3000/news?id=3')
+      yield getNews(url)
+    }
+    // 获取遍历器对象
+    let sx = sendXml()
+    sx.next()
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.js"></script>
+</head>
+<body>
+  <div class="app"></div>
+
+  <script type="text/babel">
+    // 将一个数据的数组转换为一个标签的数组
+    const lists = ['jQuery', 'zepto', 'angular', 'react', 'vue']
+
+    const ul = (
+      <ul>
+        {
+          lists.map((list, index) => <li key={index}>{list}</li>)
+        }
+      </ul>
+    )
+
+    ReactDOM.render(ul, document.querySelector('.app'))
+  </script>
+</body>
+</html>

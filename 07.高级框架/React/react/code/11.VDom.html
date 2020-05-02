@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.js"></script>
+</head>
+<body>
+  <div class="app"></div>
+  
+  <script type="text/babel">
+    class VDom extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          date: new Date()
+        }
+      }
+
+      componentDidMount() {
+        setInterval(() => {
+          this.setState({
+            date: new Date()
+          })
+        }, 1000)
+      }
+
+      render() {
+        // DOM diff算法，最小化重绘。输入框变化时不需要render
+        console.log("VDom -> render -> render")
+        return(
+          <div>
+            Hello,<input type="text" placeholder="Your name here" />
+            <span>It is {this.state.date.toTimeString()}</span>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <VDom />,
+      document.querySelector('.app')
+    )
+  </script>
+</body>
+</html>

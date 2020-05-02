@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  1.Promise对象：代表了未来某个将要发生的事件（通常是一个异步操作）
+    有了promise，可以将异步操作以同步流程表达出来，避免了层层嵌套的回调函数（回调地狱）
+    es6的Promise是一个构造函数，用来生成promise实例
+  2.使用
+   - 创建promise对象
+   let promise = new Promise((resolve, reject) => {
+     // 初始化promise状态为pending
+     // 执行异步操作
+     if (异步操作成功) {
+       // 修改promise的状态为fullfilled
+       resolve(value);
+     } else {
+       // 修改promise的状态为rejected
+       reject(errMsg)
+     }
+   })
+   - 调用promise的then()
+   promise.then(function(
+     result => console.log(result),
+     errMsg => console.log(errMsg)
+   ))
+  3.promise对象的三个状态
+  pending:初始化 fullfilled:成功 rejected:失败
+  4.应用
+  - 实现超时处理
+  - 封装ajax请求
+  let request = new XMLHttpRequest()
+  request.onreadystatechange = function() {}
+  request.responseType = 'json'
+  request.open('GET', url)
+  request.send()
+  -->
+
+  <script type="text/javascript">
+    let promise = new Promise((resolve, reject) => {
+      // 初始化proise状态 pending  同步
+      console.log('111')
+      // 执行异步操作，通常是发送ajax请求 开启定时器
+      setTimeout(() => {
+        console.log('333')
+        // 根据异步任务的返回结果去修改promose的状态
+        // 异步任务执行成功 修改为promsise的状态为 fullfilled成功的状态
+        // resolve('haha,成功了');
+        // 异步任务执行失败 修改为rejected状态
+        reject('555,');
+      }, 2000)
+    })
+    console.log('222')
+
+    promise
+      .then((data) => {
+        // 成功的回调
+        console.log(data, '成功回调')
+      }, (err) => {
+        // 失败的回调
+        console.log(err, '失败回调')
+      })
+
+    console.log(promise)
+    
+  </script>
+</body>
+</html>

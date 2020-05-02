@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 严格模式：'use strict'
+    目的：消除js语法的一些不合理、不严谨之处，减少一些怪异行为
+      消除代码运行的一些不安全之处
+      为未来新版本的js做铺垫
+    语法：必须用var声明变量
+      禁止自定义的函数中的this指向widoww
+      创建eval作用域
+      对象不能有重名的属性
+    -->
+    <script type="text/javascript">
+      'use strict';
+
+      // username = 'xin';  // window.uesrname,污染全局
+      var username = 'xin';
+
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // 自调用， this指向widnow
+      // Person('kobe', 49); 加上new,this指向实例对象
+      new Person('kobe', 49);
+
+      var str = 'abc'
+      // eval函数可以解析传来的字符串代码
+      eval("var str = 'bbb'; alert(str)");
+      alert(str);  // bbb, 非严格模式会污染全局变量
+
+      var obj = {
+        user: 'xin',
+        age: 22,
+        user: 'xin'
+      }
+    </script>
+  </body>
+</html>

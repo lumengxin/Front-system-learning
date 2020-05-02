@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- es5给Object对象扩展了一些静态方法
+    1.Object.create(prototype, [descriptors])
+    作用：以指定对象为原型创建新的对象
+      为新的对象指定新的属性，并对属性进行描述
+      - value: 指定值
+      - writable：标识当前属性是否是可修改的，默认false
+      - configurable: 标识当前属性是否可以被删除，默认false
+      - enumerable: 标识当前属性是否能用for in 枚举，默认false
+    2.Object.defineProperties(object, descriptors)
+    作用：为指定对象定义扩展多个属性
+     get: 用来获取当前属性值得回调函数
+     set: 修改当前属性值得触发的回调函数，并且实参即为修改后的值
+     存取器属性： setter,getter一个用来存值，一个用来取值
+    -->
+    <script type="text/javascript">
+      var obj = {
+        username: 'haha',
+        age: 33
+      }
+      var obj1 = {}
+      obj1 = Object.create(obj, {
+        sex: {
+          value: '男',
+          // writable: true,
+          // configurable: true,
+          enumerable: true
+        }
+      })
+      console.log(obj1)
+      obj1.sex = '女'
+      console.log(obj1.sex)
+      delete obj1.sex
+      for(var i in obj1) {
+        console.log(i)
+      }
+
+      var obj2 = {
+        firstName: 'tom',
+        lastName: 'jon'
+      }
+      Object.defineProperties(obj2, {
+        fullName: {
+          // 获取扩展属性的值,获取时自动调用
+          get: function() {
+            return this.firstName + ' ' + this.lastName
+          },
+          // 监听扩展属性，当其发生变化时调用
+          set: function(newV) {
+            console.log('set: ', newV)
+            var names = newV.split(' ')
+            this.firstName = names[0]
+            this.lalastName = names[1]
+          }
+        }
+      })
+      /* fullname: {...} 点击展开，惰性求值 调用get */
+      console.log(obj2)
+      obj2.fullName = 'miss lu'
+      console.log(obj2.fullName)
+
+      /* 对象本身的两个方法
+      get propertyName() {}
+      set propertyName() {}
+      */
+      var obj3 = {
+        firstName: 'xiao',
+        lastName: 'lu',
+        get fullName() {
+          return this.firstName + ' ' + this.lalastName
+        }
+      }
+      console.log(obj3)
+    </script>
+  </body>
+</html>

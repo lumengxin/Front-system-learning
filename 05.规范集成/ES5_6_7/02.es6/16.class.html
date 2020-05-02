@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- class: 定义类、实现类的继承
+  * 继承：原型、构造函数、构造函数+原型 *
+  在类中通过constructor定义构造方法
+  通过new来创建类的实例
+  通过extends来实现类的继承
+  通过super调用父类的构造方法
+  重写父类中继承的一般方法
+  -->
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    let Tom = new Person("tom", 98)
+    console.log(Tom)
+
+    class Animal {
+      // 类的构造方法
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // 类的一般方法, 必须用对象简写方式
+      // showName: function() {}
+      // 方法定义到实例对象原型上（多个实例对象公用一块内存）
+      showName() {
+        console.log(this.name)
+      }
+    }
+    let Dog = new Animal('dog', 3)
+    console.log(Dog)
+    Dog.showName()
+
+    // 子类
+    class cuteAnimal extends Animal {
+      constructor(name, age, size) {
+        // 调用父类的构造方法（相当于直接把父类构造方法搬过来）
+        super(name, age)
+        this.size = size
+      }
+      // 父类的方法重写
+      showName() {
+        console.log(this.name, this.age, this.size)
+      }
+    }
+    let cat = new cuteAnimal('cat', 4, 'small')
+    console.log(cat)
+    cat.showName()
+  </script>
+</body>
+</html>

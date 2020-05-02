@@ -1,0 +1,15 @@
+body {
+  color: pink;
+  background: url(../img/bg1.jpg) no-repeat;
+}
+.box1 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: url(../img/logo.png) no-repeat;
+  margin-top: 50px;
+}

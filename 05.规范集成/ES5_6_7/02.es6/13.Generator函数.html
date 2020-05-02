@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- Generator函数
+  1.概念：es6提供的解决异步编程的方案之一
+          是一个状态机，内部封装了不同状态的数据
+          用来生成遍历器对象
+          可暂停函数（惰性求值），yield暂停，next方法可启动。每次返回的yield后表达式的结果
+  2.特点：function 与函数名之间有一 *
+          内部用yield表达式来定义不同的状态
+          返回的是指针对象，而不是执行函数内部逻辑
+          调用next方法函数内部逻辑开始执行，直到yield表达式停止，返回{value: yield表达式结果/undefined, done: false/true}
+          再次调用next方法会从上一次停止时的yield开始，直到最后
+          yield语句返回结果通常为undefined，当调用next方法时传参内容会作为启动时yield语句的返回值
+  -->
+  <script>
+    function* myGenerator() {
+      console.log('开始执行')
+      let result = yield 'hello'
+      console.log(result)
+      console.log('暂停后，再次执行')
+      yield 'generator'
+      console.log('遍历完毕')
+      return '返回的结果'
+    }
+    let mg = myGenerator()
+    console.log(mg)
+    mg.next()
+    console.log(mg.next('aaaaaaaa'))
+    console.log(mg.next())
+
+    // 对象的symbol.iterator属性 指向遍历器对象
+    let obj = {username: 'kaka', age: 32}
+    obj[Symbol.iterator] = function* test() {
+      yield 1
+      yield 2
+      yield 3
+    }
+    for (let i of obj) {
+      console.log(i)
+    }
+  </script>
+</body>
+</html>

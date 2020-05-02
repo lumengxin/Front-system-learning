@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- async函数(ES2017)
+  概率：真正意义上去解决异步回调的问题，同步流程表达异步操作
+  本质：Generator的语法糖
+  语法：async function foo() {
+          await 异步操作;
+          await 异步操作;
+        }
+  特点：不需要像Generatro去调用next方法，遇到await等待，当前的异步操作完成就往下执行
+        返回的总是Promise对象，可以用then方法进行下一步操作
+        async取代Generatro函数的*，await去掉yield
+        语义上更为明确，使用简单
+  -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+  <script>
+    async function foo() {
+      return new Promise(resolve => {
+        // setTimeout(function() {
+        //   resolve()
+        // }, 2000)
+        setTimeout(resolve, 2000)
+      })
+    }
+
+    async function test() {
+      console.log('开始执行', new Date().toTimeString())
+      await foo()
+      console.log('执行完毕', new Date().toTimeString())
+    }
+    // test()
+
+    // async里await返回值
+    function test2() {
+      return 'test2'
+    }
+    async function asPrint() {
+      // let result = await test2()
+      // let result = await Promise.resolve()
+      let result = await Promise.resolve('promise')
+      console.log(result)
+      result = await Promise.reject('失败了。。。')
+      console.log(result)
+    }
+    // asPrint()
+
+    async function getNews(url) {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: 'GET',
+          url, 
+          // success: function(data) {
+          //   resolve()
+          // },
+          success: data => resolve(data),
+
+          // error: err => reject()
+          error: err => resolve(false)
+        })
+      })
+    }
+    async function sendXml() {
+      let result = await getNews('http://localhost:30001/news?id=7')
+
+      if(!false) {alert('暂无数据..');return;}
+
+      console.log(result)
+      await getNews('http://localhost:3000' + result.commentsUrl)
+    }
+    sendXml()
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    set:无序不可重复的多个value的集合体
+    map:无序的key不重复的多个key value的集合体
+  -->
+  <script>
+    let set = new Set([2,3,4,3,5])
+    console.log(set)
+    set.add(9)
+
+    let map = new Map([['name','zhang'],['age', 87]])
+    console.log(map)
+    map.set(78, 'old')
+    map.delete('age')
+    console.log(map)
+
+    // 数组去重
+    let arr = [1,2,2,3,4,9,8,3,3]
+    let arr1 = arr
+    arr = []
+    let set1 = new Set(arr1)
+    for(let i of set1) {
+      arr.push(i)
+    }
+    console.log(arr)
+  </script>
+</body>
+</html>

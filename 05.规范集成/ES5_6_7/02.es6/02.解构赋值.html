@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的解构赋值</title>
+  </head>
+  <body>
+    <!-- 从对象或者数组中提取数据，并赋值给变量（多个）
+    给多个形参赋值
+    -->
+    <script type="text/javascript">
+      let obj = {username: 'zhang', age: 32}
+      // let username = obj.username
+      // let age = obj.age
+      let {username, age} = obj
+      // let {age} = obj
+      console.log(username, age)
+
+      let arr = [3,5,'aa',true]
+      let [a,b,c,d,e] = arr
+      console.log(a,b,c,d,e)
+      let [,,l,m] = arr
+      console.log(l,m)
+
+      foo(obj)
+      /* function foo(obj) {
+        console.log(obj.username, obj.age)
+      } */
+      function foo({username, age}) { // {username,age} = obj
+        console.log(username, age)
+      }
+    </script>
+  </body>
+</html>
