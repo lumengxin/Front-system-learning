@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(128, 128, 128, .9);
+}
+.title {
+  text-align: center;
+  color: red;
+}
+.logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 0px auto;
+  animation: logo-rotate infinite 20s linear;
+}
+@keyframes logo-rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 1px solid #efefef;
+  text-align: center;
+}
+.card > img {
+  margin-bottom: .75rem;
+  border-radius: 100px;
+}
+.card-text {
+  font-size: 85%;
+}
+.header {
+  text-align: center;
+}

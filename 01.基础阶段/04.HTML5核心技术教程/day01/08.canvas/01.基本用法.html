@@ -46,6 +46,15 @@
         if (canvas.getContext) {
             // 获取渲染上下文（画笔）
             var ctx = test.getContext("2d")
+            console.log(ctx)
+
+            ctx.fillStyle = 'rgba(34,23,87,0.8)'
+            ctx.fillRect(0, 0, 100, 100)
+
+            ctx.strokeStyle = '#ff0000'
+            ctx.lineWidth = 5
+            ctx.lineCap = 'butt'
+            ctx.strokeRect(50,50,100,100)
         }
     }
 </script>

@@ -15,9 +15,15 @@
   <script type="text/babel">
     // 创建虚拟dom
     var vDom = <h1>Hello, react.</h1>
+    var vDom2 = <div>
+                  <p>外部必须要有一个根标签</p>
+                  <h2>多个标签</h2>
+                  <p>标题2内容</p>
+                  <p>不能是字符串</p>
+                </div>
 
     // 将虚拟dom渲染到页面真实dom容器中
-    ReactDOM.render(vDom, document.querySelector('.test'))
+    ReactDOM.render(vDom2, document.querySelector('.test'))
   </script>
 </body>
 </html>

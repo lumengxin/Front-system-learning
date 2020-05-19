@@ -73,7 +73,7 @@
 
 - 编译js
 
-`webpack scr/js/entry.js dist/bundle.js`
+`webpack scr/js/entry.js dist/js/bundle.js`
 
 - 查看页面效果
 
@@ -86,7 +86,13 @@ import {foo, bar} from './math';
 import data from '../data/test.json';
 ```
 
-> `webpack scr/js/entry.js dist/bundle.js`
+编译：
+
+> `webpack scr/js/entry.js dist/js/bundle.js`
+
+没有全局安装wepack时：
+
+> ./node_modules/.bin/webpack src/js/entry.js dist/js/bundle.js
 
 ### 5.Loader使用
 
@@ -134,6 +140,12 @@ module.exports = {
   }
 }
 ```
+
+编译：(自动执行webpack.config.js)
+
+> .\node_modules\.bin\webpack
+
+
 
 ### 6.热加载
 

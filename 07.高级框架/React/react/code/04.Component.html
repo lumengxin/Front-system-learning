@@ -16,13 +16,19 @@
     // 定义组件
     // 1.工厂函数组件（简单组件）,有状态时不适用
     function MyComponent() {
+      console.log("MyComponent -> MyComponent", this)
+      
       return <h2>工厂函数组件</h2>
     }
     // 2.es6类组件（复杂组件）
     class MyComponent2 extends React.Component {
+      console = () => {
+        console.log('this', this)
+      }
       render() {
-        console.log(this)
-        return <h2>es6类组件</h2>
+        console.log("MyComponent2", this)
+
+        return <h2 onClick={this.console}>es6类组件</h2>
       }
     }
 

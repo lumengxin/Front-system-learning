@@ -20,7 +20,9 @@
 
       showInput() {
         // 官方不建议次种写法
-        // const input = this.refs.content
+        const input = this.refs.content
+        console.log(this.refs)
+        input.style.background = 'red'
         // alert(input.value)
 
         // 当前input保存到组件input,即this.input
@@ -28,7 +30,9 @@
       }
 
       handleBlur(e) {
-        alert(e.target.value)
+        console.log(e)
+        console.log(e.target)
+        console.log(e.target.value)
       }
 
       render() {

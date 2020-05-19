@@ -10,31 +10,31 @@
 
 <body>
     <div>
-        <h2>$#9760;</h2>
+        <h1>页面中有的元素</h1>
     </div>
     <script>
         /* 
          * 运算符：也叫操作符
          * 通过运算符可以对一个或多个值进行运算，并获取结果
          */
-        var a = 123;
-        var result = typeof a;
+        var aa = 123;
+        var result = typeof aa;
         console.log(result);
 
         // 1.算数运算符：+ - * / %
-        var b = "123" + "533";
+        var bb = "123" + "533";
         // 拼串
-        console.log(b);
+        console.log(bb);
         // 任何值和字符串相加都会转化为字符串
         // 隐式类型转化，等价String()
-        b = '' + 12;
-        console.log(typeof (b), b)
+        bb = '' + 12;
+        console.log(typeof (bb), bb)
 
         // 除了+， 其他运算基本都转化为Number
-        var c = 100 - '1';
-        console.log(c);
-        c = 3 * null;
-        console.log(c);
+        var cc = '100' - 0;
+        console.log(cc);
+        cc = 3 * null;
+        console.log(cc);
 
         let d = 1 / 3;
         console.log(d)
@@ -42,7 +42,7 @@
         // 2.一元运算符：++ -- + -(正负号) 
         var e = true;
         e = -e;
-        console.log(b, d, e);
+        console.log(bb, d, e);
         // + 转化为数值类型
         var s = "122";
         s = +s;
@@ -75,7 +75,7 @@
         false && alert("不会执行");
         // 非布尔值的或 与运算
         // 先转化为boolean，再运算，并且返回原值
-        var res = 1 && 2;
+        var res = -1 && 2;
         // 与运算：都为true，返回后一个值；有false,返回靠前的false(短路)
         console.log("TCL: res", res);  
         var res2 = NaN || 0;
@@ -108,16 +108,17 @@
         let ba = '\u1C00';
         console.log("TCL: ba", ba);
         console.log('\u0054');
-        let bb = ['\u2620', '\u2660','\u26A1']   
-        console.table(bb);
+        let b2 = ['\u2620', '\u2660','\u26A1']   
+        console.table(b2);
         // 网页中使用Unicode编码,十六进制四位数转化为十进制四位数
         var div = document.createElement("div");
-        div.innerHTML = `<h1>$#9760;</h1>`;
+        div.innerHTML = `<h2>创建元素，插入body元素之前</h2>`;
         document.body.insertBefore(div, document.body.firstElementChild);
         var str = `<div style="color:red;">
                     <h4 style="color:green;background-color:blue;">wirte向页面写入内容</h4>
                    </div>`;
         document.write(str);
+        document.write('<p>直接写入内容而不通过变量保存，之前内容后面追加</p>')
 
         // 7.条件(三元)运算符
         // 语法： 条件表达式 ? 语句1:语句2;

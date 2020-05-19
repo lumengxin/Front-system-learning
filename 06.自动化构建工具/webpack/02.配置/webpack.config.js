@@ -10,7 +10,7 @@ module.exports = {
     filename: 'bundle.js',
     // __dirname 根目录
     path: path.resolve(__dirname, 'dist/js'),
-    // 加载大图从js中找（不推荐，热加载时有问题）
+    // 加载大图从js中找（不推荐，热加载时有问题）；不加时从dist下找不到
     publicPath: 'js/'
   },
   module: {

@@ -75,6 +75,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 document.write('webpack-dev-serve')
 
+let text = '热加载，编写的内容'
+document.write(text)
+
 
 /***/ }),
 /* 1 */

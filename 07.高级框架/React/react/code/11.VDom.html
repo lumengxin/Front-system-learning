@@ -16,14 +16,14 @@
       constructor(props) {
         super(props)
         this.state = {
-          date: new Date()
+          date: new Date().toLocaleString()
         }
       }
 
       componentDidMount() {
         setInterval(() => {
           this.setState({
-            date: new Date()
+            date: new Date().toLocaleString()
           })
         }, 1000)
       }
@@ -34,7 +34,7 @@
         return(
           <div>
             Hello,<input type="text" placeholder="Your name here" />
-            <span>It is {this.state.date.toTimeString()}</span>
+            <span>It is {this.state.date}</span>
           </div>
         )
       }

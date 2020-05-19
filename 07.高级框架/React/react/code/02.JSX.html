@@ -13,17 +13,18 @@
   <div id="test2"></div>
 
   <script type="text/javascript">
-    const msg = 'i like you'
+    const msg = 'i like you' + '<h3>and<h3>' + 'you like me.'
     const myId = 'Zhuang'
 
     // js
-    const vDom1 = React.createElement('h2', {id: myId.toLowerCase()}, msg.toUpperCase())
+    const vDom1 = React.createElement('h2', {className: myId.toLowerCase()}, msg.toUpperCase())
     const test1Div = document.getElementById('test1')
     // debugger
-    ReactDOM.render(vDom1, document.getElementById('test1'))
+    ReactDOM.render(vDom1, test1Div)
   </script>
   <script type="text/babel">
     // jsx = javascript + xml
+    // 多个标签需要被一个根标签包裹；js代码需要用{}括起来
     const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>
     ReactDOM.render(
       vDom2,

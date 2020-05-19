@@ -7,7 +7,7 @@
   <script src="../lib/react.development.js"></script>
   <script src="../lib/react-dom.development.js"></script>
   <script src="../lib/babel.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+  <script src="../lib/prop-types.js"></script>
 </head>
 <body>
   <div class="app"></div>
@@ -16,13 +16,12 @@
   <script type="text/babel">
     class Person extends React.Component {
       render() {
-        return (
-          <ul>
-            <li>姓名：{this.props.name}</li>  
-            <li>年龄：{this.props.age}</li>  
-            <li>性别：{this.props.sex}</li>  
-          </ul>
-        )
+        // return 后面必须紧跟内容，若换行需要()括起来
+        return <ul>
+                <li>姓名：{this.props.name}</li>
+                <li>年龄：{this.props.age}</li>
+                <li>性别：{this.props.sex}</li>
+               </ul>
       }
     }
    
@@ -62,7 +61,7 @@
       document.querySelector('.app')
     )
     ReactDOM.render(
-      <Person name={p2.name} age={20} />, 
+      <Person age={20} />, 
       document.querySelector('.app2')
     )
   </script>

@@ -1,0 +1,19 @@
+.center {
+  text-align: center;
+}
+a {
+  color: black;
+}
+a:hover, .activeClass {
+  color: red;
+}
+.list-group-item:hover {
+  text-decoration: none;
+}
+
+.col-xs-6 {
+  margin-left: 20px;
+}
+.nav-tabs > li:last-child {
+  margin-left: 60px;
+}
