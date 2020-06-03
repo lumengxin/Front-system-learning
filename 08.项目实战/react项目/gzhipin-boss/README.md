@@ -24,19 +24,19 @@ create-react-app脚手架构建
 
 ```
 D:\home\前端体系学习\08.项目实战\react项目\gzhipin-boss
-├─config-overrides.js
+├─config-overrides.js  // 覆盖默认配置
 ├─package.json
 ├─README.md
 ├─yarn-error.log
 ├─yarn.lock
 ├─src
-|  ├─index.js
-|  ├─utils
-|  ├─redux
-|  ├─containers
-|  ├─components
-|  ├─assets
-|  ├─api
+|  ├─index.js          // 入口
+|  ├─utils			   // 工具模块
+|  ├─redux			   // redux相关
+|  ├─containers		   // 容器组件模块
+|  ├─components		   // UI组件模块
+|  ├─assets			   // 公用资源
+|  ├─api			   // ajax请求模块
 ├─public
 |   ├─favicon.ico
 |   ├─index.html
@@ -76,7 +76,7 @@ D:\home\前端体系学习\08.项目实战\react项目\gzhipin-boss
 
 ***老版***
 
-
+<p style="color: red;">...主题定制不生效(应该也是less-loader版本问题)</p>
 
 <hr />
 
@@ -171,7 +171,8 @@ style: true
 {
       ...
       "theme": {
-          "brand-primary": "red",
+          // "brand-primary": "red",
+          "@brand-primary": "red",
           "color-text-base":  "#333",
           ...
       },
@@ -213,5 +214,88 @@ module.exports = {
   },
   ...
 }
+```
+
+<p style="color: red;">默认配置暴露出来后，重启项目运行失败(废弃)</p>
+
+config-overrides.js继续配置：
+
+```
+// config-overrides.js
+const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const theme = require('./package.json').theme;
+
+module.exports = override(
+  fixBabelImports('import', {
+    libraryName: 'antd-mobile',
+    style: true,
+  }),
+  addLessLoader({
+  	modifyVars: theme
+  })
+);
+```
+
+<p style="color: red;">报错：ValidationError: Invalid options object. Less Loader has been initialized using an options object that does not match the API schema.</p>
+
+卸载less-loader@6.x.x , 安装5.x:
+
+```
+yarn remove less-loader;
+yarn add less-loader@5.x -D;
+```
+
+#### 4.4引入路由
+
+> yarn add react-router-dom
+
+```
+/* src/index.js */
+import {HashRouter, Route, Switch} from 'react-router-dom'
+import Register from './containers/register/register'
+import Login from './containers/login/login'
+import Main from './containers/main/main'
+
+ReactDOM.render(
+  <HashRouter>
+    <Switch>
+      <Route path='/register' component={Register}></Route>
+      <Route path='/login' component={Login}></Route>
+      <Route component={Main}></Route>
+    </Switch>
+  </HashRouter>,
+  document.getElementById('root')
+)
+```
+
+#### 4.5引入redux
+
+> yarn add redux react-redux redux-thunk
+
+> yarn add redux-devtools-extension -D
+
+```
+D:\home\前端体系学习\08.项目实战\react项目\gzhipin-boss\src\redux
+├─action-types.js
+├─actions.js
+├─reducers.js
+└store.js
+...
+
+import {Provider} from 'react-redux'
+import store from './redux/store'
+
+ReactDOM.render(
+  <Provider store={store}>
+    <HashRouter>
+      <Switch>
+        <Route path='/register' component={Register}></Route>
+        <Route path='/login' component={Login}></Route>
+        <Route component={Main}></Route>
+      </Switch>
+    </HashRouter>
+  </Provider>,
+  document.getElementById('root')
+)
 ```
 
