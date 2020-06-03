@@ -9,7 +9,11 @@
     "antd-mobile": "^2.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -17,6 +21,10 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "client": "hs build"
+  },
+  "theme": {
+    "brand-primary": "red",
+    "color-text-base": "#333"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,7 +43,12 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
+    "css-loader": "^3.5.3",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.6"
+    "less": "^3.11.2",
+    "less-loader": "5.x",
+    "react-app-rewired": "^2.1.6",
+    "redux-devtools-extension": "^2.13.8",
+    "style-loader": "^1.2.1"
   }
 }
