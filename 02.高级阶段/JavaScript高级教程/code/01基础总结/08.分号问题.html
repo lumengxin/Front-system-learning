@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- js分号问题：
+  1 js一条语句的后面可以不加分号；
+  2 是否加是编码风格问题，没有应该不应该
+  3 下面2中情况不加会有问题
+    - 小括号开头前的一条语句
+    - 中方括号开头前的一条语句
+  4. 解决：行首加分号
+  -->
+  <script>
+    var a = 3
+    ;(function() {
+      console.log('aaa')
+    })()
+    // 错误理解： var a = 3(function(){...})
+
+    var b = 8
+    [1, 5, 9].forEach(n => console.log(n))
+
+    // 错误理解：var b = 8[9].forEach(...)
+  </script>
+</body>
+</html>

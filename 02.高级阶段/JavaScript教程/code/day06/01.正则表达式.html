@@ -12,7 +12,8 @@
         // var 变量 = new RegExp("正则表达式","匹配模式")
         // 匹配模式：i 忽略大小写；g 全局匹配；| 或；[a-z] 全或(任意小写字母)
         //          [^] 除了
-        var reg = new RegExp("a");
+        // var reg = new RegExp("a");
+        var reg = new RegExp("a", "i");
         var str = "Abc";
         // test()方法：检查字符串是否符合正则表达式规范
         console.log("test =>", reg.test(str));

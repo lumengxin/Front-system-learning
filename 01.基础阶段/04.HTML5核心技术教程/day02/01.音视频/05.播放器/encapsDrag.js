@@ -80,9 +80,9 @@
                     var L2 = collisionEle.offsetLeft
     
                     if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
-                        collisionEle.src = "../../../day01/08.canvas/img/g01.png"
+                        collisionEle.src = "../../../01基础总结/08.canvas/img/g01.png"
                     } else {
-                        collisionEle.src = "../../../day01/08.canvas/img/g02.png"
+                        collisionEle.src = "../../../01基础总结/08.canvas/img/g02.png"
                     }
                 }
                 

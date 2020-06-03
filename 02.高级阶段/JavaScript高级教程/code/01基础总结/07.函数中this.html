@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /** this: 
+     * 任何函数本质上都是通过某个对象来调用的，没有指定就是window
+     * 所有函数内部都有一个变量this
+     * 值是调用函数的当前对象
+     * test(): window
+     * p.test(): p
+     * new test(): 新建的对象
+     * p.call(obj): obj
+    */
+
+    function Person(color) {
+      console.log(this)
+      this.color = color
+      this.getColor = function() {
+        console.log(this)
+        return this.color
+      }
+      this.setColor = function(color) {
+        console.log(this)
+        this.color = color
+      }
+    }
+
+    // this: window
+    Person('red')
+
+    // p
+    var p = new Person('green')
+    p.getColor()
+
+    // obj
+    var obj = {}
+    p.setColor.call(obj, 'black')
+
+    // window
+    var test = p.setColor
+    test()
+
+    // window
+    function fun1() {
+      function fun2() {
+        console.log(this)
+      }
+      fun2()
+    }
+    fun1()
+  </script>
+</body>
+</html>

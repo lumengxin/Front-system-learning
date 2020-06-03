@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 对象：
+    * 多个数据的封装体；用来保存多个数据的容器；一个对象代表现实中的一个事物
+    * 统一管理多个数据
+    * 由属性、方法（一种特别的属性，属性值是函数）组成
+    * 属性：属性名（字符串）和属性值（任意）组成
+    * 访问对象内部数据：.属性名（简单); ['属性名']（通用）
+    */
+    var p = {
+      name: 'tom',
+      age: 12,
+      setName: function(name) {
+        this.name = name
+      }, 
+      setAge: function(age) {
+        this.age = age
+      }
+    }
+    console.log(p.name, p.setName)
+    p.setName('bob')
+    p['setAge'](22)
+    console.log(p['age'])
+
+    // 属性名包含特殊字符
+    var obj = {}
+    obj['content-type'] = 'text/json'
+    console.log(obj['content-type'])
+    // 变量名不确定
+    var propName = 'myAge'
+    var value = 19
+    obj[propName] = value
+    console.log(obj[propName])
+    
+  </script>
+</body>
+</html>

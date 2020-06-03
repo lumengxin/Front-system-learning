@@ -6,7 +6,66 @@
 </head>
 <body>
   <script>
-    
+    /*
+    1.原型链：
+    - 访问一个对象属性时，先在自身属性中查找，找到返回；没有则沿着__proto__向上找，找到返回；
+      最终都没有找到，则返回undefined
+    - 别名：隐式原型链
+    - 作用：查找对象的属性（方法）
+    2.构造函数/原型/实体对象的关系
+    */
+    function Fn() {
+        this.test1 = function() {
+            console.log('test1')
+        }
+    }
+    Fn.prototype.test2 = function() {
+        console.log('test2')
+    }
+
+    var fn = new Fn()
+    fn.test1()
+    fn.test2()
+    console.log(fn.toString())
+    console.log(fn.test3)
+    // fn.test3()
+
+    // 函数的显式原型指向的对象默认是空Object实例对象（Object不满足）
+    console.log(Fn.prototype instanceof Object)
+    console.log(Object.prototype instanceof Object)
+    // 所有函数都是Function的实例（包括Function)
+    console.log(Function.__proto__ === Function.prototype)
+    // Object的原型对象时原型链尽头
+    console.log(Object.prototype.__proto__)
+
+
+    // 读取对象的属性值时：会自动到原型链中查找
+    // 设置对象的属性时：不会查找原型链，如果当前对象中没有此属性，直接添加此属性并设置其值
+    // 方法一般定义在原型中，属性一般通过构造函数定义在对象本身上
+    function Fun() {
+
+    }
+    Fun.prototype.a = 'abc'
+    var fun1 = new Fun()
+    console.log(fun1.a, fun1)
+    var fun2 = new Fun()
+    fun2.a = 'bcd'
+    console.log(fun1.a, fun2.a)
+    console.log(fun2)
+
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    Person.prototype.setName = function(name) {
+        this.name = name
+    }
+    var p1 = new Person('tom', 32)
+    p1.setName('tom2')
+    console.log(p1)
+    var p2 = new Person('jack', 11)
+    console.log(p2)
+    console.log(p1.__proto__ === p2.__proto__)
   </script>
 </body>
 </html>

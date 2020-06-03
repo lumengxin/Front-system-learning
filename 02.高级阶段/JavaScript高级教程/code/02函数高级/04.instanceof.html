@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+  <script>
+    /*
+    instanceof: a instanceof b; 如果b函数的显式原型对象在a对象的原型链上，则返回true
+    Function是通过new自己产生的实例
+     */
+    function Foo() {
+
+    }
+    var f1 = new Foo()
+    console.log(f1 instanceof Foo)
+    console.log(f1 instanceof Object)
+
+    console.log(Object instanceof Function)
+    console.log(Object instanceof Object)
+    console.log(Function instanceof Function)
+    console.log(Function instanceof Object)
+
+    function A() {
+
+    }
+    A.prototype.n = 1
+    console.log(A.prototype)
+    var b = new A()
+    A.prototype = {
+        n: 2,
+        m: 3
+    }
+    console.log(A.prototype)
+    console.log(b)
+    var c = new A()
+    console.log(b.n, b.m, c.n, c.m)
+
+    var F = function() {}
+    Object.prototype.a = function() {
+        console.log('a...')
+    }
+    Function.prototype.b = function() {
+        console.log('b...')
+    }
+    var f = new F()
+    console.log(f)
+    f.a()
+    //f.b()
+    F.a()
+    F.b()
+  </script>
 </body>
 </html>

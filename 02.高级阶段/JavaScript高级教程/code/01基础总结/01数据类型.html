@@ -2,9 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>数据类型</title>
 </head>
 <body>
-$END$
+<!--
+1.分类：基本（值）类型 String Number Boolean Undefined Null
+       对象（引用）类型
+          Object
+          Function
+          Array 内部数据有序
+2.判断：typeof 返回数据类型的字符串表达式; 可以判断 undefined，数值，字符串，布尔值，function
+              不能判断 null与object object与array
+       instanceof 判断对象的具体类型
+       === 可以判断 undefined,null
+-->
+
+<script>
+  var a
+  console.log(a, typeof a, a===undefined)
+  a = 3
+  // 数值类型不能用===判断
+  // console.log(typeof(a)==='number', a===number)
+
+  var obj = {
+      b2: [3, 'ab', console.log],
+      b3: function() {
+          console.log('b3')
+          return function() {
+              return 'bbbbb'
+          }
+      }
+  }
+  var bb = [3, 'a']
+  console.log(typeof obj.b2, '-------', typeof bb, typeof obj.b3)
+
+  console.log(obj instanceof Object, obj instanceof Array)
+  console.log(obj.b2 instanceof Array, obj.b2 instanceof Object)
+  console.log(obj.b3 instanceof Function, obj.b3 instanceof Object)
+  console.log(typeof obj.b3==='function')
+  console.log(typeof obj.b2[2])
+
+  obj.b2[2](4)
+  obj.b3()
+  console.log(obj.b3()())
+
+  // 构造函数  类型对象
+  function Person(name, age) {
+      this.name = name
+      this.age = age
+  }
+  // 根据类型创建的实例对象
+  var p = new Person('tom', 32)
+
+  // undefined与null?
+  // undefined: 定义未赋值； null: 定义并赋值了，值为null
+  var x
+  console.log(x)
+  x = null
+  console.log(x)
+  // 初始赋值为null，表明将要赋值为对象
+  var y = null
+  y = ['a', 9]
+  // 让y指向的对象成为垃圾对象，被垃圾回收器回收
+  b = null
+  // 也能实现，不过产生了新的数据对象
+  // b = 2
+
+  // 变量类型与数据类型？
+  // 数据类型：基本类型，对象类型
+  // 变量类型（变量内存值的类型）：基本类型 保存就是基本类型的数据; 引用类型：保存的是地址值
+
+</script>
 </body>
 </html>
