@@ -16,3 +16,6 @@ export const reqLogin = ({username, password}) => ajax('/login', {username, pass
 // 更新用户
 export const reqUpdateUser = (user) => ajax('/update', user, 'POST')
 
+// 获取用户信息
+export const reqUserInfo = () => ajax('/user')
+

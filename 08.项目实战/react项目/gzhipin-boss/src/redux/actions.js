@@ -2,7 +2,8 @@
 import {
   reqRegister,
   reqLogin,
-  reqUpdateUser
+  reqUpdateUser,
+  reqUserInfo
 } from "../api";
 import {
   AUTH_SUCCESS,
@@ -83,6 +84,19 @@ export const login = (user) => {
 export const updateUser = (user) => {
   return async dispatch => {
     const response = await reqUpdateUser(user)
+    const result = response.data
+    if (result.code === 0) {
+      dispatch(receiveUser(result.data))
+    } else {
+      dispatch(resetUesr(result.msg))
+    }
+  }
+}
+
+// 获取用户异步action
+export const getUser = () => {
+  return async dispatch => {
+    const response = await reqUserInfo()
     const result = response.data
     if (result.code === 0) {
       dispatch(receiveUser(result.data))
