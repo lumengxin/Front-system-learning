@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
   }
 }) */
 
-// 注册的路由
+// 1.注册的路由
 router.post('/register', function(req, res, next) {
   // 1.读取请求参数
   const {username, password, type} =  req.body
@@ -56,7 +56,7 @@ router.post('/register', function(req, res, next) {
   // 3.返回响应数据
 })
 
-// 登录的路由
+// 2.登录的路由
 router.post('/login', function(req, res) {
   const {username, password} = req.body
   // 根据username和password查询用户
@@ -68,7 +68,46 @@ router.post('/login', function(req, res) {
         data: user
       })
     } else {
-      res.send('用户名或密码不正确')
+      res.send({
+        code: 1,
+        msg: '用户名或密码不正确'
+      })
+    }
+  })
+})
+
+// 3.更新用户信息的路由
+router.post('/update', function (req, res) {
+  // 从请求携带的cookies中获取用户_id
+  const userid = req.cookies.userid
+  // 不存在（过期或者被用户删掉），返回提示信息
+  if (!userid) {
+    return res.send({
+      code: 1, 
+      msg: '请先登录'
+    })
+    // return | else {...}
+  }
+  // 得到提交的用户信息,更新对应user
+  const user = req.body
+  UserModel.findByIdAndUpdate({_id: userid}, user, function(err, oldUser) {
+    // 如果没有查到
+    if (!oldUser) {
+      // 通知浏览器删除cookie
+      res.clearCookie('userid')
+      res.send({
+        code: 1, 
+        msg: '请先登录'
+      })
+    } else {
+      // 合并用户信息
+      const {_id, username, type} = oldUser
+      const data = Object.assign(user, {_id, username, type})
+      
+      res.send({
+        code: 0, 
+        data
+      })
     }
   })
 })

@@ -10,6 +10,7 @@ import store from './redux/store'
 
 // import {Button} from 'antd-mobile'
 // import 'antd-mobile/dist/antd-mobile.css'
+import './assets/css/index.less'
 
 ReactDOM.render(
   // <Button>BUTTON</Button>,

@@ -1,6 +1,7 @@
 /* 包含多个reducer函数：根据原来state和指定action返回一个新的state */
 import {combineReducers} from 'redux'
-import {AUTH_SUCCESS, ERROR_MSG} from "./action-types";
+import {AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_UESR} from "./action-types";
+import {getRedirectTo} from '../utils'
 
 const initUser = {
   // 用户名
@@ -8,7 +9,9 @@ const initUser = {
   // 用户类型
   type: '',
   // 错误信息
-  msg: ''
+  msg: '',
+  // 需要自动重定向的路径
+  redirectTo: ''
 }
 
 function user(state=initUser, action) {
@@ -16,10 +19,16 @@ function user(state=initUser, action) {
     case AUTH_SUCCESS:
       // return action.data
       // data对象解构，覆盖前面对象
-      return {...state, ...action.data}    // data是user
+      // return {...state, ...action.data}    // data是user
+      const {type, header} = action.data
+      return {...action.data, redirectTo: getRedirectTo(type, header)}
     case ERROR_MSG:
       return {...state, msg: action.data}  // data是msg
-    default:
+    case RECEIVE_USER:
+      return action.data
+    case RESET_UESR:
+      return {...initUser, msg: action.data} 
+  default:
       return state
   }
 }
