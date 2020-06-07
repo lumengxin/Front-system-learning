@@ -9,3 +9,6 @@ export const ERROR_MSG = 'error_msg'
 export const RECEIVE_USER = 'receive_user'
 // 重置用户信息
 export const RESET_UESR = 'reset_uesr'
+
+// 接收用户列表
+export const RECEIVE_USER_LIST = 'receive_user_list'

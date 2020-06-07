@@ -1,6 +1,6 @@
 /* 包含多个reducer函数：根据原来state和指定action返回一个新的state */
 import {combineReducers} from 'redux'
-import {AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_UESR} from "./action-types";
+import {AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_UESR, RECEIVE_USER_LIST} from "./action-types";
 import {getRedirectTo} from '../utils'
 
 const initUser = {
@@ -30,6 +30,16 @@ function user(state=initUser, action) {
       return {...initUser, msg: action.data} 
   default:
       return state
+  }
+}
+
+const initUserList = []
+function userlist(state=initUserList, action) {
+  switch (action.type) {
+    case RECEIVE_USER_LIST:
+      return action.data
+    default:
+      return  state
   }
 }
 
