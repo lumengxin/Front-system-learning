@@ -34,7 +34,7 @@ function user(state=initUser, action) {
 }
 
 const initUserList = []
-function userlist(state=initUserList, action) {
+function userList(state=initUserList, action) {
   switch (action.type) {
     case RECEIVE_USER_LIST:
       return action.data
@@ -45,5 +45,6 @@ function userlist(state=initUserList, action) {
 
 /* 向外暴露的状态的结构：{user: {}} */
 export default combineReducers({
-  user
+  user,
+  userList
 })

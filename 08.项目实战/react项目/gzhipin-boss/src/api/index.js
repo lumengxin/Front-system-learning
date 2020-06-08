@@ -21,5 +21,5 @@ export const reqUpdateUser = (user) => ajax('/update', user, 'POST')
 export const reqUserInfo = () => ajax('/user')
 
 // 获取用户列表
-export const reqUserList = (type) => ajax(('/userlist'), type)
+export const reqUserList = (type) => ajax(('/userlist'), {type})
 
