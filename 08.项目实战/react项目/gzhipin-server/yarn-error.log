@@ -1,0 +1,47 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add socket.io
+
+PATH: 
+  E:\Python\Scripts\;E:\Python\;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\ProgramData\chocolatey\bin;C:\Users\xin\AppData\Roaming\nvm;C:\Program Files\nodejs;E:\PowerShell\7-preview\preview;E:\FilesSofts\ffmpeg\bin;C:\Users\xin\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\xin\AppData\Local\Programs\Python\Python38-32\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\xin\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Sublime Text 3;C:\Users\xin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\4.2\bin;E:\FilesSofts\ngrok;C:\Users\xin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\xin\AppData\Local\atom\bin;E:\WebStorm 2020.1.1\bin;
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.13.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 104.16.26.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1129:14)
+
+npm manifest: 
+  {
+    "name": "gzhipin-server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "nodemon ./bin/www"
+    },
+    "dependencies": {
+      "blueimp-md5": "^2.16.0",
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "ejs": "~2.6.1",
+      "express": "~4.16.1",
+      "http-errors": "~1.6.3",
+      "mongoose": "^5.9.17",
+      "morgan": "~1.9.1"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -15,6 +15,7 @@ import Message from '../message/message'
 import Personal from '../personal/personal'
 import NotFound from '../../components/not-found/not-found'
 import NavFooter from '../../components/nav-footer/nav-footer'
+import Chat from '../chat/chat'
 
 class Main extends Component {
   // 导航组件的相关信息数据
@@ -110,6 +111,7 @@ class Main extends Component {
           }
           <Route path='/laobaninfo' component={LaobanInfo} />
           <Route path='/dasheninfo' component={DashenInfo} />
+          <Route path='/chat/:userid' component={Chat} />
           <Route component={NotFound} />
         </Switch>
         {currentNav ? <NavFooter navList={navList}></NavFooter> : null}

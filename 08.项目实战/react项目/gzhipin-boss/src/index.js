@@ -8,6 +8,9 @@ import Login from './containers/login/login'
 import Main from './containers/main/main'
 import store from './redux/store'
 
+// 测试sockio
+// import './socket/sockeio-client.js'
+
 // import {Button} from 'antd-mobile'
 // import 'antd-mobile/dist/antd-mobile.css'
 import './assets/css/index.less'
