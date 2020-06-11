@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {NavBar, List, InputItem, Grid, Icon} from 'antd-mobile'
-import {sendMsg} from '../../redux/actions'
+import {sendMsg, readMsg} from '../../redux/actions'
 
 const Item = List.Item
 
@@ -55,6 +55,11 @@ class Chat extends Component {
   componentDidMount() {
     // 初次进入时，定位到底部
     window.scrollTo(0, document.body.scrollHeight)
+
+    // 发送请求，更新消息未读状态
+    // const from = this.props.match.params.userid
+    // const to = this.props.user._id
+    // this.props.readMsg(from, to)
   }
 
   componentDidUpdate() {
@@ -62,10 +67,17 @@ class Chat extends Component {
     window.scrollTo(0, document.body.scrollHeight)
   }
 
+  componentWillUnmount() {
+    /* 解决从聊天界面退出，不更新已读问题（异步请求，显示有延时） */
+    const from = this.props.match.params.userid
+    const to = this.props.user._id
+    this.props.readMsg(from, to)
+  }
+
   render() {
     const {user} = this.props
     const {users, chatMsgs} = this.props.chat
-    debugger
+    // debugger
     // chatMsgs: A和所有人聊天消息，过滤出和B的聊天
     const meId = user._id
     // 如果没有获取到数据，直接不做任何处理（解决刷新，清除users出现的异常）
@@ -146,5 +158,5 @@ class Chat extends Component {
 
 export default connect(
   state => ({user: state.user, chat: state.chat}),
-  {sendMsg}
+  {sendMsg, readMsg}
 )(Chat)

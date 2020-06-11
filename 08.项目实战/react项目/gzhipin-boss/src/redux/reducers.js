@@ -6,7 +6,8 @@ import {AUTH_SUCCESS,
   RESET_UESR, 
   RECEIVE_USER_LIST,
   RECEIVE_MSG_LIST,
-  RECEIVE_MSG
+  RECEIVE_MSG,
+  MSG_READED
 } from "./action-types";
 import {getRedirectTo} from '../utils'
 
@@ -61,19 +62,45 @@ const initChat = {
 function chat(state=initChat, action) {
   switch (action.type) {
     case RECEIVE_MSG_LIST:
-      const {users, chatMsgs} = action.data
+      const {users, chatMsgs, userid} = action.data
       console.log("chat -> action.data", action.data)
       return {
         users,
         chatMsgs,
-        unReadCound: 0
+        // 直接在message也可统计
+        unReadCount: chatMsgs.reduce((preTotal, msg) => preTotal + (!msg.read && msg.to === userid ? 1 : 0), 0)
       }
     case RECEIVE_MSG:
-      const chatMsg = action.data
+      // const {chatMsg, userid} = action.data
+      const {chatMsg} = action.data
+      // debugger
       return {
         users: state.users,
         chatMsgs: [...state.chatMsgs, chatMsg],
-        unReadCound: 0
+        unReadCount: state.unReadCount + (!chatMsg.read && chatMsg.to === action.data.userid ? 1 : 0)
+      }
+    case MSG_READED:
+      const {from, to, count} = action.data
+      // state.chatMsgs.forEach(msg => {
+      //   if (msg.from === from && msg.to === to && !msg.read) {
+      //     msg.read = true
+      //   }
+      // })
+      return {
+        users: state.users,
+        chatMsgs: state.chatMsgs.map(msg => {
+          // 需要更新
+          if (msg.from === from && msg.to === to && !msg.read) {
+            // 新的msg中read: true,不改变原来的msg
+            /* msg.read = true
+            return msg */
+            return {...msg, read: true}
+          } else {
+            // 不需要更新
+            return msg
+          }
+        }),
+        unReadCount: state.unReadCount - count
       }
     default:
       return state

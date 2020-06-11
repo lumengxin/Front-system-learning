@@ -12,7 +12,7 @@ import {
 // const ListItem = List.Item
 import Logo from '../../components/logo/logo'
 import {connect} from 'react-redux'
-import {register} from "../../redux/actions";
+import {register} from "../../redux/actions"
 import {Redirect} from 'react-router-dom'
 
 const ListItem = List.Item

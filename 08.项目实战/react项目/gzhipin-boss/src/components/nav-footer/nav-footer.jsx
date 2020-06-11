@@ -8,11 +8,13 @@ const Item = TabBar.Item
 
 class NavFooter extends Component {
   static propTypes = {
-    navList: PropTypes.array.isRequired
+    navList: PropTypes.array.isRequired,
+    unReadCount: PropTypes.number,
   }
 
   render() {
-    let {navList} = this.props
+    // debugger
+    let {navList, unReadCount} = this.props
     navList = navList.filter(nav => !nav.hide)
 
     const path = this.props.location.pathname  // 路由组件才有location
@@ -27,6 +29,7 @@ class NavFooter extends Component {
                 selectedIcon={{uri: require(`./images/${nav.icon}-selected.png`)}}
                 selected={path === nav.path}
                 onPress={() => this.props.history.push(nav.path)}
+                badge={nav.path === '/message' ? unReadCount : 0}
               />
             ))
           }
