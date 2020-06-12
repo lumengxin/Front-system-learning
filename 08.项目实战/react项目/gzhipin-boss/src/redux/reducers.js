@@ -21,7 +21,6 @@ const initUser = {
   // 需要自动重定向的路径
   redirectTo: ''
 }
-
 function user(state=initUser, action) {
   switch (action.type) {
     case AUTH_SUCCESS:

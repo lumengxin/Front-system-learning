@@ -4,7 +4,7 @@ import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-/* // redux：与react组件的代码耦合度太高
+// redux：与react组件的代码耦合度太高
 import App from './components/App'
 // import {createStore} from 'redux'
 // import {counter} from './redux/reducers'
@@ -34,21 +34,22 @@ render()
 
 // 订阅监听(store中状态变化后，自动调用进行重绘)
 store.subscribe(render)
- */
-// react-redux：简化react应用中使用redux
-import App2 from './components/App2'
-// import App2 from './containers/app2'
-import {Provider} from 'react-redux'
-import store from './redux2/store'
 
-ReactDOM.render(
+
+// react-redux：简化react应用中使用redux
+// import App2 from './containers/app2
+/* import App2 from './components/App2'
+import {Provider} from 'react-redux'
+import store from './redux2/store' */
+
+/* ReactDOM.render(
   (
     <Provider store={store}>
       <App2 />
     </Provider>
   ),
   document.getElementById('root')
-)
+) */
 
 
 serviceWorker.unregister();
