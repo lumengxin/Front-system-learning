@@ -22,6 +22,8 @@
       }
 
       componentDidMount() {
+        // debugger
+        // 不bind(this), 里面this指向window
         this.intervalId = setInterval(function() {
           console.log('启动定时器...')
           let {opacity} = this.state

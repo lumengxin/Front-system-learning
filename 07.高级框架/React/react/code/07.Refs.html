@@ -18,15 +18,19 @@
         this.showInput = this.showInput.bind(this)
       }
 
+      handleChange(e) {
+        console.log('handleChange ->', e)
+      }
+
       showInput() {
         // 官方不建议次种写法
-        const input = this.refs.content
-        console.log(this.refs)
-        input.style.background = 'red'
+        const input1 = this.refs.input1Ref
+        console.log('refs ->', this.refs)
+        input1.style.background = 'pink'
         // alert(input.value)
 
         // 当前input保存到组件input,即this.input
-        alert(this.input.value)
+        alert(this.input2.value)
       }
 
       handleBlur(e) {
@@ -38,8 +42,8 @@
       render() {
         return (
           <div>
-            <input type="text" ref="content" />
-            <input type="text" ref={input => this.input = input} />
+            <input type="password" ref="input1Ref" onChange={this.handleChange} />
+            <input type="text" ref={input => this.input2 = input} />
             <button onClick={this.showInput}>提示输入</button>
             <input type="text" placeholder="失去焦点提示内容" onBlur={this.handleBlur} />
           </div>

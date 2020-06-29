@@ -13,7 +13,7 @@ import store from './redux/store'
 // 生成一个store对象
 // 内部调用一次reduer函数得到初始state
 // const store = createStore(counter)
-// console.log(store, store.getState())
+console.log(store, store.getState())
 
 function render() {
   ReactDOM.render(

@@ -18,6 +18,7 @@
       render() {
         // return 后面必须紧跟内容，若换行需要()括起来
         return <ul>
+                {console.log("props ->", this.props)}
                 <li>姓名：{this.props.name}</li>
                 <li>年龄：{this.props.age}</li>
                 <li>性别：{this.props.sex}</li>

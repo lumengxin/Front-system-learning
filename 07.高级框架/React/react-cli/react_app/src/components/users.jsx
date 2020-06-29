@@ -15,7 +15,7 @@ export default class Users extends Component {
   }
 
   componentDidMount() {
-    // 订阅消息
+    // 订阅消息, msg必须是第一个参数（事件名search)
     // 普通函数，this.setState指向不对
     PubSub.subscribe('search', (msg, searchName) => {
       console.log(msg, searchName)
@@ -26,7 +26,6 @@ export default class Users extends Component {
       axios.get(`https://api.github.com/search/users?q=${searchName}`)
         .then(response => {
           const result = response.data
-          console.log(result)
           const users = result.items.map(item => {
             return {
               name: item.login,
@@ -34,6 +33,7 @@ export default class Users extends Component {
               avatar: item.avatar_url
             }
           })
+          console.log("Users -> componentDidMount -> users", users)
           this.setState({loading: false, users})
         })
         .catch(err => {
