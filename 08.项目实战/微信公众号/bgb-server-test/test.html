@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let jsData = { xml:
+    { ToUserName: [ 'gh_1fe2a6d47384' ],
+     FromUserName: [ 'oW6SCwYDITdnEAvAfdtwr0n-9lrc' ],
+     CreateTime: [ '1592120180' ],
+     MsgType: [ 'text' ],
+     Content: [ '495' ],
+     MsgId: [ '22793679540833596' ] } }
+    
+    function formatMessage(jsData) {
+      let message = {}
+
+      jsData = jsData.xml
+      if (typeof jsData === 'object') {
+        for (let key in jsData) {
+          let value = jsData[key]
+          // 过滤空的数据
+          if (Array.isArray(value) && value.length > 0) {
+            // 将合法的数据赋值到message对象上
+            message[key] = value[0]
+          }
+        }
+      }
+
+      return message
+    }
+
+    console.log(formatMessage(jsData))
+  </script>
+</body>
+</html>

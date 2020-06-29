@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>search</title>
+</head>
+<body>
+  <h2 id="search">语音识别查电影</h2>
+  <ul id="list"></ul>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <!-- 最新版本不支持tap等移动端touch事件 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/zepto/1.0rc1/zepto.min.js"></script>
+  <script>
+    wx.config({
+      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      appId: 'wx92721392890c1c33', // 必填，公众号的唯一标识
+      timestamp: '<%= timestamp %>', // 必填，生成签名的时间戳
+      nonceStr: '<%= noncestr %>', // 必填，生成签名的随机串
+      signature: '<%= signature %>',// 必填，签名
+      jsApiList: [
+        'onMenuShareQQ',
+        'onMenuShareQZone',
+        'startRecord',
+        'stopRecord',
+        'translateVoice'
+      ] // 必填，需要使用的JS接口列表
+    });
+
+    wx.ready(function(){
+      // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+      console.log('---success---')
+      // 仅验证接口是否有权限
+      wx.checkJsApi({
+        jsApiList: [
+          'onMenuShareQQ',
+          'onMenuShareQZone',
+          'startRecord',
+          'stopRecord',
+          'translateVoice'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        success: function(res) {
+          // 以键值对的形式返回，可用的api值true，不可用为false
+          // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        }
+      });
+
+      /* 语音识别功能 */
+      // 标志位
+      var isRecord = false
+      $('#search').tap(function() {
+        console.log('search - touch')
+        if (!isRecord) {
+          // 点击，开始录音
+          wx.startRecord()
+          isRecord = true
+        } else {
+          // 结束录音
+          wx.stopRecord({
+            success: function (res) {
+              // 结束录音后，会自动上传到微信服务器中，返回一个id给开发者使用
+              var localId = res.localId;
+              console.log("localId", localId)
+
+              // 将录音转化为文字
+              /* wx.translateVoice({
+                localId: localId, // 需要识别的音频的本地Id，由录音相关接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                  console.log('translateVoice ->', res.translateResult); // 语音识别的结果
+                }
+              }); */
+
+              // 模拟结果
+              // http://api.douban.com/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=10
+              
+              const apikey = '0df993c66c0c636e29ecbb5344252a4a'
+              var url = `http://api.douban.com/v2/movie/in_theaters?callback=?&apikey=${apikey}`
+              // var url = `http://api.douban.com/v2/movie/in_theaters?apikey=${apikey}`
+              // jsonp,解决豆瓣api跨域问题。callback默认不需要传，会使用后面函数作为回调函数
+              $.getJSON(url, function(data) {
+                console.log('data ->', data)
+                var {subjects} = data
+                var html = ''
+                subjects.forEach(function(item) {
+                  html += `
+                    <h2><a href="${item.alt}">${item.title}</a></h2>
+                    <div>
+                      <img src="${item.images.small}" />
+                    </div>
+                    <p>评分：${item.rating.average}</p>
+                    <p>上映时间：${item.mainland_pubdate}</p>
+                  `
+                })
+                $('#list').html(html)
+              })
+
+              // 分享到qq功能
+              wx.onMenuShareQQ({
+                title: subjects[0].title, // 分享标题
+                desc: '-------', // 分享描述
+                link: subjects[0].alt, // 分享链接
+                imgUrl: subjects[0].images.small, // 分享图标
+                success: function () {
+                  // 用户确认分享后执行的回调函数
+                  alert('分享成功')
+                },
+                cancel: function () {
+                  // 用户取消分享后执行的回调函数
+                  alert('分享失败')
+                }
+              });
+
+              isRecord = false
+            }
+          });
+        }
+      })
+
+    });
+
+    wx.error(function(res){
+      // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    
+    });
+  </script>
+</body>
+</html>

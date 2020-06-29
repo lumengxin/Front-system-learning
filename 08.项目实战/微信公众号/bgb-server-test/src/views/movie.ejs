@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8部半电影预告片</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcdn.net/ajax/libs/dplayer/1.25.0/DPlayer.min.css" rel="stylesheet">
+  <style>
+    .card-title {
+      margin: .6rem;
+    }
+
+    .btn.btn-link {
+      padding: 0;
+    }
+
+    .player {
+      position: relative;
+    }
+    .play-icon {
+      width: 100px;
+      height: 100px;
+      background: url('http://qc2bckyqa.bkt.clouddn.com/player269.png') no-repeat;
+      background-size: 100% 100%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand">8部半电影预告片</a>
+      <form class="form-inline" action="/search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+
+    <div class="container">
+      <div class="card-group accordion" id="accordionExample">
+        <% data.forEach(function (item, index) { %>
+        <div class="card">
+          <div class="player">
+            <img src="http://qc2bckyqa.bkt.clouddn.com/<%= item.posterKey %>" class="card-img-top"
+            data-coverkey="http://qc2bckyqa.bkt.clouddn.com/<%= item.coverKey %>"
+            data-videokey="http://qc2bckyqa.bkt.clouddn.com/<%= item.videoKey %>"
+            data-doubanid="<%= item.doubanId %>" 
+            />
+            <span class="play-icon"></span>
+          </div>
+          <h5 class="card-title"><%= item.title %></h5>
+
+          <div class="card-header" id="heading<%= index %>">
+            <h2 class="mb-0">
+              <div class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+                查看更多详情
+              </div>
+            </h2>
+          </div>
+          <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>"
+            data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item"><%= item.directors %></li>
+                <li class="list-group-item"><%= item.casts %></li>
+                <li class="list-group-item"><%= item.infos[3] %></li>
+                <li class="list-group-item"><%= item.runtime %></li>
+                <li class="list-group-item">评分：<%= item.rating %> (<%= item.ratingNum %>人)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text"><%= item.summary %></p>
+            <p class="card-text"><small
+                class="text-muted"><%= Math.ceil((Date.now() - item.createTime) / (24 * 3600 * 1000)) %>天前更新</small></p>
+          </div>
+        </div>
+        <% }) %>
+
+      </div>
+    </div>
+
+
+    <!-- <div class="modal-dialog modal-dialog-centered" id="myModal">
+      <div id="dplayer"></div>
+    </div> -->
+    <div class="modal fade" id="myModal" data-keyboard="false" tabindex="-1" role="dialog"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div id="dplayer"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dplayer/1.25.0/DPlayer.min.js"></script>
+
+    <script>
+      $(function () {
+        // 视频播放器对象
+        let dp = null
+
+        // 标识位，处理第二次点击同一个视频时不走切换逻辑
+        let lastVideo = null
+
+        // 模态框隐藏时回调
+        $('#myModal').on('hidden.bs.modal', function (e) {
+          // 暂停播放器
+          dp.pause()
+        })
+
+        $('.card-img-top').click(function () {
+
+          // 显示模态框
+          $('#myModal').modal('show')
+          // 获取视频，海报链接 coverKey渲染到页面为小写，改成小写
+          const coverkey = $(this).data('coverkey')
+          const videokey = $(this).data('videokey')
+          const doubanid = $(this).data('doubanid')
+
+          if (!dp) {
+            dp = new DPlayer({
+              container: document.getElementById('dplayer'),
+              screenshot: true,
+              video: {
+                url: videokey,
+                pic: coverkey,
+                thumbnails: coverkey,
+              },
+              subtitle: {
+                url: 'webvtt.vtt',
+              },
+              danmaku: {
+                id: doubanid,
+                api: '<%= url %>/',
+                maximum: 3000,
+                user: 'XIN'
+              },
+            })
+            dp.play()
+          } else {
+            // 判断第二次是否点击的是同一个视频
+            if (videokey === lastVideo) {
+              // 继续播放上一次视频
+              dp.play()
+            } else {
+              // 播放器存在时，直接切换到其他视频
+              dp.switchVideo({
+                url: videokey,
+                pic: coverkey,
+                thumbnails: coverkey,
+              }, {
+                id: doubanid,
+                api: '<%= url %>/',
+                maximum: 3000,
+                user: 'XIN'
+              });
+              dp.play()
+            }
+          }
+          lastVideo = videokey
+        })
+    
+        /* 弹幕
+        1.加载
+          - 地址：https://api.prprpr.me/dplayer/v3/?id=demo   
+          - 方式：GET
+          - 返回值：json 
+          {
+            "code": 0, 
+            "data": [
+              [
+                3.323,    // 弹幕发送时间
+                0,        // 弹幕类型
+                1277215,  // 弹幕颜色
+                "DIYgod", // 弹幕发送者
+                "11111"   // 弹幕内容
+              ],
+              []
+            ]
+          }
+          改为自己服务器：http://dbd93660f59d.ngrok.io/v3/?id=demo （v3路由）
+        2.发送
+          - 地址：http://dbd93660f59d.ngrok.io/v3
+          - 方式：POST
+          - 参数：
+            author: DIYgod
+            color:  1277215 
+            id: demo
+            text: 11111
+            time: 3.323
+            type: 0 
+        */
+        
+
+      })
+    </script>
+</body>
+
+</html>
