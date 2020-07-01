@@ -1,0 +1,27 @@
+<!--pages/movieDetail/movieDetail.wxml-->
+<view>
+  <!-- <wxs module="filter">
+    var filterCasts = function(casts) {
+      let cast = [];
+      casts.forEach(function(item) {
+        cast.push(item.name);
+      })
+      return cast.join();
+    }
+    module.exports = {
+      filterCasts
+    }
+  </wxs> -->
+  <view class="movie-detail-container">
+    <image src="{{movie.images.large}}"></image>
+    <text class="movie-name">{{movie.title}}</text>
+    <view class="movie-detail">
+      <text>评分：{{movie.rating.average}}</text>
+      <text>导演：{{movie.directors[0].name}}</text>
+      <text>主演：{{movie.casts[0].name}} {{movie.casts[1].name}} {{movie.casts[2].name}}</text>
+      <!-- <text>主演：{{filter.filterCasts(movie.casts)}}</text> -->
+    </view>
+    <button>我要观影</button>
+  </view>
+</view>
+

@@ -1,0 +1,34 @@
+/* pages/movieDetail/movieDetail.wxss */
+.movie-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+image {
+  width: 80%;
+  height: 700rpx;
+  margin: 20rpx 0;
+}
+.movie-name {
+  font-size: 40rpx;
+  font-weight: 400;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie-detail {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: -50%; */
+  font-size: 32rpx;
+}
+button {
+  width: 80%;
+  height: 80rpx;
+  color: #fff;
+  line-height: 80rpx;
+  margin-top: 50rpx;
+  background: green;
+}

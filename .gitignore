@@ -1,3 +1,5 @@
 .vscode
+.idea
 node_modules/
-package-lock.jso/
+
+project.config.json

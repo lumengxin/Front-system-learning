@@ -1,0 +1,11 @@
+<!--pages/index/index.wxml-->
+<view class="index-container">
+  <!-- 绝对路径，/根目录开始 -->
+  <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+  <button bindgetuserinfo="handleGetUserInfo" style="display: {{isShow ? 'block': 'none'}}" open-type="getUserInfo">用户授权</button>
+  <text class="hello">hello {{userInfo.nickName}}</text>
+  <!-- 非冒泡事件：catchtap -->
+  <view bindtap="handleParent" class="title">
+    <text bindtap="handleChild">8部半小程序</text>
+  </view>
+</view>

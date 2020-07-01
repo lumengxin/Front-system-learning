@@ -1,0 +1,30 @@
+/* pages/index/index.wxss */
+page {
+  height: 100%;
+  background: rgba(0, 178, 106, .8);
+}
+.index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar {
+  /* 1rpx = .5px = 1物理像素 */
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin: 100rpx 0;
+}
+.hello {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin: 100rpx 0;
+}
+.title {
+  width: 220rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border: 2rpx solid;
+}
