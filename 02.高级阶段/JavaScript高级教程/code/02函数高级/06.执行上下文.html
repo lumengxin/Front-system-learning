@@ -26,6 +26,7 @@
         this - 赋值（调用函数的对象）
       - 开始执行函数体代码
     */
+    // 全局执行上下文
     console.log(a1, window.a1);
     a2()
     console.log(this);
@@ -35,6 +36,22 @@
       console.log('a2..')
     }
 
+    console.log('-------------------------')
+
+    // 函数执行上下文
+    function fn(a1) {
+      console.log(a1)
+      console.log(a2)
+      a3()
+      console.log(this)
+      console.log(arguments)
+
+      // var a2 = 3
+      function a3() {
+        console.log('a3()')
+      }
+    }
+    fn(2, 3)
     
   </script>
 </body>

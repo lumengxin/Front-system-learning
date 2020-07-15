@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    1. 在全局代码执行前，js引擎就会创建一个栈来存储管理所有的执行上下文对象
+    2. 在全局执行上下文(window)确定后，将其添加到栈中（压栈）
+    3. 在函数执行上下文创建后，将其添加到栈中（压栈）
+    4. 在当前函数执行完后，将栈顶的对象移除（出栈）
+    5. 当所有的代码执行完后，栈中只剩下window
+   -->
+
+  <script>
+    // 1 进入全局执行上下文 window
+    var a = 10
+    var bar = function (x) {
+      var b = 5
+      // 3 进入foo函数执行上下文
+      foo(x + b)
+    }
+    console.log(bar)
+    var foo = function (y) {
+      var c = 5
+      console.log(a + c + y)
+    }
+    // 2 进入bar函数执行上下文
+    bar(10)
+
+
+    // 练习1
+    console.log('练习1---------------------')
+    var i = 1
+    add(1)
+
+    function add(i) {
+      if (i === 4) {
+        return
+      }
+      console.log('add() begin: ' + i)
+      add(i + 1)
+      console.log('add() end: ' + i)
+    }
+    console.log('global end: ' + i)
+
+    // 练习2
+    console.log('练习2---------------------')
+    // 先执行变量提升,后函数提升
+    function s() {}
+    var s
+    console.log('s: ', typeof s)
+
+    // 练习3
+    console.log('练习3---------------------')
+    if (!(d in window)) {
+      var d = 1
+    }
+    console.log('d: ', d)
+    
+    // 练习4
+    console.log('练习4---------------------')
+    var f = 1
+    // var f
+    function f(f) {
+      console.log('f: ', f)
+    }
+    // f = 1
+    f(2)
+  </script>
+</body>
+
+</html>

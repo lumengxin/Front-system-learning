@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1.进程 process：程序的一次执行，占有一片独用的内存空间
+    2.线程 thread：进程内的一个独立执行单元；程序执行的一个完整流程；cpu的最小调度单元
+    3.相关知识：
+      应用程序必须运行在某个进程的某个线程上
+      一个进程中至少有一个运行的线程：主线程，程序启动后自动创建
+      一个进程内的数据可以供其中多个线程直接共享
+      多进程之间的数据不能直接共享
+      线程池 thread pool:保存多个线程对象的容器，实现线程对象的反复利用
+    4.相关问题：
+      * 比较单线程和多线程
+        - 多线程：优点：有效提升cup的利用率
+                  缺点：创建多线程开销；线程间切换开销；死锁与状态同步问题
+        - 单线程：优点：顺序编码简单易懂
+                  缺点：效率低
+      * js是单线程，但使用h5中的web workers可以多线程运行
+        浏览器运行是多线程运行，有单进程（firefox,老ie）也有多进程(chrome,新ie)
+   -->
+</body>
+</html>

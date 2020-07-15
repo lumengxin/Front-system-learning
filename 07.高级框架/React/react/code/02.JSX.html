@@ -25,7 +25,7 @@
   <script type="text/babel">
     // jsx = javascript + xml
     // 多个标签需要被一个根标签包裹；js代码需要用{}括起来
-    const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>
+    const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()} - <h4>aaaa</h4></h3>
     ReactDOM.render(
       vDom2,
       document.getElementById('test2')

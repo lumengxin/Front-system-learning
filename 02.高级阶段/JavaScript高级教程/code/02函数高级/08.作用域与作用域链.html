@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 作用域：
+    1. 理解
+      - 就是一块‘地盘’，一个代码段所在的区域
+      - 它是静态的（相对于上下文对象），在编写代码时就确定了
+      - 在函数定义是就已经确定了
+      - 全局执行上文环境是在全局作用域确定之后，js代码马上执行前创建
+      - 函数执行上下文是在调用函数时，函数体代码执行之前创建
+      - 上下文环境是动态的，调用函数时创建，函数调用结束时上下文环境就会别自动释放
+    2. 分类
+      - 全局作用域
+      - 函数作用域
+      - 没有块级作用域（es6有）
+    3. 作用
+      - 隔离变量，不同作用域下同名变量不会有冲突
+    4. 联系
+      - 执行上下文（对象）是从属所在的作用域
+      - 全局上下文环境 <=> 全局作用域
+      - 函数上下文环境 <=> 对应函数作用域
+  -->
+  <script>
+    if (true) {
+      // let s = 3
+      var s = 3
+    }
+    // 没有块作用域
+    console.log(s)
+
+    var a = 10, b = 20
+    function fn(x) {
+      var a = 100, c = 300
+      console.log('fn(): ', a, b, c, x)
+      function bar(x) {
+        var a = 1000, d = 400
+        console.log('bar(): ', a, b, c, d, x)
+      }
+      bar(100)
+      bar(200)
+    }
+    fn(10)
+
+    // 练习1
+    console.log('练习1---------------------')
+    var i = 10
+    function fun() {
+      console.log(i)
+    }
+    function show(f) {
+      var i = 20
+      f()
+    }
+    show(fun)
+
+    // 练习2
+    console.log('练习2---------------------')
+    function fun2() {
+      console.log(fun2)
+    }
+    fun2()
+
+    var obj = {
+      fun3: function() {
+        console.log(fun3)
+        // console.log(this.fun3)
+      }
+    }
+    obj.fun3()
+  </script>
+</body>
+</html>

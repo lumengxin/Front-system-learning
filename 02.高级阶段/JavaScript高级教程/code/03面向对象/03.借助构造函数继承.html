@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 借助构造函数继承(伪继承)
+     * 在子类型构造函数中通过call()调用父类型构造函数
+    */
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+    function Student(name, age, price) {
+      Person.call(this, name, age) // 相当于：this.Person(name, age)
+      this.price = price
+    }
+    var s = new Student('za', 20, 10000)
+    console.log(s)
+
+  </script>
+</body>
+</html>

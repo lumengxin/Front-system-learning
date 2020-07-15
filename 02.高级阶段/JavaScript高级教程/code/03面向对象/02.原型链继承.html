@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Supper() {
+      this.supProp = 'supper property'
+    }
+    Supper.prototype.showSupperProp = function() {
+      console.log(this.supProp)
+    }
+
+    function Son() {
+      this.subProp = 'sub property'
+    }
+
+    Son.prototype = new Supper()
+
+    // 让子类型的原型为父类型的一个实例对象
+    // Son.prototype.constructor = Son
+
+    Son.prototype.showSonProp = function() {
+      console.log(this.supProp)
+    }
+
+    var son = new Son()
+    // 属性：作用域链中找，方法：原型链中找
+    // son.showSupperProp()
+    son.toString()
+
+    son.showSupperProp()
+    
+    console.log(son)
+  </script>
+</body>
+</html>

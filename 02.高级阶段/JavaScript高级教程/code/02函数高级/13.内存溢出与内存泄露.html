@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+    1. 闭包缺点：
+      - 函数执行完后，内部的局部变量没有释放，占用内存时间会变长
+      - 容易造成内存泄露
+    2. 解决
+      - 能不用就不用
+      - 及时释放
+    */
+    function fn1() {
+      var arr = new Array(100000)
+      function fn2() {
+        console.log(arr.length)
+      }
+      return fn2
+    }
+    var f = fn1()
+    f()
+
+    // 释放。让内部函数成为垃圾对象，回收闭包
+    f = null
+
+    /* 
+    1. 内存溢出：
+    - 一种程序运行出现的错误
+    - 当程序运行需要的内存超过了剩余的内存时，就会抛出内存溢出的错误
+    2. 内存泄露：
+    - 占用的内存没有及时释放
+    - 内存泄露积累多了就容易导致内存溢出
+    - 常见的内存泄露
+      - 意外的全局变量
+      - 没有及时清理的计时器或回调函数
+      - 闭包
+    */
+    // 内存溢出
+    // var obj = {}
+    // for (var i = 0; i < 10000; i++) {
+    //   obj[i] = new Array(10000000)
+    // }
+
+    // 内存泄露
+    function fn() {
+      // 意外的全局变量
+      a = new Array(1000000)
+      // var a = new Array(1000000)
+      console.log(a)
+    }
+    fn()
+
+    var intervalId = setInterval(function() {
+      console.log('aaa')
+    }, 1000)
+    // clearInterval(intervalId)
+
+    // 练习1
+    var name = 'the window'
+    var object = {
+      name: 'my windows',
+      getNameFun: function() {
+        return function() {
+          return this.name
+        }
+      }
+    }
+    alert(object.getNameFun()())
+
+    var name2 = 'the window2'
+    var object2 = {
+      name2: 'my windows2',
+      getNameFun: function() {
+        var that = this
+        return function() {
+          return that.name2
+        }
+      }
+    }
+    alert(object2.getNameFun()())
+
+    // 练习2
+    function fun(n, o) {
+      console.log(o)
+      return {
+        fun: function(m) {
+          return fun(m, n)
+        }
+      }
+    }
+    var m = fun(0)
+    m.fun(1)
+    m.fun(2)
+    m.fun(3)
+    var n = fun(0).fun(1).fun(2).fun(3)
+    var q = fun(0).fun(1)
+    q.fun(2)
+    q.fun(3)
+  </script>
+</body>
+</html>

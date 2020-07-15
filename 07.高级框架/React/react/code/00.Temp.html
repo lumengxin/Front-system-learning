@@ -12,21 +12,20 @@
   <div class="app"></div>
 
   <script type="text/babel">
+    function Compo(){
+      return <div>compo</div>
+    }
     class Comp extends React.Component {
-
       render() {
-        return(
-          <div>
-            comp
-          </div>
+        return (
+          <div>comp</div>
         )
       }
-      
     }
     const aaa = <div><h1>aaa</h1><h2>bbb</h2></div>
 
     ReactDOM.render(
-      aaa, 
+      <Compo />, 
       document.querySelector('.app')
     )
   </script>

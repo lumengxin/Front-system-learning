@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 定义js模块：
+  - 具有特定功能的js文件
+  - 将所有的数据和功能都封装在一个函数内部（私有的）
+  - 只向外暴露一个包含n个方法的对象或函数
+  - 模块的使用者，只需要通过模块暴露的对象调用方法俩实现对应的功能
+  -->
+  <script type="text/javascript" src="./12.testModule.js"></script>
+  <script>
+    // var module = testModule()
+    module.toUpper()
+    module.toLower()
+  </script>
+</body>
+</html>
