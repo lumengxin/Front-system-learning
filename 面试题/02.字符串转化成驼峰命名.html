@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function toHumpName(name) {
+      let nameArr = name.split('-')
+      for (let i = 1; i < nameArr.length; i++) {
+        nameArr[i] = nameArr[i].charAt(0).toUpperCase() + nameArr[i].substr(1, nameArr[i].length - 1)
+      }
+      return nameArr.join('')
+    }
+
+    var dom = 'get-element-by-id'
+    console.log(toHumpName(dom))
+  </script>
+</body>
+</html>
