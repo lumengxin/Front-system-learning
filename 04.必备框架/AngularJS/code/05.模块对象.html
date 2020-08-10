@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="myController">
+    <input type="text" ng-model="empName">
+    <p>名称1：{{ empName }}</p>
+  </div>
+  <div ng-controller="myController2">
+    <input type="text" ng-model="empName">
+    <p>名称2：{{ empName }}</p>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script>
+    /* console.log(angular)
+    // 创建模块对象（旧版为作用域对象$scope）
+    var myModal = angular.module('myApp', [])
+    // 生成作用域对象
+    myModal.controller('myController', function($scope) {
+      $scope.empName = 'tom'
+    })
+    myModal.controller('myController2', function($scope) {
+      $scope.empName = 'jack'
+    }) */
+
+    angular.module('myApp', [])
+      // 隐式声明依赖注入
+      .controller('myController', function($scope) {
+        $scope.empName = 'tom'
+      })
+      .controller('myController2', function($scope) {
+        $scope.empName = 'jack'
+      })
+
+    // js代码压缩后$scope等形参会被a,b,c之类代替，angular解析不了
+    // 解决：显示声明依赖注入
+    angular.module('myApp', [])
+      .controller('myController', ['$scope', function($scope) {
+        $scope.empName = 'tom'
+      }])
+      .controller('myController2', ['$scope', function($scope) {
+        $scope.empName = 'jack'
+      }])
+  </script>
+</body>
+</html>

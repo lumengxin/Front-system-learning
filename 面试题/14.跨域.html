@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 同源策略：浏览器的安全策略，要求协议名、域名、端口号必须完全一致
+    // 解决跨域：jsonp(前后端)  cors(后端) 服务器代理(后端)...
+
+    // jsonp 利用script标签天然跨域
+    // 创建script标签
+    var script = document.createElement("script")
+    // 设置回调
+    function getData(data) {
+      // 数据请求回来才触发的回调
+      console.log(data)
+    } 
+    // 设置script的src属性，请求地址
+    script.src = 'http://localhost:3000?callback=getData'
+    // script生效
+    document.body.appendChild(script)
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app ng-init="age=23">
+  <!-- 
+    1.作用域对象：
+      - 一个js实例对象，ng-app指令默认会创建一个根作用域对象$rootScope
+      - 他的属性和方法与页面中的指令或表达式是关联的
+    2.控制器对象：
+      - 用来控制angularjs应用数据的 实例对象
+      - ng-controller: 指定控制器构造函数，angular会自动new此函数创建控制器对象
+      - 同时还会创建一个新的作用域对象$scope， 是$rootScope子对象
+      - 在控制器函数中声明$scope形参，angular会自动自动将$scope传入
+   -->
+  <div ng-controller="MyController">
+    <input type="text" ng-model="firstName" />
+    <input type="text" ng-model="lastName" />
+    <p>输入的姓名为：{{ firstName + ' ' + lastName }}</p>
+    <p>输入的姓名2为：{{ getName() }}</p>
+    {{age}}
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.2.9/angular.min.js"></script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/2.0.0-alpha.54/angular2.min.js"></script> -->
+  <script type="text/javascript">
+    // 形参是固定的，必须是$scope
+    function MyController($scope) {
+      console.log($scope)
+      // 通过new创建，this指向实例
+      console.log(this)
+      $scope.firstName = 'Bob'
+      $scope.lastName = 'lili'
+      $scope.getName = function() {
+        return $scope.firstName + ' ' + $scope.lastName
+      }
+    }
+  </script>
+</body>
+</html>

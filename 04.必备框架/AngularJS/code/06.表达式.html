@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl">
+    <p>{{111}}</p>
+    <p>{{abc}}</p>
+    <p>-------{{undefined}}</p>
+    <p>{{abc.split('').reverse().join('')}}</p>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('MyCtrl', ['$scope', function(n) {
+        n.abc = 'abc'
+      }])
+  </script>
+</body>
+</html>

@@ -6,6 +6,26 @@
   <title>Document</title>
 </head>
 <body>
-    
+  <script>
+    var arr = [4, 6, 9, 2, 1, 8]
+    console.log(bubble(arr))
+
+    function bubble(arr) {
+      var newArr = arr
+      // 轮数
+      for (var i = 0; i < newArr.length - 1; i++) {
+        // 每轮比较次数
+        for(var j = 0; j < newArr.length - 1 - i; j++) {
+          // 判断前一个数大于后一个数时，交换
+          if (newArr[j] > newArr[j+1]) {
+            var temp = newArr[j]
+            newArr[j] = newArr[j+1]
+            newArr[j+1] = temp
+          }
+        }
+      }
+      return newArr
+    }
+  </script>
 </body>
 </html>

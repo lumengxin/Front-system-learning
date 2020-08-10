@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+    1) 组件间通信
+      1. 父组件向子组件通信：
+      2. 子组件向父组件通信：
+      3. 隔代组件间通信：
+      4. 兄弟组件通信：
+    2) 实现通信方式
+      1. props
+        父传子
+      2. vue自定义事件
+        子传父 $emit('eventName', data)
+      3. 消息订阅与发布
+        任意组件，借助库pubsub-js
+        订阅消息：PubSub.subscribe('msg', (msg, data) => {})
+        发布消息：PubSub.publish('msg', data)
+      4. vuex
+        官方提供集中式管理vue多组件共享状态数据的vue插件
+      5. slot
+        专门用来实现父向子传递带数据的标签
+    */
+  </script>
+</body>
+</html>

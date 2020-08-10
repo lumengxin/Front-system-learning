@@ -8,14 +8,14 @@
 <body>
   <script>
     function Supper() {
-      this.supProp = 'supper property'
+      this.subProp = 'supper property'
     }
     Supper.prototype.showSupperProp = function() {
       console.log(this.supProp)
     }
 
     function Son() {
-      this.subProp = 'sub property'
+      this.sub = 'sub property'
     }
 
     Son.prototype = new Supper()

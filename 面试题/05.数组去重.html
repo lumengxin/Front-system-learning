@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [1,2,8,11,3,2,2,5,5]
+    // console.log(deduplication(arr))
+
+    function deduplication(arr) {
+      var newArr = []
+      newArr[0] = arr[0]
+
+      for (var i = 1; i < arr.length; i++) {
+        for(var j = 0; j < newArr.length; j++) {
+          // 遇到相同时，直接跳出当前循环
+          if (newArr[j] === arr[i]) {
+            break
+          }
+          // 比较到最后一个还没有重复，则插入
+          if (j === newArr.length - 1) {
+            newArr.push(arr[i])
+          }
+        }
+      }
+      return newArr
+    }
+
+    function dedup(arr) {
+      let newArr = arr.slice()
+      for (let i = 0; i < newArr.length; i++) {
+        for (let j = i + 1; j < newArr.length; j++) {
+          if (newArr[i] === newArr[j]) {
+            newArr.splice(j, 1)
+            j--
+          }
+        }
+      }
+      return newArr
+    }
+
+    console.log(dedup(arr))
+    console.log(arr)
+
+  </script>
+  
+</body>
+</html>

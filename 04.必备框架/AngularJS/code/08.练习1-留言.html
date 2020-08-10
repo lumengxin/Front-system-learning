@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl">
+    <h2>留言</h2>
+    <textarea cols="30" rows="10" ng-model="words"></textarea>
+    <div>
+      <button ng-click="save()">保存</button>
+      <button ng-click="read()">读取</button>
+      <button ng-click="delete()">删除</button>
+    </div>
+    <p>剩余的字数：{{getCount()}}</p>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('MyCtrl', ['$scope', function(n) {
+        // 初始化words(否则第一次会报错)
+        n.words = ''
+        n.getCount = function() {
+          if (n.words.length > 100) {
+            n.words = n.words.slice(0, 100)
+          }
+          return 100 - n.words.length
+        }
+        n.save = function() {
+          localStorage.setItem('__words__', JSON.stringify(n.words))
+          n.words = ''
+        }
+        n.read = function() {
+          // 开始没有时，null报错
+          n.words = JSON.parse(localStorage.getItem('__words__') || '[]')
+        }
+        n.delete = function() {
+          localStorage.removeItem('__words__')
+          n.words = ''
+        }
+      }])
+
+      /* H5本地存储技术
+      1. sessionStorage(会话存储) 
+        - 生命周期：浏览器打开到关闭
+        - 大小：5M
+        - 保存浏览器端
+        - setItem('key', value)
+        - getItem('key')
+        - removeItem('key')
+      2. localStorage(永久存储)
+        - 生命周期：永久，除非认为删除
+        - 大小：>= 5M
+      3. cookie:
+        作用：用于浏览器和服务器进行通信的
+        特点：
+          - 大小：4kb
+          - 每次发送请求都携带，占用带宽
+          - 保存在浏览器端
+          - cookie容易被截获，不安全
+          - 生命周期：
+            - 会话cookie: 浏览器打开到关闭
+            - 人为设置cookie: 设置的时间
+      */
+  </script>
+</body>
+</html>

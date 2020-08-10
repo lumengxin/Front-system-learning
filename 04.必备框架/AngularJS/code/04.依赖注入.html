@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1.依赖对象：完成某个特定的功能需要某个对象才能实现，这个对象就是依赖对象
+    2.依赖注入：依赖的对象以形参的形式被注入进来使用,称为声明式依赖注入
+    3.angular的‘$scope’对象就是依赖对象
+    4.回调函数的event的就是依赖对象，回调函数有形参就是依赖注入
+   -->
+   <button>按钮</button>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.2.9/angular.min.js"></script>
+  <script>
+    window.onload = function() {
+      document.querySelector('button').onclick = function(event) {
+        alert(event.clientX)
+      }
+    }
+  </script>
+
+  <script>
+    /* 开发的两种模式：
+      命令式: 注重执行过程
+      声明式：注重执行结果；对命令式局部包装
+    */
+    var arr = [1, 2, 3, 4, 5]
+    var newArr1 = []
+    // 命令式
+    for (var i = 0; i < arr.length; i++){
+      var value = arr[i] + 10
+      newArr1.push(value)
+    }
+    console.log("newArr1", newArr1)
+    // 声明式
+    var newArr2 = arr.map(function(item, index) {
+      return item + 10
+    })
+    console.log("newArr2", newArr2)
+    
+  </script>
+</body>
+</html>

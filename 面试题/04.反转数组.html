@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function reverse(arr) {
+      var newArr = arr
+      for (var i = 0; i < arr.length / 2; i++) {
+        var temp = arr[i]
+        arr[i] = arr[arr.length - 1 - i]
+        arr[arr.length - 1 - i] = temp
+      }
+      return newArr
+    }
+
+    var arr = [1, 2, 3, 4, 5]
+    console.log(reverse(arr))
+  </script>
+</body>
+</html>

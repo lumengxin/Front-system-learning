@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0}
+    .wrap {
+      width: 500px;
+      height: 500px;
+      background: gray;
+      /* 新版本 */
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background: gold;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .evenB {
+      background-color: red;
+    }
+    .oddB {
+      background-color: green;
+    }
+  </style>
+</head>
+<body ng-app="App">
+  <div ng-controller="MyCtrl">
+    <div>
+      <h2>价格计算机（自动）</h2>
+      数量：<input type="number" ng-model="count1" />
+      价格：<input type="number" ng-model="price1" />
+      <p>总计：{{count1 * price1}}</p>
+    </div>
+
+    <div>
+      <h2>价格计算机（手动）</h2>
+      数量：<input type="number" ng-model="count2" />
+      价格：<input type="number" ng-model="price2" />
+      <button ng-click="getTotalPrice()">计算</button>
+      <p>总计：{{totalPrice}}</p>
+    </div>
+
+    <div>
+      <h2>人员信息列表</h2>
+      <ul>
+        <li ng-repeat="person in persons">
+          {{ $index }}: {{ $odd }} 
+          {{ person.username }} - {{ person.age }}
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p>123</p>
+      <!-- 解决使用{{}}显示数据闪屏 -->
+      <p ng-bind="123"></p>
+    </div>
+
+    <div>
+      <p ng-show="true">显不显示</p>
+      <p ng-hide="isHide">显不显示</p>
+    </div>
+
+    
+  </div>
+
+  <div ng-controller="MyCtrl2">
+    <div style="width: 200px; height: 200px;" ng-style="myStyle"
+      ng-mouseenter="enter()"
+      ng-mouseleave="leave()"
+    >
+      <ul>
+        <li ng-repeat="person in persons" ng-class="{oddB: $odd, evenB: $even}">
+          {{person.username}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script>
+    angular.module('App', [])
+      .controller('MyCtrl', ['$scope', function(ng) {
+        ng.count1 = 1
+        ng.price1 = 20
+
+        ng.count2 = 1
+        ng.price2 = 1
+        ng.totalPrice = 1
+        ng.getTotalPrice = function() {
+          this.totalPrice = this.count2 * this.price2
+        }
+
+        ng.persons = [
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 }
+        ]
+
+        ng.isHide = false
+      }])
+      .controller('MyCtrl2', ['$scope', function(ng) {
+        ng.myStyle = {
+          background: 'pink'
+        }
+        ng.enter = function() {
+          this.myStyle.background = 'blue'
+        }
+        ng.leave = function() {
+          this.myStyle.background = 'pink'
+        }
+        ng.persons = [
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 },
+          { username: 'lili', age: 23 }
+        ]
+      }])
+  </script>
+</body>
+</html>

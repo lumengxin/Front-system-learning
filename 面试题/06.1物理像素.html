@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0}
+    #box {
+      /* width: 200px;
+      height: 200px; */
+      width: 0.5rem;
+      height: 0.5rem;
+
+      /* css像素 */
+      border-bottom: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+
+  <script>
+    // 像素比 = 物理像素 / css像素(pc：像素比1)
+    window.onload = function() {
+      var dpr = window.devicePixelRatio
+      console.log(dpr)
+      // 缩放比
+      var scale = 1 / dpr
+      var width = document.documentElement.clientWidth
+
+      // 获取meta标签，通过缩放控制
+      var metaNode = document.querySelector('meta[name="viewport"]')
+      metaNode.setAttribute('content', 'width=device-width, initial-scale='+scale+', user-scalable=no')
+    
+      // 盒子宽高也会跟着缩放。px改为rem，比例反向乘回去
+      var htmlNode = document.querySelector('html')
+      htmlNode.style.fontSize = width * dpr + 'px'
+    }
+  </script>
+</body>
+</html>

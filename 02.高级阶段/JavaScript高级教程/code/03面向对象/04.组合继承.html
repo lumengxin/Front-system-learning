@@ -22,7 +22,7 @@
     // 子类型原型等于父类型实例,为了能看到父类型的方法
     Student.prototype = new Person()
     // 修正constructor属性
-    Student.prototype.constructor = Student
+    // Student.prototype.constructor = Student
 
     function Student(name, age, price) {
       // 为了得到属性
@@ -34,6 +34,7 @@
     }
     
     var s = new Student('jack', 32, 32000)
+    // var s = new Student(1000)
     console.log(s)
   </script>
 </body>

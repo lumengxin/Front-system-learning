@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl">
+    <h2>备忘录</h2>
+    <div>
+      <input type="text" ng-model="newTodo">
+      <button ng-click="add()">添加</button>
+    </div>
+    <div ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo.isChecked">
+      <span>{{todo.name}}</span>
+    </div>
+    <button ng-click="del()">删除已选中的项</button>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('MyCtrl', ['$scope', function(n) {
+        n.todos = [
+          { name: '吃饭', isChecked: false },
+          { name: '睡觉', isChecked: false },
+          { name: '打豆豆', isChecked: true }
+        ]
+        n.add = function() {
+          if (!n.newTodo) {
+            alert('请输入内容')
+            return
+          }
+          n.todos.push({
+            name: n.newTodo,
+            isChecked: false
+          })
+          n.newTodo = ''
+        }
+        /* n.del = function() {
+          // n.todos.filter(item => !item.isChecked)
+          n.todos.forEach(function(item, index) {
+            if (item.isChecked) {
+              n.todos.splice(index, 1)
+              n.del()
+            }
+          })
+        } */
+        n.del = function() {
+          var oldTodo = n.todos
+          // 只是引用阻断
+          n.todos = []
+          oldTodo.forEach(function(item, index) {
+            if (!item.isChecked) {
+              n.todos.push(item)
+            }
+          })
+        }
+      }])
+  </script>
+</body>
+</html>

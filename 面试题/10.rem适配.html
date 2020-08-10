@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0}
+    .box {
+      width: 1rem;
+      height: 1rem;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script>
+    window.onload = function() {
+      // 获取屏幕区域的宽度
+      var width = document.documentElement.clientWidth
+      var html = document.querySelector('html')
+      // html根元素字体大小设置为屏幕宽大小
+      html.style.fontSize = width + 'px'
+    }
+  </script>
+</body>
+</html>

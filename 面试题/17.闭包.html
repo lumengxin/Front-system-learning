@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 闭包：
+      1. 密闭的容器，类似于set、map容器，存储数据的
+      2. 闭包是一个对象，存放数据的格式：key value
+      形成的条件：
+      1. 函数嵌套
+      2. 内部函数引用外部函数的局部变量
+      优缺点：
+      1. 延长外部函数局部变量的什么周期
+      2. 容易造成内存泄露
+    */
+
+    /* function fun() {
+      var count = 1
+      function fun2() {
+        console.log(count)
+      }
+      // chrome中：Local - fun2 - Scopes - Closure(闭包)；之前chrome中fun2不调用也能看到。
+
+      // chrome中：Closure(进入fun2内部时)
+      fun2()
+    } 
+    
+    fun() */
+
+    // 应用场景
+    function fun() {
+      var count = 1
+      return function() {
+        count++
+        console.log(count)
+      }
+    }
+    var fun2 = fun()
+    fun2()
+    fun2()
+  </script>
+</body>
+</html>

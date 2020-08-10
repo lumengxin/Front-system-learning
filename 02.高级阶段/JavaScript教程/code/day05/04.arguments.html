@@ -11,7 +11,7 @@
         // 在调用函数时，浏览器每次都会传递两个隐含的参数
         // this:函数上下文对象 arguments:封装实参的类数组对象
         function fun() {
-            console.log(arguments.length);
+            console.log(arguments);
             // callee属性：代表当前执行函数对象
             console.log(arguments.callee);
         }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      height: 300%;
+    }
+  </style>
+</head>
+<body>
+  <button>防抖</button>
+
+  <script>
+    // 函数节流：一个函数执行一次后，只有大于设定的执行周期后才会执行第二次
+    /**
+     * 节流函数
+     * @param fn 要被节流的函数
+     * @param delay 规定的时间
+     */
+    function throttle(fn, delay) {
+      // 记录上一次函数触发时间
+      var lastTime = 0
+      return function() {
+        var nowTime = new Date()
+
+        if(nowTime - lastTime > delay) {
+          // fn()
+          fn.call(this) // 修正this指向
+          // 同步时间
+          lastTime = nowTime
+        }
+      }
+    }
+    document.onscroll = throttle(function() {
+      console.log('scroll -> ' + Date.now())
+    }, 200)
+
+    // 防抖函数：一个需要频繁触发的函数，在规定时间，只让最后一次生效
+    function debounce(fn, delay) {
+      // 记录上一次延时器
+      var timer = null
+      return function() {
+        // 清除上一次延时器
+        clearTimeout(timer)
+        timer = setTimeout(function() {
+          fn.apply(this)
+        }, delay)
+      }
+    }
+    document.querySelector('button').onclick = debounce(function() {
+      console.log('click ->' + new Date())
+    }, 1000)
+  </script>
+</body>
+</html>

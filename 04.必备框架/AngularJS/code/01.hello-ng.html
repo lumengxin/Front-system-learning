@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body ng-app>
+  <!-- angular.js入门
+  1. 是什么？
+    - Google开源的前端js结构化框架
+    - 特性和优点：
+      数据双向绑定
+      声明式依赖注入
+      解耦应用逻辑，数据模型和视图
+      完善的页面指令
+      定制表单验证
+      Ajax封装
+    - 与jQuery比较：
+      jQuery: js函数库；封装简化dom操作
+      angular: js结构化操作；主题不再是dom，而是页面中动态数据
+    - 能做什么项目：
+      构建单页面Web应用或Web App应用
+      应用：饿了么，微信网页版，知乎周报，后台管理（阿里云，土豆后台，唯品会..）
+  -->
+  <input type="text" class="jq-input">
+  <p>您输入的内容是：<span></span></p>
+  <br /><hr />
+
+  <input type="text" ng-model="username">
+  <p>您输入的内容是：<span>{{username}}</span></p>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.8.0/angular.min.js"></script>
+  <!-- <script>
+    // document.ready:文档(结构)加载完毕  window.onload:页面加载完毕(包括图片)
+    $(function () { 
+      $('.jq-input').keyup(function () {
+        // var value = this.value
+        var value = $(this).val()
+        $('span').html(value)
+      })
+    })
+  </script> -->
+  
+</body>
+</html>
